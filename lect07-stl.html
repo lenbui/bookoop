@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>9&nbsp; STANDARD TEMPLATE LIBRARY – OBJECT ORIENTED PROGRAMMING</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./lect08-advanced.html" rel="next">
+<link href="./lect06-template.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-fa9e0952a64697c55f958ad13d4b0b73.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="theme.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">OBJECT ORIENTED PROGRAMMING</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-end">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lect07-stl.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">STANDARD TEMPLATE LIBRARY</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About the book</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lect01-introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">INTRODUCTION TO OBJECT-ORIENTED PROGRAMMING</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lect02-class.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">CLASSES AND OBJECTS</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lect02-class-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">MORE ABOUT CLASSES</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lect03-inheritance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">INHERITANCE &amp; AGGREGATION</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lect03-relationship.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">RELATIONSHIP</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lect04-polymorphism.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">POLYMORPHISM</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lect05-operator.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">OPERATOR OVERLOADING AND CASTING OPERATOR</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lect06-template.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">TEMPLATES AND GENERIC PROGRAMMING</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lect07-stl.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">STANDARD TEMPLATE LIBRARY</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lect08-advanced.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">ADVANCED C++ FEATURES</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lect09-design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Object Oriented Design</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lect10-concurrency.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">CONCURRENCY</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#stl-containers" id="toc-stl-containers" class="nav-link" data-scroll-target="#stl-containers"><span class="header-section-number">9.1</span> STL Containers</a>
+  <ul class="collapse">
+  <li><a href="#stl-containers-1" id="toc-stl-containers-1" class="nav-link" data-scroll-target="#stl-containers-1">STL Containers</a></li>
+  <li><a href="#sequential-containers" id="toc-sequential-containers" class="nav-link" data-scroll-target="#sequential-containers">Sequential Containers</a></li>
+  <li><a href="#vector-inserting-elements-at-the-end" id="toc-vector-inserting-elements-at-the-end" class="nav-link" data-scroll-target="#vector-inserting-elements-at-the-end">vector: Inserting Elements at the End</a></li>
+  <li><a href="#vector-removing-elements" id="toc-vector-removing-elements" class="nav-link" data-scroll-target="#vector-removing-elements">vector: Removing Elements</a></li>
+  <li><a href="#vector-accessing-elements" id="toc-vector-accessing-elements" class="nav-link" data-scroll-target="#vector-accessing-elements">vector: Accessing Elements</a></li>
+  <li><a href="#associative-containers" id="toc-associative-containers" class="nav-link" data-scroll-target="#associative-containers">Associative Containers</a></li>
+  <li><a href="#container-adapters" id="toc-container-adapters" class="nav-link" data-scroll-target="#container-adapters">Container Adapters</a></li>
+  </ul></li>
+  <li><a href="#stl-iterators" id="toc-stl-iterators" class="nav-link" data-scroll-target="#stl-iterators"><span class="header-section-number">9.2</span> STL Iterators</a>
+  <ul class="collapse">
+  <li><a href="#stl-iterators-1" id="toc-stl-iterators-1" class="nav-link" data-scroll-target="#stl-iterators-1">STL Iterators</a></li>
+  <li><a href="#iterator-types" id="toc-iterator-types" class="nav-link" data-scroll-target="#iterator-types">Iterator Types</a></li>
+  <li><a href="#pointers-vs.-iterators" id="toc-pointers-vs.-iterators" class="nav-link" data-scroll-target="#pointers-vs.-iterators">Pointers vs.&nbsp;Iterators</a></li>
+  <li><a href="#iterator-syntax" id="toc-iterator-syntax" class="nav-link" data-scroll-target="#iterator-syntax">Iterator Syntax</a></li>
+  <li><a href="#containter-and-iterator" id="toc-containter-and-iterator" class="nav-link" data-scroll-target="#containter-and-iterator">Containter and Iterator</a></li>
+  </ul></li>
+  <li><a href="#stl-algorithms" id="toc-stl-algorithms" class="nav-link" data-scroll-target="#stl-algorithms"><span class="header-section-number">9.3</span> STL Algorithms</a>
+  <ul class="collapse">
+  <li><a href="#stl-algorithms-1" id="toc-stl-algorithms-1" class="nav-link" data-scroll-target="#stl-algorithms-1">STL Algorithms</a></li>
+  <li><a href="#non-mutating-algorithms" id="toc-non-mutating-algorithms" class="nav-link" data-scroll-target="#non-mutating-algorithms">Non-Mutating Algorithms</a></li>
+  <li><a href="#mutating-algorithms" id="toc-mutating-algorithms" class="nav-link" data-scroll-target="#mutating-algorithms">Mutating Algorithms</a></li>
+  <li><a href="#the-interaction-between-containers-and-algorithms-using-iterators" id="toc-the-interaction-between-containers-and-algorithms-using-iterators" class="nav-link" data-scroll-target="#the-interaction-between-containers-and-algorithms-using-iterators">The Interaction Between Containers and Algorithms Using Iterators</a></li>
+  <li><a href="#usage-of-stl-algorithms" id="toc-usage-of-stl-algorithms" class="nav-link" data-scroll-target="#usage-of-stl-algorithms">Usage of STL Algorithms</a></li>
+  </ul></li>
+  <li><a href="#workshop" id="toc-workshop" class="nav-link" data-scroll-target="#workshop"><span class="header-section-number">9.4</span> Workshop</a>
+  <ul class="collapse">
+  <li><a href="#quiz" id="toc-quiz" class="nav-link" data-scroll-target="#quiz">✒ Quiz</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">💻 Exercises</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">9.5</span> References</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">STANDARD TEMPLATE LIBRARY</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction" class="level3">
+<h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
+<div class="definition">
+<p>The <strong>Standard Template Library</strong> (STL) contains many templates for useful algorithms and data structures.</p>
+</div>
+<p>The STL is a set of template classes and functions that supply the programmer with</p>
+<ul>
+<li>Containers for storing information</li>
+<li>Iterators for accessing the information stored</li>
+<li>Algorithms for manipulating the content of the containers</li>
+</ul>
+</section>
+<section id="stl-containers" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="stl-containers"><span class="header-section-number">9.1</span> STL Containers</h2>
+<section id="stl-containers-1" class="level3">
+<h3 class="anchored" data-anchor-id="stl-containers-1">STL Containers</h3>
+<p><em>Containers</em> are STL classes that are used to store data. STL supplies two types of container classes:</p>
+<ul>
+<li>Sequential containers</li>
+<li>Associative containers</li>
+</ul>
+<p>In addition to these STL also provides classes called Container Adapters that are variants of the same with reduced functionality which support a specific purpose.</p>
+</section>
+<section id="sequential-containers" class="level3">
+<h3 class="anchored" data-anchor-id="sequential-containers">Sequential Containers</h3>
+<section id="sequential-containers-1" class="level4">
+<h4 class="anchored" data-anchor-id="sequential-containers-1">Sequential Containers</h4>
+<p>Sequential containers are characterized by a fast insertion time, but are relatively slow in <code>find</code> operations.</p>
+<ul>
+<li><code>vector</code> – Operates like a dynamic array and grows at the end. Think of a vector like a shelf of books to which you can add or remove books on one end</li>
+<li><code>deque</code> – Similar to <code>vector</code> except that it allows for new elements to be inserted or removed at the beginning, too</li>
+<li><code>list</code> – Operates like a doubly-linked list. Think of this like a chain where an object is a link in the chain. You can add or remove links – that is, objects – at any position</li>
+<li><code>forward_list</code> – Similar to a <code>list</code> except that it is a singly-linked list of elements that allows you to iterate only in one direction</li>
+</ul>
+</section>
+</section>
+<section id="vector-inserting-elements-at-the-end" class="level3">
+<h3 class="anchored" data-anchor-id="vector-inserting-elements-at-the-end">vector: Inserting Elements at the End</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;vector&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main <span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>   vector <span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> vecIntegers<span class="op">;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>   <span class="co">// Insert sample integers into the vector</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>   vecIntegers<span class="op">.</span>push_back <span class="op">(</span><span class="dv">50</span><span class="op">);</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>   vecIntegers<span class="op">.</span>push_back <span class="op">(</span><span class="dv">1</span><span class="op">);</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>   vecIntegers<span class="op">.</span>push_back <span class="op">(</span><span class="dv">987</span><span class="op">);</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>   vecIntegers<span class="op">.</span>push_back <span class="op">(</span><span class="dv">1001</span><span class="op">);</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>   cout <span class="op">&lt;&lt;</span> <span class="st">"The vector contains "</span><span class="op">;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>   cout <span class="op">&lt;&lt;</span> vecIntegers<span class="op">.</span>size <span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">" Elements"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>   <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="vector-removing-elements" class="level3">
+<h3 class="anchored" data-anchor-id="vector-removing-elements">vector: Removing Elements</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;vector&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main <span class="op">()</span> <span class="op">{</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>   vector <span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> vecIntegers<span class="op">;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>   <span class="co">// Insert sample integers into the vector</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>   vecIntegers<span class="op">.</span>push_back <span class="op">(</span><span class="dv">50</span><span class="op">);</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>   vecIntegers<span class="op">.</span>push_back <span class="op">(</span><span class="dv">1</span><span class="op">);</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>   vecIntegers<span class="op">.</span>push_back <span class="op">(</span><span class="dv">987</span><span class="op">);</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>   <span class="co">// Erase one element at the end</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>   vecIntegers<span class="op">.</span>pop_back <span class="op">();</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>   cout <span class="op">&lt;&lt;</span> <span class="st">"The vector contains "</span><span class="op">;</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>   cout <span class="op">&lt;&lt;</span> vecIntegers<span class="op">.</span>size <span class="op">()</span> <span class="op">&lt;&lt;</span> <span class="st">" Elements"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>   <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="vector-accessing-elements" class="level3">
+<h3 class="anchored" data-anchor-id="vector-accessing-elements">vector: Accessing Elements</h3>
+<p>Elements in a <code>vector</code> can be accessed using the following methods:</p>
+<ul>
+<li>using the subscript operator <code>[]</code></li>
+<li>using the member function <code>at()</code></li>
+<li>or using iterators</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>   vector <span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;</span> vecIntegers<span class="op">;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>   <span class="co">// Insert sample integers into the vector</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>   vecIntegers<span class="op">.</span>push_back <span class="op">(</span><span class="dv">50</span><span class="op">);</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>   vecIntegers<span class="op">.</span>push_back <span class="op">(</span><span class="dv">1</span><span class="op">);</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>   vecIntegers<span class="op">.</span>push_back <span class="op">(</span><span class="dv">987</span><span class="op">);</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>   vecIntegers<span class="op">[</span><span class="dv">2</span><span class="op">]</span> <span class="op">=</span> <span class="dv">123</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="associative-containers" class="level3">
+<h3 class="anchored" data-anchor-id="associative-containers">Associative Containers</h3>
+<section id="associative-containers-1" class="level4">
+<h4 class="anchored" data-anchor-id="associative-containers-1">Associative Containers</h4>
+<p><em>Associative containers</em> are those that store data in a sorted fashion – akin to a dictionary. This results in slower insertion times, but presents significant advantages when it comes to searching. The associative containers supplied by STL are</p>
+<ul>
+<li><p><code>set</code> – Stores unique values sorted on insertion in a container featuring logarithmic complexity.</p></li>
+<li><p><code>unordered_set</code> – Stores unique values sorted on insertion in a container featuring near constant complexity.</p></li>
+<li><p><code>map</code> – Stores key-value pairs sorted by their unique keys in a container with logarithmic complexity</p></li>
+<li><p><code>unordered_map</code> – Stores key-value pairs sorted by their unique keys in a container with near constant complexity.</p></li>
+<li><p><code>multiset</code> – Akin to a <code>set</code>. Additionally, supports the ability to store multiple items having the same value; that is, the value doesn’t need to be unique.</p></li>
+<li><p><code>unordered_multiset</code> – Akin to a <code>unordered_set</code>. Additionally, supports the ability to store multiple items having the same value; that is, the value doesn’t need to be unique.</p></li>
+<li><p><code>multimap</code> – Akin to a <code>map</code>. Additionally, supports the ability to store key-value pairs where keys don’t need to be unique.</p></li>
+<li><p><code>unordered_multimap</code> – Akin to a <code>unordered_map</code>. Additionally, supports the ability to store key-value pairs where keys don’t need to be unique.</p></li>
+</ul>
+</section>
+</section>
+<section id="container-adapters" class="level3">
+<h3 class="anchored" data-anchor-id="container-adapters">Container Adapters</h3>
+<section id="container-adapters-1" class="level4">
+<h4 class="anchored" data-anchor-id="container-adapters-1">Container Adapters</h4>
+<p><em>Container Adapters</em> are variants of sequential and associative containers that have limited functionality and are intended to fulfill a particular purpose. The main adapter classes are:</p>
+<ul>
+<li><code>stack</code> – Stores elements in a LIFO (last-in-first-out) fashion, allowing elements to be inserted (pushed) and removed (popped) at the top.</li>
+<li><code>queue</code> – Stores elements in FIFO (first-in-first-out) fashion, allowing the first element to be removed in the order they’re inserted.</li>
+<li><code>priority_queue</code> – Stores elements in a sorted order, such that the one whose value is evaluated to be the highest is always first in the queue.</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="stl-iterators" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="stl-iterators"><span class="header-section-number">9.2</span> STL Iterators</h2>
+<section id="stl-iterators-1" class="level3">
+<h3 class="anchored" data-anchor-id="stl-iterators-1">STL Iterators</h3>
+<ul>
+<li><p>Iterators in STL are template classes that in some ways are a generalization of pointers.</p></li>
+<li><p>These are template classes that give the programmer a handle by which he can work with and manipulate STL containers and perform operations on them.</p></li>
+<li><p>Note that operations could as well be STL algorithms that are template functions, Iterators are the bridge that allows these template functions to work with containers, which are template classes, in a consistent and seamless manner.</p></li>
+</ul>
+</section>
+<section id="iterator-types" class="level3">
+<h3 class="anchored" data-anchor-id="iterator-types">Iterator Types</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Iterator Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Input</strong></td>
+<td style="text-align: left;">Input iterators of the purest kinds guarantee read access only.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Output</strong></td>
+<td style="text-align: left;">Output iterators of the strictest types guarantee write access only.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Forward</strong></td>
+<td style="text-align: left;">Can only move forward in a container (uses the <code>++</code> operator).</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Bidirectional</strong></td>
+<td style="text-align: left;">Can move forward or backward in a container (uses the <code>++</code> and <code>--</code> operators).</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Random-access</strong></td>
+<td style="text-align: left;">Can move forward and backward, and can jump to a specific data element in a container.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="pointers-vs.-iterators" class="level3">
+<h3 class="anchored" data-anchor-id="pointers-vs.-iterators">Pointers vs.&nbsp;Iterators</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">operator</th>
+<th style="text-align: left;">meaning</th>
+<th style="text-align: left;">pointer</th>
+<th style="text-align: left;">iterator</th>
+<th style="text-align: left;"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>*</code> and <code>-&gt;</code></td>
+<td style="text-align: left;">to dereference</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>=</code></td>
+<td style="text-align: left;">to assign</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>==</code> and <code>!=</code></td>
+<td style="text-align: left;">to compare</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>++</code></td>
+<td style="text-align: left;">to move next element</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>--</code></td>
+<td style="text-align: left;">to move previous element</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">(bidirectional and random-access)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>+</code></td>
+<td style="text-align: left;">to move forward a specific number of elements</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>-</code></td>
+<td style="text-align: left;">to move backward a specific number of elements</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">(bidirectional and random-access)</td>
+</tr>
+</tbody>
+</table>
+<img src="lect07-stl_files\mediabag\3ca3be17dc2be8d53c86a5379157656cc2b6fb7c.svg" class="img-fluid">
+</section>
+<section id="iterator-syntax" class="level3">
+<h3 class="anchored" data-anchor-id="iterator-syntax">Iterator Syntax</h3>
+<ul>
+<li><p>To define an iterator, we must know what type of container we will be using it with.</p></li>
+<li><p>The general format of an iterator definition:</p></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode pseudo code-with-copy"><code class="sourceCode pseudo"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>containerType::iterator iteratorName;</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>containerType::const_iterator iteratorName;</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>containerType::reverse_iterator iteratorName;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>where <code>containerType</code> is the STL container type, and <code>iteratorName</code> is the name of the iterator variable that you are defining.</p>
+</section>
+<section id="containter-and-iterator" class="level3">
+<h3 class="anchored" data-anchor-id="containter-and-iterator">Containter and Iterator</h3>
+<p>All of the STL containers - have a <code>begin()</code> member function that returns an iterator pointing to the container’s first element. - have a <code>end()</code> member function that returns an iterator pointing to the position <em>after</em> the container’s last element.</p>
+<p></p><div style="text-align:center;"><img src="figures/con-iter.svg" alt="" width="70%"></div><p></p>
+</section>
+</section>
+<section id="stl-algorithms" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="stl-algorithms"><span class="header-section-number">9.3</span> STL Algorithms</h2>
+<section id="stl-algorithms-1" class="level3">
+<h3 class="anchored" data-anchor-id="stl-algorithms-1">STL Algorithms</h3>
+<section id="idea" class="level4">
+<h4 class="anchored" data-anchor-id="idea">Idea</h4>
+<p>Finding, sorting, reversing, and the like are standard programming requirements that should not require the programmer to <strong>reinvent</strong> implementation to support.</p>
+<ul>
+<li>To use STL algorithms must include the header file</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode pseudo code-with-copy"><code class="sourceCode pseudo"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>#include &lt;algorithm&gt;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><p>This is precisely why STL supplies these functions in the form of STL algorithms that work well with containers using iterators to help the programmer with some of the most common requirements.</p></li>
+<li><p>STL algorithms can be broadly classified into two types:</p>
+<ul>
+<li>non-mutating algorithms</li>
+<li>mutating algorithms</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="non-mutating-algorithms" class="level3">
+<h3 class="anchored" data-anchor-id="non-mutating-algorithms">Non-Mutating Algorithms</h3>
+<ul>
+<li>Algorithms that change neither the order nor the contents of a container are called <em>non-mutating algorithms</em>.
+<ul>
+<li><code>find</code> – Helps find a value in a collection</li>
+<li><code>find_if</code> – Helps find a value in a collection on the basis of a specific user-defined predicate</li>
+</ul></li>
+</ul>
+</section>
+<section id="mutating-algorithms" class="level3">
+<h3 class="anchored" data-anchor-id="mutating-algorithms">Mutating Algorithms</h3>
+<ul>
+<li>Mutating algorithms are those that change the contents or the order of the sequence they are operating on.
+<ul>
+<li><code>reverse</code> – Reverses a collection</li>
+<li><code>remove_if</code> – Helps remove an item from a collection on the basis of a user-defined predicate</li>
+<li><code>transform</code> – Helps apply a user-defined transformation function to elements in a container</li>
+</ul></li>
+</ul>
+</section>
+<section id="the-interaction-between-containers-and-algorithms-using-iterators" class="level3">
+<h3 class="anchored" data-anchor-id="the-interaction-between-containers-and-algorithms-using-iterators">The Interaction Between Containers and Algorithms Using Iterators</h3>
+<img src="lect07-stl_files\mediabag\4ef92015948b053ff77bc2f35d0ad78ca17f7d2a.svg" class="img-fluid">
+</section>
+<section id="usage-of-stl-algorithms" class="level3">
+<h3 class="anchored" data-anchor-id="usage-of-stl-algorithms">Usage of STL Algorithms</h3>
+<p>Finding elements given a value or a condition</p>
+<ul>
+<li>Given a container such as a <code>vector</code>, STL algorithms <code>find()</code> and <code>find_if()</code> help you find an element that matches a value or fulfills a condition, respectively. The usage of <code>find()</code> follows this pattern</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> iElementFound <span class="op">=</span> find <span class="op">(</span> vecIntegers<span class="op">.</span>begin <span class="op">()</span> <span class="co">// Start of range</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                          <span class="op">,</span> vecIntegers<span class="op">.</span>end <span class="op">()</span>   <span class="co">// End of range</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                          <span class="op">,</span> NumToFind <span class="op">);</span>         <span class="co">// Element to find</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">// Check if find succeeded</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(</span> iElementFound <span class="op">!=</span> vecIntegers<span class="op">.</span>end <span class="op">())</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>   cout <span class="op">&lt;&lt;</span> <span class="st">"Result: Value found!"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="workshop" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="workshop"><span class="header-section-number">9.4</span> Workshop</h2>
+<section id="quiz" class="level3">
+<h3 class="anchored" data-anchor-id="quiz">✒ Quiz</h3>
+<ol type="1">
+<li><p>What would be your choice of a container that has to contain an array of objects with insertion possible at the top and at the bottom?</p></li>
+<li><p>We need to store elements for quick lookup. What container would we choose?</p></li>
+<li><p>We need to store elements in a <code>std::set</code> but still have the storage and lookup criteria altered, based on conditions that are not necessarily the value of the elements. Is this possible?</p></li>
+<li><p>What part of STL helps connect algorithms to containers so that algorithms can work on those elements?</p></li>
+<li><p>Would you choose to use container <code>hash_set</code> in an application that needs to be ported to different platforms and built using different C++ compilers?</p></li>
+</ol>
+</section>
+<section id="exercises" class="level3">
+<h3 class="anchored" data-anchor-id="exercises">💻 Exercises</h3>
+<p>Demonstrate how STL algorithms do</p>
+<ol type="1">
+<li>Counting elements given a value or a condition</li>
+<li>Searching for an element or a range in a collection</li>
+<li>Initializing elements in a container to a specific value</li>
+<li>Initialize elements to a value generated at runtime</li>
+<li>Copy and remove operations</li>
+<li>Sorting and searching in a sorted collection and erasing duplicates</li>
+</ol>
+</section>
+</section>
+<section id="references" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="references"><span class="header-section-number">9.5</span> References</h2>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./lect06-template.html" class="pagination-link" aria-label="TEMPLATES AND GENERIC PROGRAMMING">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">TEMPLATES AND GENERIC PROGRAMMING</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./lect08-advanced.html" class="pagination-link" aria-label="ADVANCED C++ FEATURES">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">ADVANCED C++ FEATURES</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

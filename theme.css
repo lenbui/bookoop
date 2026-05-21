@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600&display=swap');
+
+h1 {
+    color: #3730a3;
+    /* indigo đậm */
+}
+
+h2 {
+    color: #6366f1;
+    /* indigo sáng */
+}
+
+h3 {
+    color: #a5b4fc;
+    /* tím nhạt */
+}
+
+.tcolorbox,
+.block,
+.definition,
+.theorem,
+.algorithm {
+    border: 1px solid burlywood;
+    background-color: beige;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 1px #a79c9c;
+    padding: 5px;
+    margin: 5px;
+}
+
+.example,
+.proof {
+    border: 1px solid burlywood;
+    background-color: rgb(223, 225, 255);
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 1px #a79c9c;
+    padding: 5px;
+    margin: 5px;
+}
+
+pre.sourceCode code>span {
+    display: inline-block;
+    /* make spans respect width */
+    width: 100%;
+    /* expand to full line */
+}
+
+pre.text,
+pre.texti {
+    background: #f5f5f5;
+    border-left: 2px solid #4287f5;
+    padding: 10px;
+}
+
+textarea {
+    display: block;
+    background: #ffff0020;
+    font-size: 0.8em;
+    font-family: system-ui, 'Courier New', Courier, monospace;
+    /* font-family: "Gill Sans", sans-serif; */
+    margin: 10px 10px;
+    border: 1px black;
+    width: 96%;
+    height: 200px;
+    overflow-y: scroll;
+}
+
+/* Style for top-level TOC items */
+.sidebar nav[role="doc-toc"] ul>li>a {
+    color: #000000FF;
+}
+
+/* Style for second-level TOC items */
+.sidebar nav[role="doc-toc"] ul>li>ul>li>a {
+    color: #00000080;
+}
+
+/* Style for third-level TOC items */
+.sidebar nav[role="doc-toc"] ul>li>ul>li>ul>li>a {
+    color: #00000040;
+}
+
+.sidebar nav[role="doc-toc"] ul>li>a.active {
+    background-color: #0000FF20;
+}
+
+img {
+    border: 1px solid gray;
+    transition: border 0.1s ease;
+    /* Smooth transition */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+th,
+td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+.edit-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-btn:hover {
+    background-color: #45a049;
+}
+
+/* Hide numbers only for <ol> with class="no-numbers" */
+.no-numbers ol {
+    list-style-type: none;
+    /* remove numbering */
+    padding-left: 12px;
+    /* optional: align with text */
+}
+
+div.sidebar-menu-container span.menu-text {
+    text-transform: uppercase;
+}
+
+div.sidebar-menu-container span.chapter-title {
+    text-transform: lowercase;
+}
+
+.circle-auto {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.4em;
+  border: 2px solid black;
+  border-radius: 50%;
+  line-height: 1;
+}

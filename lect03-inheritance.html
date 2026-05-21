@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>4&nbsp; INHERITANCE &amp; AGGREGATION – OBJECT ORIENTED PROGRAMMING</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./lect03-relationship.html" rel="next">
+<link href="./lect02-class-2.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-fa9e0952a64697c55f958ad13d4b0b73.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="theme.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">OBJECT ORIENTED PROGRAMMING</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-end">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lect03-inheritance.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">INHERITANCE &amp; AGGREGATION</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About the book</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lect01-introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">INTRODUCTION TO OBJECT-ORIENTED PROGRAMMING</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lect02-class.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">CLASSES AND OBJECTS</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lect02-class-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">MORE ABOUT CLASSES</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lect03-inheritance.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">INHERITANCE &amp; AGGREGATION</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lect03-relationship.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">RELATIONSHIP</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lect04-polymorphism.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">POLYMORPHISM</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lect05-operator.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">OPERATOR OVERLOADING AND CASTING OPERATOR</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lect06-template.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">TEMPLATES AND GENERIC PROGRAMMING</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lect07-stl.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">STANDARD TEMPLATE LIBRARY</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lect08-advanced.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">ADVANCED C++ FEATURES</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lect09-design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Object Oriented Design</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lect10-concurrency.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">CONCURRENCY</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction-to-inheritance" id="toc-introduction-to-inheritance" class="nav-link active" data-scroll-target="#introduction-to-inheritance"><span class="header-section-number">4.1</span> Introduction to inheritance</a>
+  <ul class="collapse">
+  <li><a href="#what-is-inheritance" id="toc-what-is-inheritance" class="nav-link" data-scroll-target="#what-is-inheritance">What Is Inheritance?</a></li>
+  <li><a href="#inheritance-and-the-is-a-relationship" id="toc-inheritance-and-the-is-a-relationship" class="nav-link" data-scroll-target="#inheritance-and-the-is-a-relationship">Inheritance and the “Is a” Relationship</a></li>
+  <li><a href="#inheritance-in-uml" id="toc-inheritance-in-uml" class="nav-link" data-scroll-target="#inheritance-in-uml">Inheritance in UML</a></li>
+  <li><a href="#examples-of-inheritance-taken-from-daily-life" id="toc-examples-of-inheritance-taken-from-daily-life" class="nav-link" data-scroll-target="#examples-of-inheritance-taken-from-daily-life">Examples of Inheritance Taken from Daily Life</a></li>
+  <li><a href="#listing-1" id="toc-listing-1" class="nav-link" data-scroll-target="#listing-1">Listing 1</a></li>
+  </ul></li>
+  <li><a href="#hierarchical-organization-of-concepts" id="toc-hierarchical-organization-of-concepts" class="nav-link" data-scroll-target="#hierarchical-organization-of-concepts"><span class="header-section-number">4.2</span> Hierarchical organization of concepts</a>
+  <ul class="collapse">
+  <li><a href="#class-hierarchies" id="toc-class-hierarchies" class="nav-link" data-scroll-target="#class-hierarchies">Class Hierarchies</a></li>
+  <li><a href="#hierarchical-organization-of-concepts-1" id="toc-hierarchical-organization-of-concepts-1" class="nav-link" data-scroll-target="#hierarchical-organization-of-concepts-1">Hierarchical organization of concepts</a></li>
+  </ul></li>
+  <li><a href="#types-of-inheritance" id="toc-types-of-inheritance" class="nav-link" data-scroll-target="#types-of-inheritance"><span class="header-section-number">4.3</span> Types of inheritance</a>
+  <ul class="collapse">
+  <li><a href="#protected-members-and-class-access" id="toc-protected-members-and-class-access" class="nav-link" data-scroll-target="#protected-members-and-class-access">Protected Members and Class Access</a></li>
+  <li><a href="#types-of-inheritance-in-c" id="toc-types-of-inheritance-in-c" class="nav-link" data-scroll-target="#types-of-inheritance-in-c">Types of inheritance (in C++)</a></li>
+  </ul></li>
+  <li><a href="#derived-class" id="toc-derived-class" class="nav-link" data-scroll-target="#derived-class"><span class="header-section-number">4.4</span> Derived class</a>
+  <ul class="collapse">
+  <li><a href="#member-functions-inheritance" id="toc-member-functions-inheritance" class="nav-link" data-scroll-target="#member-functions-inheritance">Member functions inheritance</a></li>
+  <li><a href="#order-of-constructiondeconstruction" id="toc-order-of-constructiondeconstruction" class="nav-link" data-scroll-target="#order-of-constructiondeconstruction">Order of Construction/Deconstruction</a></li>
+  <li><a href="#base-class-initialization" id="toc-base-class-initialization" class="nav-link" data-scroll-target="#base-class-initialization">Base Class Initialization</a></li>
+  <li><a href="#derived-class-overriding-base-class-methods" id="toc-derived-class-overriding-base-class-methods" class="nav-link" data-scroll-target="#derived-class-overriding-base-class-methods">Derived Class Overriding Base Class Methods</a></li>
+  <li><a href="#listing-2" id="toc-listing-2" class="nav-link" data-scroll-target="#listing-2">Listing 2</a></li>
+  <li><a href="#invoking-overridden-methods-of-a-base-class" id="toc-invoking-overridden-methods-of-a-base-class" class="nav-link" data-scroll-target="#invoking-overridden-methods-of-a-base-class">Invoking Overridden Methods of a Base Class</a></li>
+  <li><a href="#problem-with-re-definition" id="toc-problem-with-re-definition" class="nav-link" data-scroll-target="#problem-with-re-definition">Problem with re-definition</a></li>
+  <li><a href="#the-problem-of-slicing" id="toc-the-problem-of-slicing" class="nav-link" data-scroll-target="#the-problem-of-slicing">The Problem of Slicing</a></li>
+  <li><a href="#assignment-operator" id="toc-assignment-operator" class="nav-link" data-scroll-target="#assignment-operator">Assignment operator</a></li>
+  </ul></li>
+  <li><a href="#multiple-inheritance" id="toc-multiple-inheritance" class="nav-link" data-scroll-target="#multiple-inheritance"><span class="header-section-number">4.5</span> Multiple inheritance</a>
+  <ul class="collapse">
+  <li><a href="#multiple-inheritance-1" id="toc-multiple-inheritance-1" class="nav-link" data-scroll-target="#multiple-inheritance-1">Multiple inheritance</a></li>
+  <li><a href="#listing-3" id="toc-listing-3" class="nav-link" data-scroll-target="#listing-3">Listing 3</a></li>
+  </ul></li>
+  <li><a href="#aggregation" id="toc-aggregation" class="nav-link" data-scroll-target="#aggregation"><span class="header-section-number">4.6</span> Aggregation</a>
+  <ul class="collapse">
+  <li><a href="#aggregation-1" id="toc-aggregation-1" class="nav-link" data-scroll-target="#aggregation-1">Aggregation</a></li>
+  <li><a href="#aggregation-2" id="toc-aggregation-2" class="nav-link" data-scroll-target="#aggregation-2">Aggregation</a></li>
+  <li><a href="#examples-of-aggregation-taken-from-daily-life" id="toc-examples-of-aggregation-taken-from-daily-life" class="nav-link" data-scroll-target="#examples-of-aggregation-taken-from-daily-life">Examples of Aggregation Taken from Daily Life</a></li>
+  </ul></li>
+  <li><a href="#workshop" id="toc-workshop" class="nav-link" data-scroll-target="#workshop"><span class="header-section-number">4.7</span> Workshop</a>
+  <ul class="collapse">
+  <li><a href="#quiz" id="toc-quiz" class="nav-link" data-scroll-target="#quiz">✒ Quiz</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">💻 Exercises</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">4.8</span> References</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">INHERITANCE &amp; AGGREGATION</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction-to-inheritance" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="introduction-to-inheritance"><span class="header-section-number">4.1</span> Introduction to inheritance</h2>
+<section id="what-is-inheritance" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-inheritance">What Is Inheritance?</h3>
+<div class="definition">
+<p><strong>Inheritance</strong> allows a new class to be based on an existing class. The new class inherits all the member variables and functions (except the constructors and destructor) of the class it is based on.</p>
+</div>
+<p></p><div style="text-align:center;"><img src="figures/figure15.1.svg" alt="" width="70%"></div><p></p>
+</section>
+<section id="inheritance-and-the-is-a-relationship" class="level3">
+<h3 class="anchored" data-anchor-id="inheritance-and-the-is-a-relationship">Inheritance and the “Is a” Relationship</h3>
+<p>When one object is a specialized version of another object, there is an “is a” relationship between them. For example, a grasshopper is an insect. Here are a few other examples of the “is a” relationship.</p>
+<ul>
+<li>A poodle <em>is a</em> dog.</li>
+<li>A car <em>is a</em> vehicle.</li>
+<li>A tree <em>is a</em> plant.</li>
+<li>A rectangle <em>is a</em> shape.</li>
+<li>A football player <em>is an</em> athlete.</li>
+</ul>
+<p>Inheritance involves a <strong>base class</strong> and <strong>a derived class</strong>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode pseudo code-with-copy"><code class="sourceCode pseudo"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>class &lt;Derived Class&gt; : &lt;Type Of Inheritance&gt; &lt;Base Class&gt;</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>public:</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>   &lt;public attributes/functions&gt;</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>private:</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>   &lt;private attributes/functions&gt;</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>};</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="inheritance-in-uml" class="level3">
+<h3 class="anchored" data-anchor-id="inheritance-in-uml">Inheritance in UML</h3>
+<ul>
+<li>Inheritance between classes.</li>
+</ul>
+<img src="lect03-inheritance_files\mediabag\b10a7c03c41597b778dc0c6ca922efffd401e3ba.svg" class="img-fluid">
+</section>
+<section id="examples-of-inheritance-taken-from-daily-life" class="level3">
+<h3 class="anchored" data-anchor-id="examples-of-inheritance-taken-from-daily-life">Examples of Inheritance Taken from Daily Life</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Base Class</strong></th>
+<th style="text-align: left;"><strong>Example Derived Classes</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Fish</td>
+<td style="text-align: left;">Goldfish, Carp, Tuna</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mammal</td>
+<td style="text-align: left;">Human, Elephant, Lion, Platypus</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Bird</td>
+<td style="text-align: left;">Crow, Parrot, Ostrich, Kiwi, Platypus</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Shape</td>
+<td style="text-align: left;">Circle, Polygon</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Polygon</td>
+<td style="text-align: left;">Triangle, Octagon</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="listing-1" class="level3">
+<h3 class="anchored" data-anchor-id="listing-1">Listing 1</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Fish <span class="op">{</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>   <span class="dt">bool</span> FreshWaterFish<span class="op">;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>   <span class="dt">void</span> Swim<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> <span class="op">(</span>FreshWaterFish<span class="op">)</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>         cout <span class="op">&lt;&lt;</span> <span class="st">"Swims in lake"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>      <span class="cf">else</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>         cout <span class="op">&lt;&lt;</span> <span class="st">"Swims in sea"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>   <span class="op">}</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Tuna<span class="op">:</span> <span class="kw">public</span> Fish <span class="op">{</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>   Tuna<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>      FreshWaterFish <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>   <span class="op">}</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Carp<span class="op">:</span> <span class="kw">public</span> Fish <span class="op">{</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>   Carp<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>      FreshWaterFish <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>   <span class="op">}</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>   Carp myLunch<span class="op">;</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>   Tuna myDinner<span class="op">;</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>   cout <span class="op">&lt;&lt;</span> <span class="st">"Getting my food to swim"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>   cout <span class="op">&lt;&lt;</span> <span class="st">"Lunch: "</span><span class="op">;</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>   myLunch<span class="op">.</span>Swim<span class="op">();</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>   cout <span class="op">&lt;&lt;</span> <span class="st">"Dinner: "</span><span class="op">;</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>   myDinner<span class="op">.</span>Swim<span class="op">();</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>   <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="hierarchical-organization-of-concepts" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="hierarchical-organization-of-concepts"><span class="header-section-number">4.2</span> Hierarchical organization of concepts</h2>
+<section id="class-hierarchies" class="level3">
+<h3 class="anchored" data-anchor-id="class-hierarchies">Class Hierarchies</h3>
+<div class="definition">
+<p>A base class can also be derived from another class.</p>
+</div>
+<ul>
+<li>Sometimes it is desirable to establish a hierarchy of classes in which one class inherits from a second class, which in turn inherits from a third class</li>
+<li>In some cases, the inheritance of classes goes on for many layers.</li>
+</ul>
+<img src="lect03-inheritance_files\mediabag\c618a628205f47acdd799659fbbb6f7ef1eb6464.svg" class="img-fluid">
+</section>
+<section id="hierarchical-organization-of-concepts-1" class="level3">
+<h3 class="anchored" data-anchor-id="hierarchical-organization-of-concepts-1">Hierarchical organization of concepts</h3>
+<ul>
+<li>A group of concepts is divided into sub-groups according to some criterion.</li>
+<li>We should use only one criterion at a time to classify a group of concepts.</li>
+</ul>
+<p></p><div style="text-align:center;"><img src="figures/games-characters.svg" alt="" width="70%"></div><p></p>
+<ul>
+<li>Concepts are recursively classified into subgroups</li>
+</ul>
+<p></p><div style="text-align:center;"><img src="figures/games-hier-characters.svg" alt="" width="70%"></div><p></p>
+<img src="lect03-inheritance_files\mediabag\eb83e5f1e8fa4a5fc19b30e892c5fdb7f5bfa7f9.svg" class="img-fluid">
+<ul>
+<li>It is possible to have different ways to create logical hierarchical organization of concepts!</li>
+</ul>
+</section>
+</section>
+<section id="types-of-inheritance" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="types-of-inheritance"><span class="header-section-number">4.3</span> Types of inheritance</h2>
+<section id="protected-members-and-class-access" class="level3">
+<h3 class="anchored" data-anchor-id="protected-members-and-class-access">Protected Members and Class Access</h3>
+<div class="definition">
+<p><strong>Protected members</strong> of a base class are like private members, but they may be accessed by derived classes. The base class access specification determines how private, public, and protected base class members are accessed when they are inherited by the derived classes.</p>
+</div>
+</section>
+<section id="types-of-inheritance-in-c" class="level3">
+<h3 class="anchored" data-anchor-id="types-of-inheritance-in-c">Types of inheritance (in C++)</h3>
+<ul>
+<li>There are 3 types of inheritance in C++:
+<ul>
+<li><strong>public</strong> <strong>inheritance</strong>: public and protected of the base class become public and protected of the derived class.</li>
+<li><strong>protected</strong> <strong>inheritance</strong>: public and protected of the base class become protected of the derived class.</li>
+<li><strong>private</strong> <strong>inheritance</strong>: public and protected of the base class become private of the derived class.</li>
+</ul></li>
+<li><strong>Notes</strong>: from now on, if there is no mention of what type of inheritance, it means public inheritance</li>
+</ul>
+<p></p><div style="text-align:center;"><img src="figures/oop-inheritance-types.svg" alt="" width="70%"></div><p></p>
+</section>
+</section>
+<section id="derived-class" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="derived-class"><span class="header-section-number">4.4</span> Derived class</h2>
+<section id="member-functions-inheritance" class="level3">
+<h3 class="anchored" data-anchor-id="member-functions-inheritance">Member functions inheritance</h3>
+<ul>
+<li>Member functions of the base class are inherited in the derived class, except:
+<ul>
+<li>Constructors</li>
+<li>Destructors</li>
+<li>Assignment operators</li>
+</ul></li>
+</ul>
+</section>
+<section id="order-of-constructiondeconstruction" class="level3">
+<h3 class="anchored" data-anchor-id="order-of-constructiondeconstruction">Order of Construction/Deconstruction</h3>
+<div class="definition">
+<p>The base class’s constructor is called before the derived class’s constructor. The destructors are called in reverse order, with the derived class’s destructor being called first.</p>
+</div>
+<p>When a new object of a derived class is created:</p>
+<ul>
+<li>The constructor of the base class is invoked first.</li>
+<li>Then, the constructor of the derived class is invoked.</li>
+<li>In the constructor of the derived class, we can specify which constructor of the base class is called. Otherwise, the default constructor of the base class will be invoked.</li>
+</ul>
+<p>When an object of the derived class finishes its lifespan:</p>
+<ul>
+<li>The destructor of the derived class is invoked first.</li>
+<li>Then, the destructor of the base class is called later.</li>
+</ul>
+<p></p><div style="text-align:center;"><img src="figures/cons-des.svg" alt="" width="70%"></div><p></p>
+</section>
+<section id="base-class-initialization" class="level3">
+<h3 class="anchored" data-anchor-id="base-class-initialization">Base Class Initialization</h3>
+<ul>
+<li>Using <strong>initialization lists</strong> and in invoking the appropriate base class constructor via the constructor of the derived class</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Base <span class="op">{</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>   Base<span class="op">(</span><span class="dt">int</span> SomeNumber<span class="op">)</span> <span class="op">{</span> <span class="co">// overloaded constructor</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>      <span class="co">// Do something with SomeNumber</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>   <span class="op">}</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Derived<span class="op">:</span> <span class="kw">public</span> Base <span class="op">{</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>   Derived<span class="op">():</span> Base<span class="op">(</span><span class="dv">25</span><span class="op">)</span> <span class="op">{</span> <span class="co">// instantiate class Base with </span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>                         <span class="co">// argument 25</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>      <span class="co">// derived class constructor code</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>   <span class="op">}</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="derived-class-overriding-base-class-methods" class="level3">
+<h3 class="anchored" data-anchor-id="derived-class-overriding-base-class-methods">Derived Class Overriding Base Class Methods</h3>
+<ul>
+<li>Sometimes, we need to “re-define” the member functions of a base class in a derived class. It can be done by implements the same functions in the <code>class Derived</code> with the same return values and signatures as in the <code>class Base</code> it inherits from</li>
+</ul>
+<div class="block">
+<p><strong>Notes</strong></p>
+<p>This re-definition will <strong>hide other overloading member functions</strong> of this function from the base class.</p>
+</div>
+</section>
+<section id="listing-2" class="level3">
+<h3 class="anchored" data-anchor-id="listing-2">Listing 2</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Fish <span class="op">{</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>   <span class="dt">bool</span> FreshWaterFish<span class="op">;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>   <span class="co">// Fish constructor</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>   Fish<span class="op">(</span><span class="dt">bool</span> IsFreshWater<span class="op">)</span> <span class="op">:</span> FreshWaterFish<span class="op">(</span>IsFreshWater<span class="op">){}</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>   <span class="dt">void</span> Swim<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> <span class="op">(</span>FreshWaterFish<span class="op">)</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>         cout <span class="op">&lt;&lt;</span> <span class="st">"Swims in lake"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>      <span class="cf">else</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>         cout <span class="op">&lt;&lt;</span> <span class="st">"Swims in sea"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>   <span class="op">}</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Tuna<span class="op">:</span> <span class="kw">public</span> Fish <span class="op">{</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>   Tuna<span class="op">():</span> Fish<span class="op">(</span><span class="kw">false</span><span class="op">)</span> <span class="op">{}</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>   <span class="dt">void</span> Swim<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>      cout <span class="op">&lt;&lt;</span> <span class="st">"Tuna swims real fast"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>   <span class="op">}</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Carp<span class="op">:</span> <span class="kw">public</span> Fish <span class="op">{</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>   Carp<span class="op">():</span> Fish<span class="op">(</span><span class="kw">true</span><span class="op">)</span> <span class="op">{}</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>   <span class="dt">void</span> Swim<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>      cout <span class="op">&lt;&lt;</span> <span class="st">"Carp swims real slow"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>   <span class="op">}</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>   Carp myLunch<span class="op">;</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>   Tuna myDinner<span class="op">;</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>   cout <span class="op">&lt;&lt;</span> <span class="st">"Getting my food to swim"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>   cout <span class="op">&lt;&lt;</span> <span class="st">"Lunch: "</span><span class="op">;</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>   myLunch<span class="op">.</span>Swim<span class="op">();</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>   cout <span class="op">&lt;&lt;</span> <span class="st">"Dinner: "</span><span class="op">;</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>   myDinner<span class="op">.</span>Swim<span class="op">();</span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>   <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="invoking-overridden-methods-of-a-base-class" class="level3">
+<h3 class="anchored" data-anchor-id="invoking-overridden-methods-of-a-base-class">Invoking Overridden Methods of a Base Class</h3>
+<ul>
+<li>If we want to be invoke <code>Fish::Swim(),</code>we need to use the scope resolution operator (<code>::</code>)</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">...</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    myDinner<span class="op">.</span>Fish<span class="op">::</span>Swim<span class="op">();</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">...</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>If our specialized implementations in <code>Tuna:Swim()</code> and <code>Carp::Swim()</code> need to reuse the base class’ generic implementation of <code>Fish::Swim()</code>, we use the scope resolution operator (<code>::</code>)</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Carp<span class="op">:</span> <span class="kw">public</span> Fish <span class="op">{</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>   Carp<span class="op">():</span> Fish<span class="op">(</span><span class="kw">true</span><span class="op">)</span> <span class="op">{}</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>   <span class="dt">void</span> Swim<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>      cout <span class="op">&lt;&lt;</span> <span class="st">"Carp swims real slow"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>      Fish<span class="op">::</span>Swim<span class="op">();</span>  <span class="co">// use scope resolution operator::</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>   <span class="op">}</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="problem-with-re-definition" class="level3">
+<h3 class="anchored" data-anchor-id="problem-with-re-definition">Problem with re-definition</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Base <span class="op">{</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> test<span class="op">()</span> <span class="op">{...}</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> test<span class="op">(</span><span class="dt">int</span><span class="op">)</span> <span class="op">{...}</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> test<span class="op">(</span><span class="dt">int</span><span class="op">,</span> <span class="dt">int</span><span class="op">)</span> <span class="op">{...}</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Derived <span class="op">:</span> <span class="kw">public</span> Base <span class="op">{</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> test<span class="op">(</span><span class="dt">int</span><span class="op">)</span> <span class="op">{...}</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    Derived obj<span class="op">;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> x<span class="op">,</span> y<span class="op">;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">...</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    obj<span class="op">.</span>test<span class="op">(</span>x<span class="op">);</span>    <span class="co">// OK</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    obj<span class="op">.</span>test<span class="op">(</span>x<span class="op">,</span> y<span class="op">);</span> <span class="co">// compile error</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Solution 1: Use the scope resolution operator <code>::</code></li>
+<li>Solution 2: Use the <code>\textcolor{blue}{using}</code> keyword in class <code>Derived</code> to unhide other overloaded methods</li>
+<li>Solution 3: Override all overloaded methods</li>
+</ul>
+</section>
+<section id="the-problem-of-slicing" class="level3">
+<h3 class="anchored" data-anchor-id="the-problem-of-slicing">The Problem of Slicing</h3>
+<ul>
+<li>What happens when a programmer does the following?</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Derived objectDerived<span class="op">;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>Base objectBase <span class="op">=</span> objectDerived<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Or, alternatively, what if a programmer does this?</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> FuncUseBase<span class="op">(</span>Base input<span class="op">);</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="op">...</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>Derived objectDerived<span class="op">;</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>FuncUseBase<span class="op">(</span>objectDerived<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>The compiler copies only the <code>Base</code> part of <code>objectDerived</code>—that is, not the complete object—rather than only that part of it that would fit <code>Base</code>.</li>
+</ul>
+<div class="definition">
+<p>The unwanted reduction of the part of data that makes the <code>Derived</code> a specialization of <code>Base</code> is called <em>slicing</em>.</p>
+</div>
+<p></p><div style="text-align:center;"><img src="figures/obj-slice.svg" alt="" width="70%"></div><p></p>
+<div class="block">
+<p><strong>Caution</strong></p>
+<p>To avoid slicing problems, <strong>don’t pass parameters by value</strong>.</p>
+</div>
+</section>
+<section id="assignment-operator" class="level3">
+<h3 class="anchored" data-anchor-id="assignment-operator">Assignment operator</h3>
+<ul>
+<li>Assignment operator is not inherited from the base class. To implement the assignment operator for the derived class:
+<ul>
+<li>First, calling the assignment operator of the base class to assign data members of the base class .</li>
+<li>Then, implement the assignment for data member of the derived class part.</li>
+</ul></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>Derived<span class="op">&amp;</span> <span class="kw">operator</span><span class="op">=</span> <span class="op">(</span><span class="at">const</span> Derived<span class="op">&amp;</span> CopySource<span class="op">)</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span><span class="op">(</span><span class="kw">this</span> <span class="op">!=</span> <span class="op">&amp;</span>copySource<span class="op">)</span> <span class="op">{</span> <span class="co">// do not copy itself</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>      <span class="co">// the base class copy</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>      Base<span class="op">::</span><span class="kw">operator</span><span class="op">=(</span>CopySource<span class="op">)</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>      <span class="co">// the derived class copy</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>   <span class="op">}</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>   <span class="cf">return</span> <span class="op">*</span><span class="kw">this</span><span class="op">;</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="multiple-inheritance" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="multiple-inheritance"><span class="header-section-number">4.5</span> Multiple inheritance</h2>
+<section id="multiple-inheritance-1" class="level3">
+<h3 class="anchored" data-anchor-id="multiple-inheritance-1">Multiple inheritance</h3>
+<div class="definition">
+<p><strong>Multiple inheritance</strong> is when a derived class has two or more base classes.</p>
+</div>
+<p></p><div style="text-align:center;"><img src="figures/oop-multiple-inheritance.svg" alt="" width="70%"></div><p></p>
+</section>
+<section id="listing-3" class="level3">
+<h3 class="anchored" data-anchor-id="listing-3">Listing 3</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Mammal <span class="op">{</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>   <span class="dt">void</span> FeedBabyMilk<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>      cout <span class="op">&lt;&lt;</span> <span class="st">"Mammal: Baby says glug!"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>   <span class="op">}</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Reptile <span class="op">{</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>   <span class="dt">void</span> SpitVenom<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>      cout <span class="op">&lt;&lt;</span> <span class="st">"Reptile: Shoo enemy! Spits venom!"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>   <span class="op">}</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Bird <span class="op">{</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>   <span class="dt">void</span> LayEggs<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>      cout <span class="op">&lt;&lt;</span> <span class="st">"Bird: Laid my eggs, am lighter now!"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>   <span class="op">}</span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Platypus<span class="op">:</span> <span class="kw">public</span> Mammal<span class="op">,</span> <span class="kw">public</span> Bird<span class="op">,</span> <span class="kw">public</span> Reptile <span class="op">{</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>   <span class="dt">void</span> Swim<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>      cout <span class="op">&lt;&lt;</span> <span class="st">"Platypus: Voila, I can swim!"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>   <span class="op">}</span></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>   Platypus realFreak<span class="op">;</span></span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>   realFreak<span class="op">.</span>LayEggs<span class="op">();</span></span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>   realFreak<span class="op">.</span>FeedBabyMilk<span class="op">();</span></span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>   realFreak<span class="op">.</span>SpitVenom<span class="op">();</span></span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>   realFreak<span class="op">.</span>Swim<span class="op">();</span></span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>   <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="aggregation" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="aggregation"><span class="header-section-number">4.6</span> Aggregation</h2>
+<section id="aggregation-1" class="level3">
+<h3 class="anchored" data-anchor-id="aggregation-1">Aggregation</h3>
+<div class="definition">
+<p>Aggregation occurs when a class contains an instance of another class.</p>
+</div>
+<ul>
+<li>When an instance of one class is a member of another class, it is said that there is a “has a” relationship between the classes.</li>
+<li>For example, the relationships that exist among the <code>Course</code>, <code>Instructor</code>, and <code>TextBook</code> classes can be described as follows:
+<ul>
+<li>The course <em>has an</em> instructor.</li>
+<li>The course <em>has a</em> textbook.</li>
+</ul></li>
+</ul>
+</section>
+<section id="aggregation-2" class="level3">
+<h3 class="anchored" data-anchor-id="aggregation-2">Aggregation</h3>
+<img src="lect03-inheritance_files\mediabag\3556726196fd6961293413f8ff1bed868f79b75a.svg" class="img-fluid">
+</section>
+<section id="examples-of-aggregation-taken-from-daily-life" class="level3">
+<h3 class="anchored" data-anchor-id="examples-of-aggregation-taken-from-daily-life">Examples of Aggregation Taken from Daily Life</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Part</strong></th>
+<th style="text-align: left;"><strong>Whole</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Motor</td>
+<td style="text-align: left;">Car (Car has a Motor)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Heart</td>
+<td style="text-align: left;">Mammal (Mammal has a Heart)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Refill</td>
+<td style="text-align: left;">Pen (Pen has a Refill)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Moon</td>
+<td style="text-align: left;">Sky (Sky has a Moon)</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="workshop" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="workshop"><span class="header-section-number">4.7</span> Workshop</h2>
+<section id="quiz" class="level3">
+<h3 class="anchored" data-anchor-id="quiz">✒ Quiz</h3>
+<ol type="1">
+<li><p>I want some base class members to be accessible to the derived class but not outside the class hierarchy. What access specifier do I use?</p></li>
+<li><p>If I pass an object of the derived class as an argument to a function that takes a parameter of the base class by value, what happens?</p></li>
+<li><p>Which one should I favor? Private inheritance or composition?</p></li>
+<li><p>How does the <code>using</code> keyword help me in an inheritance hierarchy?</p></li>
+<li><p>A <code>class Derived</code> inherits <code>private</code> from <code>class Base</code>. Another <code>class SubDerived</code> inherits <code>public</code> from <code>class Derived</code>. Can <code>SubDerived</code> access public members of <code>class Base</code>?</p></li>
+</ol>
+</section>
+<section id="exercises" class="level3">
+<h3 class="anchored" data-anchor-id="exercises">💻 Exercises</h3>
+<ul>
+<li><p>Programming Challenges of chapter 13</p>
+<p><strong>1. Employee and ProductionWorker Classes</strong></p>
+<p><strong>2. ShiftSupervisor Class</strong></p>
+<p><strong>3. TeamLeader Class</strong></p></li>
+</ul>
+</section>
+</section>
+<section id="references" class="level2" data-number="4.8">
+<h2 data-number="4.8" class="anchored" data-anchor-id="references"><span class="header-section-number">4.8</span> References</h2>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./lect02-class-2.html" class="pagination-link" aria-label="MORE ABOUT CLASSES">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">MORE ABOUT CLASSES</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./lect03-relationship.html" class="pagination-link" aria-label="RELATIONSHIP">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">RELATIONSHIP</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

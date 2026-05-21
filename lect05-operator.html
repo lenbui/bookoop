@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>7&nbsp; OPERATOR OVERLOADING AND CASTING OPERATOR – OBJECT ORIENTED PROGRAMMING</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./lect06-template.html" rel="next">
+<link href="./lect04-polymorphism.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-fa9e0952a64697c55f958ad13d4b0b73.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="theme.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">OBJECT ORIENTED PROGRAMMING</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-end">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lect05-operator.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">OPERATOR OVERLOADING AND CASTING OPERATOR</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About the book</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lect01-introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">INTRODUCTION TO OBJECT-ORIENTED PROGRAMMING</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lect02-class.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">CLASSES AND OBJECTS</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lect02-class-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">MORE ABOUT CLASSES</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lect03-inheritance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">INHERITANCE &amp; AGGREGATION</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lect03-relationship.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">RELATIONSHIP</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lect04-polymorphism.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">POLYMORPHISM</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lect05-operator.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">OPERATOR OVERLOADING AND CASTING OPERATOR</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lect06-template.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">TEMPLATES AND GENERIC PROGRAMMING</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lect07-stl.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">STANDARD TEMPLATE LIBRARY</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lect08-advanced.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">ADVANCED C++ FEATURES</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lect09-design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Object Oriented Design</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lect10-concurrency.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">CONCURRENCY</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#operator-overloading" id="toc-operator-overloading" class="nav-link active" data-scroll-target="#operator-overloading"><span class="header-section-number">7.1</span> Operator Overloading</a>
+  <ul class="collapse">
+  <li><a href="#operators-in-c" id="toc-operators-in-c" class="nav-link" data-scroll-target="#operators-in-c">Operators in C++</a></li>
+  <li><a href="#operator-overloading-1" id="toc-operator-overloading-1" class="nav-link" data-scroll-target="#operator-overloading-1">Operator Overloading</a></li>
+  <li><a href="#overloading-guidelines" id="toc-overloading-guidelines" class="nav-link" data-scroll-target="#overloading-guidelines">Overloading guidelines</a></li>
+  <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations">Limitations</a></li>
+  <li><a href="#operators-cannot-be-overloaded" id="toc-operators-cannot-be-overloaded" class="nav-link" data-scroll-target="#operators-cannot-be-overloaded">Operators Cannot Be Overloaded</a></li>
+  <li><a href="#unary-operators" id="toc-unary-operators" class="nav-link" data-scroll-target="#unary-operators">Unary Operators</a></li>
+  <li><a href="#binary-operators" id="toc-binary-operators" class="nav-link" data-scroll-target="#binary-operators">Binary Operators</a></li>
+  <li><a href="#function-operator" id="toc-function-operator" class="nav-link" data-scroll-target="#function-operator">Function Operator</a></li>
+  <li><a href="#friend-functions" id="toc-friend-functions" class="nav-link" data-scroll-target="#friend-functions">Friend functions</a></li>
+  <li><a href="#overloading-cin-and-cout" id="toc-overloading-cin-and-cout" class="nav-link" data-scroll-target="#overloading-cin-and-cout">Overloading <code>cin</code> and <code>cout</code></a></li>
+  </ul></li>
+  <li><a href="#casting-operators" id="toc-casting-operators" class="nav-link" data-scroll-target="#casting-operators"><span class="header-section-number">7.2</span> Casting Operators</a>
+  <ul class="collapse">
+  <li><a href="#the-need-for-casting" id="toc-the-need-for-casting" class="nav-link" data-scroll-target="#the-need-for-casting">The Need for Casting</a></li>
+  <li><a href="#c-style-casting" id="toc-c-style-casting" class="nav-link" data-scroll-target="#c-style-casting">C-Style Casting</a></li>
+  <li><a href="#the-c-casting-operators" id="toc-the-c-casting-operators" class="nav-link" data-scroll-target="#the-c-casting-operators">The C++ Casting Operators</a></li>
+  <li><a href="#problems-with-the-c-casting-operators" id="toc-problems-with-the-c-casting-operators" class="nav-link" data-scroll-target="#problems-with-the-c-casting-operators">Problems with the C++ Casting Operators</a></li>
+  </ul></li>
+  <li><a href="#workshop" id="toc-workshop" class="nav-link" data-scroll-target="#workshop"><span class="header-section-number">7.3</span> Workshop</a>
+  <ul class="collapse">
+  <li><a href="#quiz" id="toc-quiz" class="nav-link" data-scroll-target="#quiz">✒ Quiz</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">💻 Exercises</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">7.4</span> References</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">OPERATOR OVERLOADING AND CASTING OPERATOR</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="operator-overloading" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="operator-overloading"><span class="header-section-number">7.1</span> Operator Overloading</h2>
+<section id="operators-in-c" class="level3">
+<h3 class="anchored" data-anchor-id="operators-in-c">Operators in C++</h3>
+<ul>
+<li>On a syntactical level, there is very little that differentiates an operator from a function, save for the use of the keyword <code>operator</code>. An operator declaration looks quite like a function declaration</li>
+</ul>
+<section id="syntax" class="level4">
+<h4 class="anchored" data-anchor-id="syntax">Syntax</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode pseudo code-with-copy"><code class="sourceCode pseudo"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>return_type operator operator_symbol (...parameter list...);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="usage" class="level4">
+<h4 class="anchored" data-anchor-id="usage">Usage</h4>
+<ul>
+<li><p>Operator is a global function or a static member function</p>
+<p><code>object1 operator_symbol object2</code></p>
+<p><code>operator operator_symbol (object1, object2)</code></p></li>
+<li><p>Operator is the member of a class</p>
+<p><code>object1 operator_symbol object2</code></p>
+<p><code>object1.operator operator_symbol (object2)</code></p></li>
+</ul>
+</section>
+</section>
+<section id="operator-overloading-1" class="level3">
+<h3 class="anchored" data-anchor-id="operator-overloading-1">Operator Overloading</h3>
+<div class="definition">
+<p>C++ allows us to redefine how standard operators work when used with class objects.</p>
+</div>
+<ul>
+<li><p>C++ provides many operators to manipulate data of the primitive data types.</p></li>
+<li><p>However, what if you wish to use an operator to manipulate class objects?</p></li>
+</ul>
+</section>
+<section id="overloading-guidelines" class="level3">
+<h3 class="anchored" data-anchor-id="overloading-guidelines">Overloading guidelines</h3>
+<ul>
+<li><p><strong>Do</strong> what users expect for that operator.</p></li>
+<li><p><strong>Define</strong> them if they make logical sense; e.g.&nbsp;<em>subtraction</em> of <em>dates</em> are ok but not <em>multiplication</em> or <em>division</em>.</p></li>
+<li><p><strong>Provide</strong> <em>a complete set</em> of properly related operators: <code>a = a + b</code> and <code>a += b</code> have the same effect.</p></li>
+</ul>
+</section>
+<section id="limitations" class="level3">
+<h3 class="anchored" data-anchor-id="limitations">Limitations</h3>
+<ul>
+<li><p>Only built-in operators can be overloaded.</p></li>
+<li><p>Cannot overload operators for built-in data types.</p></li>
+<li><p>The arity of the operators cannot be changed</p></li>
+<li><p>The precedence of the operators remains same.</p></li>
+</ul>
+</section>
+<section id="operators-cannot-be-overloaded" class="level3">
+<h3 class="anchored" data-anchor-id="operators-cannot-be-overloaded">Operators Cannot Be Overloaded</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Operator</th>
+<th style="text-align: left;">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>.</code></td>
+<td style="text-align: left;">Member selection</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>.*</code></td>
+<td style="text-align: left;">Pointer-to-member selection</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>::</code></td>
+<td style="text-align: left;">Scope resolution</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>? :</code></td>
+<td style="text-align: left;">Conditional ternary operator</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>sizeof</code></td>
+<td style="text-align: left;">Gets the size of an object/class type</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Operators <code>=</code>, <code>-&gt;</code>, <code>[]</code>, <code>()</code> can only be overloaded by non-static functions</li>
+</ul>
+</section>
+<section id="unary-operators" class="level3">
+<h3 class="anchored" data-anchor-id="unary-operators">Unary Operators</h3>
+<section id="unary-operators-1" class="level4">
+<h4 class="anchored" data-anchor-id="unary-operators-1">Unary Operators</h4>
+<ul>
+<li><p>Operators that function on a single operand are called <em>unary operators.</em></p></li>
+<li><p>The typical definition of a unary operator implemented as a global function or a static member function is</p></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode pseudo code-with-copy"><code class="sourceCode pseudo"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>return_type operator operator_type (parameter_type) {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">// ... implementation</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>A unary operator that is the member of a class is defined as</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode pseudo code-with-copy"><code class="sourceCode pseudo"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>return_type operator operator_type () {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">// ... implementation</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="the-unary-operators-can-be-overloaded" class="level4">
+<h4 class="anchored" data-anchor-id="the-unary-operators-can-be-overloaded">The unary operators can be overloaded</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Operator</th>
+<th style="text-align: left;">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>++</code></td>
+<td style="text-align: left;">Increment</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>--</code></td>
+<td style="text-align: left;">Decrement</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>*</code></td>
+<td style="text-align: left;">Pointer dereference</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>–&gt;</code></td>
+<td style="text-align: left;">Member selection</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>!</code></td>
+<td style="text-align: left;">Logical NOT</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>&amp;</code></td>
+<td style="text-align: left;">Address-of</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>~</code></td>
+<td style="text-align: left;">One’s complement</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>+</code></td>
+<td style="text-align: left;">Unary plus</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>-</code></td>
+<td style="text-align: left;">Unary negation</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><em>Conversion operators</em></td>
+<td style="text-align: left;">Conversion operators</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="operators---" class="level4">
+<h4 class="anchored" data-anchor-id="operators---">Operators (<code>++</code>/<code>--</code>)</h4>
+<ul>
+<li>The prefix increment operator (<code>++</code>) within the class declaration</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>CDate<span class="op">&amp;</span> <span class="kw">operator</span> <span class="op">++</span> <span class="op">()</span> <span class="op">{</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">// operator implementation code</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">*</span><span class="kw">this</span><span class="op">;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>The postfix increment operator (<code>++</code>) has a different return value and an input parameter (that is not always used):</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>CDate <span class="kw">operator</span> <span class="op">++</span> <span class="op">(</span><span class="dt">int</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>   <span class="co">// Store a copy of the current state of the object, </span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>   <span class="co">// before incrementing day</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>   CDate Copy <span class="op">(*</span><span class="kw">this</span><span class="op">);</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>   <span class="co">// operator implementation code (that increments this object)</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>   <span class="co">// Return the state before increment was performed</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>   <span class="cf">return</span> Copy<span class="op">;</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="conversion-operators" class="level4">
+<h4 class="anchored" data-anchor-id="conversion-operators">Conversion Operators</h4>
+<ul>
+<li>Convert <code>CDate</code> to <code>string</code></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> CDate <span class="op">{</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> <span class="va">m_iDay</span><span class="op">,</span> <span class="va">m_iMonth</span><span class="op">,</span> <span class="va">m_iYear</span><span class="op">;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">...</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">operator</span> string<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        ostringstream formattedDate<span class="op">;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        formattedDate <span class="op">&lt;&lt;</span> <span class="va">m_iDay</span> <span class="op">&lt;&lt;</span> <span class="st">"/"</span> <span class="op">&lt;&lt;</span> <span class="va">m_iMonth</span> <span class="op">&lt;&lt;</span> <span class="st">"/"</span> <span class="op">&lt;&lt;</span> <span class="va">m_iYear</span><span class="op">;</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> formattedDate<span class="op">.</span>str<span class="op">();</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="binary-operators" class="level3">
+<h3 class="anchored" data-anchor-id="binary-operators">Binary Operators</h3>
+<section id="binary-operators-1" class="level4">
+<h4 class="anchored" data-anchor-id="binary-operators-1">Binary Operators</h4>
+<ul>
+<li><p>Operators that function on two operands are called <em>binary operators</em>.</p></li>
+<li><p>The definition of a binary operator implemented as a global function or a static member function is the following:</p></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode pseudo code-with-copy"><code class="sourceCode pseudo"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>return_type operator_type (parameter1, parameter2);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>The definition of a binary operator implemented as a class member is</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode pseudo code-with-copy"><code class="sourceCode pseudo"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>return_type operator_type (parameter);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>The reason the class member version of a binary operator accepts only one parameter is that the second parameter is usually derived from the attributes of the class itself.</li>
+</ul>
+</section>
+<section id="the-binary-operators-can-be-overloaded" class="level4">
+<h4 class="anchored" data-anchor-id="the-binary-operators-can-be-overloaded">The binary operators can be overloaded</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Operator</th>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Operator</th>
+<th style="text-align: left;">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>,</code></td>
+<td style="text-align: left;">Comma</td>
+<td style="text-align: left;"><code>&lt;</code></td>
+<td style="text-align: left;">Less than</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>!=</code></td>
+<td style="text-align: left;">Inequality</td>
+<td style="text-align: left;"><code>&lt;&lt;</code></td>
+<td style="text-align: left;">Left shift</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>%</code></td>
+<td style="text-align: left;">Modulus</td>
+<td style="text-align: left;"><code>&lt;&lt;=</code></td>
+<td style="text-align: left;">Left shift/assignment</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>%=</code></td>
+<td style="text-align: left;">Modulus/assignment</td>
+<td style="text-align: left;"><code>&lt;=</code></td>
+<td style="text-align: left;">Less than or equal to</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>&amp;</code></td>
+<td style="text-align: left;">Bitwise AND</td>
+<td style="text-align: left;"><code>=</code></td>
+<td style="text-align: left;">Assignment, Copy Assignment and Move Assignment</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>&amp;&amp;</code></td>
+<td style="text-align: left;">Logical AND</td>
+<td style="text-align: left;"><code>==</code></td>
+<td style="text-align: left;">Equality</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>&amp;=</code></td>
+<td style="text-align: left;">Bitwise AND/assignment</td>
+<td style="text-align: left;"><code>&gt;</code></td>
+<td style="text-align: left;">Greater than</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>*</code></td>
+<td style="text-align: left;">Multiplication</td>
+<td style="text-align: left;"><code>&gt;=</code></td>
+<td style="text-align: left;">Greater than or equal to</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>*=</code></td>
+<td style="text-align: left;">Multiplication/assignment</td>
+<td style="text-align: left;"><code>&gt;&gt;</code></td>
+<td style="text-align: left;">Right shift</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>+</code></td>
+<td style="text-align: left;">Addition</td>
+<td style="text-align: left;"><code>&gt;&gt;=</code></td>
+<td style="text-align: left;">Right shift/assignment</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>+=</code></td>
+<td style="text-align: left;">Addition/assignment</td>
+<td style="text-align: left;"><code>^</code></td>
+<td style="text-align: left;">Exclusive OR</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>–</code></td>
+<td style="text-align: left;">Subtraction</td>
+<td style="text-align: left;"><code>^=</code></td>
+<td style="text-align: left;">Exclusive OR/assignment</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>–=</code></td>
+<td style="text-align: left;">Subtraction/assignment</td>
+<td style="text-align: left;"><code>\|</code></td>
+<td style="text-align: left;">Bitwise inclusive OR</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>–&gt;*</code></td>
+<td style="text-align: left;">Pointer-to-member selection</td>
+<td style="text-align: left;"><code>\|=</code></td>
+<td style="text-align: left;">Bitwise inclusive OR/assignment</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>/</code></td>
+<td style="text-align: left;">Division</td>
+<td style="text-align: left;"><code>\|\|</code></td>
+<td style="text-align: left;">Logical OR</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>/=</code></td>
+<td style="text-align: left;">Division/assignment</td>
+<td style="text-align: left;"><code>[]</code></td>
+<td style="text-align: left;">Subscript operator</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="overloading-copy-assignment-operator" class="level4">
+<h4 class="anchored" data-anchor-id="overloading-copy-assignment-operator">Overloading Copy Assignment Operator (<code>=</code>)</h4>
+<ul>
+<li>To ensure deeper copies, as with the copy constructor, we need to specify a copy assignment operator</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ClassType<span class="op">&amp;</span> <span class="kw">operator</span><span class="op">=</span> <span class="op">(</span><span class="at">const</span> ClassType<span class="op">&amp;</span> CopySource<span class="op">)</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span><span class="op">(</span><span class="kw">this</span> <span class="op">!=</span> <span class="op">&amp;</span>copySource<span class="op">)</span>  <span class="co">// do not copy itself</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>   <span class="op">{</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>      <span class="co">// Assignment operator implementation</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>   <span class="op">}</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>   <span class="cf">return</span> <span class="op">*</span><span class="kw">this</span><span class="op">;</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="overloading-equality-and-inequality-operators" class="level4">
+<h4 class="anchored" data-anchor-id="overloading-equality-and-inequality-operators">Overloading Equality (<code>==</code>) and Inequality (<code>!=</code>) Operators</h4>
+<ul>
+<li>It is a good practice to define the comparison operators. A generic expression of the equality operator is the following:</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dt">bool</span> <span class="kw">operator</span><span class="op">==</span> <span class="op">(</span><span class="at">const</span> ClassType<span class="op">&amp;</span> compareTo<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>   <span class="co">// comparison code here, return true if equal else false</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>The inequality operator can reuse the equality operator:</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dt">bool</span> <span class="kw">operator</span><span class="op">!=</span> <span class="op">(</span><span class="at">const</span> ClassType<span class="op">&amp;</span> compareTo<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>   <span class="co">// comparison code here, return true if inequal else false</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="subscript-operator" class="level4">
+<h4 class="anchored" data-anchor-id="subscript-operator">Subscript Operator (<code>[]</code>)</h4>
+<ul>
+<li><p>The operator that allow array-style <code>[]</code> access to a class is called <em>subscript operator</em>.</p></li>
+<li><p>The typical syntax of a subscript operator is:</p></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="dt">return_type</span><span class="op">&amp;</span> <span class="kw">operator</span> <span class="op">[]</span> <span class="op">(</span><span class="dt">subscript_type</span><span class="op">&amp;</span> subscript<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>We can implement two subscript operators—one as a <code>const</code> function and the other as a <code>non-const</code> one</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">// use to write / change Buffer at Index</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="dt">char</span><span class="op">&amp;</span> <span class="kw">operator</span> <span class="op">[]</span> <span class="op">(</span><span class="dt">int</span> nIndex<span class="op">);</span>  </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co">// used only for accessing char at Index</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="dt">char</span><span class="op">&amp;</span> <span class="kw">operator</span> <span class="op">[]</span> <span class="op">(</span><span class="dt">int</span> nIndex<span class="op">)</span> <span class="at">const</span><span class="op">;</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="function-operator" class="level3">
+<h3 class="anchored" data-anchor-id="function-operator">Function Operator</h3>
+<section id="function-operator-1" class="level4">
+<h4 class="anchored" data-anchor-id="function-operator-1">Function Operator <code>()</code></h4>
+<ul>
+<li><p>The operator <code>()</code> that make objects behave like a function is called a function operator.</p></li>
+<li><p>They find application in the <strong>standard template library</strong> (STL) and are typically used in STL algorithms.</p></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;string&gt;</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> CDisplay <span class="op">{</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>   <span class="dt">void</span> <span class="kw">operator</span> <span class="op">()</span> <span class="op">(</span>string Input<span class="op">)</span> <span class="at">const</span> <span class="op">{</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>     cout <span class="op">&lt;&lt;</span> Input <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main <span class="op">()</span> <span class="op">{</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  CDisplay mDisplayFuncObject<span class="op">;</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  <span class="co">// equivalent to mDisplayFuncObject.operator () ("Display this string!");</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  mDisplayFuncObject <span class="op">(</span><span class="st">"Display this string!"</span><span class="op">);</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="friend-functions" class="level3">
+<h3 class="anchored" data-anchor-id="friend-functions">Friend functions</h3>
+<ul>
+<li><p>With the keyword friend, we grant access to other functions or classes</p></li>
+<li><p>Use member functions if you can. Only choose friend functions when you have to.</p></li>
+<li><p>Sometimes, friend functions are good: Cannot modify original class, e.g.&nbsp;<code>ostream</code></p></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> CSample <span class="op">{</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> <span class="va">m_a</span><span class="op">,</span> <span class="va">m_b</span><span class="op">;</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">...</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">friend</span> <span class="dt">int</span> Compute<span class="op">(</span>CSample x<span class="op">);</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> Compute<span class="op">(</span>CSample x<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x<span class="op">.</span><span class="va">m_a</span><span class="op">+</span>x<span class="op">.</span><span class="va">m_b</span><span class="op">;</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    CSample x<span class="op">;</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">...</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    cout<span class="op">&lt;&lt;</span><span class="st">"The result is:"</span><span class="op">&lt;&lt;</span>Compute<span class="op">(</span>x<span class="op">);</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="overloading-cin-and-cout" class="level3">
+<h3 class="anchored" data-anchor-id="overloading-cin-and-cout">Overloading <code>cin</code> and <code>cout</code></h3>
+<ul>
+<li><p>We cannot access to the <code>istream</code> or <code>ostream</code> code <span class="math inline">\(\to\)</span> cannot overload <code>&lt;&lt;</code> or <code>&gt;&gt;</code> as member functions</p></li>
+<li><p>They cannot be members of the user-defined class because the first parameter must be an object of that type</p></li>
+<li><p>Operators <code>&lt;&lt;</code> and <code>&gt;&gt;</code> must be non-members, but it needs to access to private data members make them friend functions</p></li>
+</ul>
+<section id="example" class="level4">
+<h4 class="anchored" data-anchor-id="example">Example</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> CFraction <span class="op">{</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="kw">private</span><span class="op">:</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> numerator<span class="op">,</span> denominator<span class="op">;</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">...</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">friend</span> ostream<span class="op">&amp;</span> <span class="kw">operator</span> <span class="op">&lt;&lt;</span> <span class="op">(</span>ostream<span class="op">&amp;,</span> <span class="at">const</span> CFraction<span class="op">&amp;);</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>ostream<span class="op">&amp;</span> <span class="kw">operator</span> <span class="op">&lt;&lt;</span> <span class="op">(</span>ostream<span class="op">&amp;</span> out<span class="op">,</span> <span class="at">const</span> CFraction<span class="op">&amp;</span> x<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    out <span class="op">&lt;&lt;</span> x<span class="op">.</span>numerator <span class="op">&lt;&lt;</span> <span class="st">" / "</span> <span class="op">&lt;&lt;</span> x<span class="op">.</span>denominator<span class="op">;</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> out<span class="op">;</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>    CFraction a<span class="op">;</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">...</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>    cout <span class="op">&lt;&lt;</span> a<span class="op">;</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+</section>
+<section id="casting-operators" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="casting-operators"><span class="header-section-number">7.2</span> Casting Operators</h2>
+<section id="the-need-for-casting" class="level3">
+<h3 class="anchored" data-anchor-id="the-need-for-casting">The Need for Casting</h3>
+<ul>
+<li><p>In a perfectly <strong>type-safe</strong> and <strong>type-strong</strong> world comprising well-written C++ applications, there should be no need for casting and for casting operators.</p></li>
+<li><p>However, we live in a real world where modules programmed by a lot of different people and vendors often using different environments have to work together.</p></li>
+<li><p>To make this happen, compilers very often need to be instructed to interpret data in ways that make them compile and the application function correctly.</p></li>
+</ul>
+</section>
+<section id="c-style-casting" class="level3">
+<h3 class="anchored" data-anchor-id="c-style-casting">C-Style Casting</h3>
+<section id="the-usage-syntax-of-the-c-style-casting" class="level4">
+<h4 class="anchored" data-anchor-id="the-usage-syntax-of-the-c-style-casting">The usage syntax of the C-Style casting</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode pseudo code-with-copy"><code class="sourceCode pseudo"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>destination_type dest = (destination_type)src;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Most C++ compilers won’t even let you get away with this</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="dt">char</span><span class="op">*</span> pszString <span class="op">=</span> <span class="st">"Hello World!"</span><span class="op">;</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co">// error: cannot convert char* to int*</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span><span class="op">*</span> pBuf <span class="op">=</span> pszString<span class="op">;</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>C++ compilers still do see the need to be backward compliant to keep old and legacy code building</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Cast one problem away, create another</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span><span class="op">*</span> pBuf <span class="op">=</span> <span class="op">(</span><span class="dt">int</span><span class="op">*)</span>pszString<span class="op">;</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="the-c-casting-operators" class="level3">
+<h3 class="anchored" data-anchor-id="the-c-casting-operators">The C++ Casting Operators</h3>
+<section id="the-c-casting-operators-1" class="level4">
+<h4 class="anchored" data-anchor-id="the-c-casting-operators-1">The C++ Casting Operators</h4>
+<p>The four C++ casting operators are - <code>static_cast</code> - <code>dynamic_cast</code> - <code>reinterpret_cast</code> - <code>const_cast</code></p>
+<p>The usage syntax of the casting operators is consistent:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="dt">destination_type</span>  o<span class="op">=</span><span class="dt">cast_type</span><span class="op">&lt;</span><span class="dt">destination_type</span><span class="op">&gt;(</span>object_to_be_casted<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="dt">destination_type</span><span class="op">*</span> p<span class="op">=</span><span class="dt">cast_type</span><span class="op">&lt;</span><span class="dt">destination_type</span><span class="op">*&gt;(</span>pointer_to_be_casted<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="dt">destination_type</span><span class="op">&amp;</span> r<span class="op">=</span><span class="dt">cast_type</span><span class="op">&lt;</span><span class="dt">destination_type</span><span class="op">&amp;&gt;(</span>reference_to_be_casted<span class="op">);</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="using-static_cast" class="level4">
+<h4 class="anchored" data-anchor-id="using-static_cast">Using <code>static_cast</code></h4>
+<ul>
+<li><p><code>static_cast</code> is a mechanism that can be used to convert pointers between related types, and perform explicit type conversions for standard data types that would otherwise happen automatically or implicitly.</p></li>
+<li><p><code>static_cast</code> implements a basic compile-time check to ensure that the pointer is being cast to a related type.</p></li>
+<li><p>Using <code>static_cast</code>, a pointer can be upcasted to the base type, or can be down-casted to the derived type</p></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>Base<span class="op">*</span> pBase <span class="op">=</span> <span class="kw">new</span> Derived <span class="op">();</span>    <span class="co">// construct a Derived object</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>Derived<span class="op">*</span> pDerived <span class="op">=</span> <span class="kw">static_cast</span><span class="op">&lt;</span>Derived<span class="op">*&gt;(</span>pBase<span class="op">);</span>    <span class="co">// ok!</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co">// CUnrelated is not related to Base via any inheritance hierarchy</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>CUnrelated<span class="op">*</span> pUnrelated <span class="op">=</span> <span class="kw">static_cast</span><span class="op">&lt;</span>CUnrelated<span class="op">*&gt;(</span>pBase<span class="op">);</span> <span class="co">// Error</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="co">// The cast above is not permitted as types are unrelated</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="using-dynamic_cast" class="level4">
+<h4 class="anchored" data-anchor-id="using-dynamic_cast">Using <code>dynamic_cast</code></h4>
+<ul>
+<li><p>Dynamic casting actually executes the cast at runtime.</p></li>
+<li><p>Dynamic casting works with only <strong>polymorphic type</strong></p></li>
+<li><p>The result of a <code>dynamic_cast</code> operation can be checked to see whether the attempt at casting succeeded.</p></li>
+<li><p>The typical usage syntax of the <code>dynamic_cast</code> operator is</p></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="dt">destination_type</span><span class="op">*</span> pDest <span class="op">=</span> <span class="kw">dynamic_cast</span><span class="op">&lt;</span><span class="dt">destination_type</span><span class="op">*&gt;(</span>pSource<span class="op">);</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co">// Check for success of the casting operation before using pointer </span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(</span>pDest<span class="op">)</span>    </span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    pDest<span class="op">-&gt;</span>CallFunc<span class="op">();</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="listing-1" class="level4">
+<h4 class="anchored" data-anchor-id="listing-1">Listing 1</h4>
+<ul>
+<li>Using dynamic casting to tell whether an fish object is a tuna or a carp</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Fish <span class="op">{</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>   <span class="kw">virtual</span> <span class="dt">void</span> Swim<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>      cout <span class="op">&lt;&lt;</span> <span class="st">"Fish swims in water"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>   <span class="op">}</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>   <span class="co">// base class should always have virtual destructor</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>   <span class="kw">virtual</span> <span class="op">~</span>Fish<span class="op">()</span> <span class="op">{}</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Tuna<span class="op">:</span> <span class="kw">public</span> Fish <span class="op">{</span></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>   <span class="dt">void</span> Swim<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>      cout <span class="op">&lt;&lt;</span> <span class="st">"Tuna swims real fast in the sea"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>   <span class="op">}</span></span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>   <span class="dt">void</span> BecomeDinner<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>      cout <span class="op">&lt;&lt;</span> <span class="st">"Tuna became dinner in Sushi"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>   <span class="op">}</span></span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Carp<span class="op">:</span> <span class="kw">public</span> Fish <span class="op">{</span></span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a>   <span class="dt">void</span> Swim<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a>      cout <span class="op">&lt;&lt;</span> <span class="st">"Carp swims real slow in the lake"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb26-24"><a href="#cb26-24" aria-hidden="true" tabindex="-1"></a>   <span class="op">}</span></span>
+<span id="cb26-25"><a href="#cb26-25" aria-hidden="true" tabindex="-1"></a>   <span class="dt">void</span> Talk<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb26-26"><a href="#cb26-26" aria-hidden="true" tabindex="-1"></a>      cout <span class="op">&lt;&lt;</span> <span class="st">"Carp talked crap"</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb26-27"><a href="#cb26-27" aria-hidden="true" tabindex="-1"></a>   <span class="op">}</span></span>
+<span id="cb26-28"><a href="#cb26-28" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span>
+<span id="cb26-29"><a href="#cb26-29" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> DetectFishType<span class="op">(</span>Fish<span class="op">*</span> InputFish<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb26-30"><a href="#cb26-30" aria-hidden="true" tabindex="-1"></a>   Tuna<span class="op">*</span> pIsTuna <span class="op">=</span> <span class="kw">dynamic_cast</span> <span class="op">&lt;</span>Tuna<span class="op">*&gt;(</span>InputFish<span class="op">);</span></span>
+<span id="cb26-31"><a href="#cb26-31" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> <span class="op">(</span>pIsTuna<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb26-32"><a href="#cb26-32" aria-hidden="true" tabindex="-1"></a>      cout <span class="op">&lt;&lt;</span> <span class="st">"Detected Tuna. Making Tuna dinner: "</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb26-33"><a href="#cb26-33" aria-hidden="true" tabindex="-1"></a>      pIsTuna<span class="op">-&gt;</span>BecomeDinner<span class="op">();</span>   <span class="co">// calling Tuna::BecomeDinner</span></span>
+<span id="cb26-34"><a href="#cb26-34" aria-hidden="true" tabindex="-1"></a>   <span class="op">}</span></span>
+<span id="cb26-35"><a href="#cb26-35" aria-hidden="true" tabindex="-1"></a>   Carp<span class="op">*</span> pIsCarp <span class="op">=</span> <span class="kw">dynamic_cast</span> <span class="op">&lt;</span>Carp<span class="op">*&gt;(</span>InputFish<span class="op">);</span></span>
+<span id="cb26-36"><a href="#cb26-36" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span><span class="op">(</span>pIsCarp<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb26-37"><a href="#cb26-37" aria-hidden="true" tabindex="-1"></a>      cout <span class="op">&lt;&lt;</span> <span class="st">"Detected Carp. Making carp talk: "</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb26-38"><a href="#cb26-38" aria-hidden="true" tabindex="-1"></a>      pIsCarp<span class="op">-&gt;</span>Talk<span class="op">();</span>  <span class="co">// calling Carp::Talk</span></span>
+<span id="cb26-39"><a href="#cb26-39" aria-hidden="true" tabindex="-1"></a>   <span class="op">}</span></span>
+<span id="cb26-40"><a href="#cb26-40" aria-hidden="true" tabindex="-1"></a>   cout <span class="op">&lt;&lt;</span> <span class="st">"Verifying type using virtual Fish::Swim: "</span> <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb26-41"><a href="#cb26-41" aria-hidden="true" tabindex="-1"></a>   InputFish<span class="op">-&gt;</span>Swim<span class="op">();</span> <span class="co">// calling virtual function Swim</span></span>
+<span id="cb26-42"><a href="#cb26-42" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb26-43"><a href="#cb26-43" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb26-44"><a href="#cb26-44" aria-hidden="true" tabindex="-1"></a>   Carp myLunch<span class="op">;</span></span>
+<span id="cb26-45"><a href="#cb26-45" aria-hidden="true" tabindex="-1"></a>   Tuna myDinner<span class="op">;</span></span>
+<span id="cb26-46"><a href="#cb26-46" aria-hidden="true" tabindex="-1"></a>   DetectFishType<span class="op">(&amp;</span>myDinner<span class="op">);</span></span>
+<span id="cb26-47"><a href="#cb26-47" aria-hidden="true" tabindex="-1"></a>   cout <span class="op">&lt;&lt;</span> endl<span class="op">;</span></span>
+<span id="cb26-48"><a href="#cb26-48" aria-hidden="true" tabindex="-1"></a>   DetectFishType<span class="op">(&amp;</span>myLunch<span class="op">);</span></span>
+<span id="cb26-49"><a href="#cb26-49" aria-hidden="true" tabindex="-1"></a>   <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb26-50"><a href="#cb26-50" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="using-reinterpret_cast" class="level4">
+<h4 class="anchored" data-anchor-id="using-reinterpret_cast">Using <code>reinterpret_cast</code></h4>
+<ul>
+<li><p><code>reinterpret_cast</code> is the closest a C++ casting operator gets to the C-style cast.</p></li>
+<li><p>It really does allow the programmer to cast one object type to another, regardless of whether or not the types are related; that is, it forces a reinterpretation of type using a syntax as seen in the following sample:</p></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>Base <span class="op">*</span> pBase <span class="op">=</span> <span class="kw">new</span> Base <span class="op">();</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>CUnrelated <span class="op">*</span> pUnrelated <span class="op">=</span> <span class="kw">reinterpret_cast</span><span class="op">&lt;</span>CUnrelated<span class="op">*&gt;(</span>pBase<span class="op">);</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co">// The code above was not good programming, </span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co">// even when it compiles!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="using-const_cast" class="level4">
+<h4 class="anchored" data-anchor-id="using-const_cast">Using <code>const_cast</code></h4>
+<ul>
+<li><p><code>const_cast</code> enables you to turn off the <code>const</code> access modifier to an object.</p></li>
+<li><p>Consider a problem</p></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> SomeClass <span class="op">{</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">// ...</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> DisplayMembers <span class="op">();</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> DisplayAllData <span class="op">(</span><span class="at">const</span> SomeClass<span class="op">&amp;</span> mData<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    mData<span class="op">.</span>DisplayMembers <span class="op">();</span>  <span class="co">// Compile failure</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">// reason for failure: call to a non-const member </span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">// using a const reference</span></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Solution</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> DisplayAllData <span class="op">(</span><span class="at">const</span> SomeClass<span class="op">&amp;</span> mData<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    SomeClass<span class="op">&amp;</span> refData <span class="op">=</span> <span class="kw">const_cast</span> <span class="op">&lt;</span>SomeClass<span class="op">&amp;&gt;(</span>mData<span class="op">);</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    refData<span class="op">.</span>DisplayMembers<span class="op">();</span>    <span class="co">// Allowed!</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Note also that <code>const_cast</code> can be used with pointers</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> DisplayAllData <span class="op">(</span><span class="at">const</span> SomeClass<span class="op">*</span> pData<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">// pData-&gt;DisplayMembers(); Error</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">// attempt to invoke a non-const function!</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    SomeClass<span class="op">*</span> pCastedData <span class="op">=</span> <span class="kw">const_cast</span> <span class="op">&lt;</span>SomeClass<span class="op">*&gt;(</span>pData<span class="op">);</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>    pCastedData<span class="op">-&gt;</span>DisplayMembers<span class="op">();</span>    <span class="co">// Allowed!</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="problems-with-the-c-casting-operators" class="level3">
+<h3 class="anchored" data-anchor-id="problems-with-the-c-casting-operators">Problems with the C++ Casting Operators</h3>
+<ul>
+<li><p>The syntax is cumbersome and non-intuitive to being redundant</p></li>
+<li><p>Let’s simply compare this code</p></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> dPi <span class="op">=</span> <span class="fl">3.14159265</span><span class="op">;</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co">// C++ style cast: static_cast</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> Num <span class="op">=</span> <span class="kw">static_cast</span> <span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;(</span>dPi<span class="op">);</span> <span class="co">// result: nNum is 3</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="co">// C-style cast</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> Num2 <span class="op">=</span> <span class="op">(</span><span class="dt">int</span><span class="op">)</span>dPi<span class="op">;</span>              <span class="co">// result: Num2 is 3</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="co">// leave casting to the compiler</span></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> Num3 <span class="op">=</span> dPi<span class="op">;</span>                   <span class="co">// result: Num3 is 3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="workshop" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="workshop"><span class="header-section-number">7.3</span> Workshop</h2>
+<section id="quiz" class="level3">
+<h3 class="anchored" data-anchor-id="quiz">✒ Quiz</h3>
+<ol type="1">
+<li><p>How does the compiler know whether an overloaded <code>++</code> operator should be used in prefix or postfix mode?</p></li>
+<li><p>What is passed to the parameter of a class’s operator <code>=</code> function?</p></li>
+<li><p>Why shouldn’t a class’s overloaded <code>=</code> operator be implemented with a void operator function?</p></li>
+</ol>
+</section>
+<section id="exercises" class="level3">
+<h3 class="anchored" data-anchor-id="exercises">💻 Exercises</h3>
+<ol type="1">
+<li>Implement a <code>CFraction</code> class with</li>
+</ol>
+<ul>
+<li><p>basic arithmetic operators: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code></p>
+<p>Remember to handle</p></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>CFraction x<span class="op">,</span> y<span class="op">;</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> x <span class="op">+</span> <span class="dv">5</span><span class="op">;</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="dv">5</span> <span class="op">+</span> x<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>prefix and postfix increment operators <code>x++</code> and <code>++x</code></li>
+</ul>
+</section>
+</section>
+<section id="references" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="references"><span class="header-section-number">7.4</span> References</h2>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./lect04-polymorphism.html" class="pagination-link" aria-label="POLYMORPHISM">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">POLYMORPHISM</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./lect06-template.html" class="pagination-link" aria-label="TEMPLATES AND GENERIC PROGRAMMING">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">TEMPLATES AND GENERIC PROGRAMMING</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

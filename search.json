@@ -1,0 +1,822 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "OBJECT ORIENTED PROGRAMMING",
+    "section": "",
+    "text": "About the book\nObject-Oriented Programming",
+    "crumbs": [
+      "About the book"
+    ]
+  },
+  {
+    "objectID": "lect01-introduction.html",
+    "href": "lect01-introduction.html",
+    "title": "1  INTRODUCTION TO OBJECT-ORIENTED PROGRAMMING",
+    "section": "",
+    "text": "1.1 Introduction",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>INTRODUCTION TO OBJECT-ORIENTED PROGRAMMING</span>"
+    ]
+  },
+  {
+    "objectID": "lect01-introduction.html#introduction",
+    "href": "lect01-introduction.html#introduction",
+    "title": "1  INTRODUCTION TO OBJECT-ORIENTED PROGRAMMING",
+    "section": "",
+    "text": "The History of Object Technology\n\nMajor object technology milestones\n\n\n\n\nObject-oriented concepts\n\nLearning OO concepts is not accomplished by learning a specific development method or a set of tools but a way of thinking.\nFor examples:\n\nMany people are introduced to OO concepts via one of these development methods or tools.\nMany C programmers were first introduced to object orientation by migrating directly to C++, before they were even remotely exposed to OO concepts.\nSome software professionals were first introduced to object orientation by presentations that included object models using UML\n\n\n\n\nProblems\n\nLearning a programming language is an important step, but it is much more important to learn OO concepts first.\n\nDevelopers who claim to be C++ programmers are simply C programmers using C++ compilers.\nLearning UML before OO concepts is similar to learning how to read an electrical diagram without first knowing anything about electricity.\n\nEven worse\n\nA programmer can use just enough OO features to make a program incomprehensible to OO and non-OO programmers alike.\n\n\n\n\nProblems\nUsing the data structure struct, implement the following structures\n\nstruct Point: data structure for a 2-D point.\nstruct Triangle: contains the information of the 3 vertices\n\nImplement functions:\n\nA function to calculate a distance between 2 points\nA function to calculate the perimeter of a triangle\nA function to calculate the area of a triangle.\n\n\n\nNew concepts\n\nIt is very important that while you’re on the road to OO development, you first learn the fundamental OO concepts.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>INTRODUCTION TO OBJECT-ORIENTED PROGRAMMING</span>"
+    ]
+  },
+  {
+    "objectID": "lect01-introduction.html#procedural-vs.-oo-programming",
+    "href": "lect01-introduction.html#procedural-vs.-oo-programming",
+    "title": "1  INTRODUCTION TO OBJECT-ORIENTED PROGRAMMING",
+    "section": "1.2 Procedural vs. OO Programming",
+    "text": "1.2 Procedural vs. OO Programming\n\nProcedural vs. OO Programming\n\nAn object is an entity that contains both data and behaviours\n\n\nWhen we look at a person, we see the person as an object.\nAnd an object is defined by two components: attributes and behaviors.\n\nA person has attributes, such as eye color, age, height, and so on.\nA person also has behaviors, such as walking, talking, breathing, and so on.\n\n\n\n\nDifference Between OO and Procedural\nIn OO design, the attributes and behaviors are contained within a single object, whereas in procedural, or structured, design the attributes and behaviors are normally separated.\n\n\n\nLimitations of Procedural Programming\n\nIf the data structures change, many functions must also be changed\nPrograms that are based on complex function hierarchies are:\n\ndifficult to understand and maintain\ndifficult to modify and extend\neasy to break\n\nIn procedural programming:\n\nData is separated from the procedures.\nSometimes it is global \\(\\to\\) easy to modify data that is outside your scope \\(\\to\\) this means that access to data is uncontrolled and unpredictable.\nHaving no control over the data testing and debugging are much more difficult.\n\n\n\n\nWhy do we change to OO programming?\nObjects solve these problems by combining data and behaviours into a complete package.\n\nObjects contain attributes and methods\nIn an object, methods are used to operate on the data.\nWe can control access to members of an object (both attributes and methods).",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>INTRODUCTION TO OBJECT-ORIENTED PROGRAMMING</span>"
+    ]
+  },
+  {
+    "objectID": "lect01-introduction.html#four-principles-of-oo",
+    "href": "lect01-introduction.html#four-principles-of-oo",
+    "title": "1  INTRODUCTION TO OBJECT-ORIENTED PROGRAMMING",
+    "section": "1.3 Four principles of OO",
+    "text": "1.3 Four principles of OO\n\nBasic Principles of Object Orientation\n\nAbstraction\nEncapsulation\nModularity\nHierarchy\n\n\n\nWhat Is Abstraction?\n\nThe essential characteristics of an entity that distinguishes it from all other kinds of entities.\nDefines a boundary relative to the perspective of the viewer.\nIs not a concrete manifestation, denotes the ideal essence of something.\n\n\n\n\nWhat Is Encapsulation?\n\nHides implementation from clients \\(\\to\\) Clients depend on interface.\n\n\n\n\nWhat Is Modularity?\n\nBreaks up something complex into manageable pieces.\nHelps people understand complex systems.\n\n\n\n\nWhat Is Hierarchy?\n\nElements at the same level of the hierarchy should be at the same level of abstraction.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>INTRODUCTION TO OBJECT-ORIENTED PROGRAMMING</span>"
+    ]
+  },
+  {
+    "objectID": "lect01-introduction.html#other-issues",
+    "href": "lect01-introduction.html#other-issues",
+    "title": "1  INTRODUCTION TO OBJECT-ORIENTED PROGRAMMING",
+    "section": "1.4 Other issues",
+    "text": "1.4 Other issues\n\nSoftware Design\n\nReusability\n\nPortable and independent components can be reused in many systems\n\nExtensibility\n\nSupport external plug-ins\n\nFlexibility\n\nChange will be easy when new data/features added\nModifications are less likely to break the system\nLocalize effect of changes\n\n\n\n\nCreate a system: designing process\n\nDivide a system in terms of components\nDivide components in terms of sub-components\nAbstraction\n\nHides details of components that are irrelevant to the current design phase\n\nComponent identification is top-down\n\nDecompose system into smaller, simple components\n\nIntegration is bottom-up\n\nCombining small components\n\nDesign is applied using a paradigm: procedural, modular, object oriented\n\n\n\nAbstraction\n\nProcedural design\n\nDefine set of functions to accomplish task\nPass information from function to function\n\nModules (modular design)\n\nDefine modules, where each has data and procedures\nEach module has a public and a private section\nWorks as a scoping mechanism\n\nClasses/Objects (object-oriented design)\n\nAbstract Data Types\nDivide project in set of cooperating classes\nEach class has a very specific functionality\nClasses can be used to create multiple instances of objects",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>INTRODUCTION TO OBJECT-ORIENTED PROGRAMMING</span>"
+    ]
+  },
+  {
+    "objectID": "lect01-introduction.html#references",
+    "href": "lect01-introduction.html#references",
+    "title": "1  INTRODUCTION TO OBJECT-ORIENTED PROGRAMMING",
+    "section": "1.5 References",
+    "text": "1.5 References",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>INTRODUCTION TO OBJECT-ORIENTED PROGRAMMING</span>"
+    ]
+  },
+  {
+    "objectID": "lect02-class.html",
+    "href": "lect02-class.html",
+    "title": "2  CLASSES AND OBJECTS",
+    "section": "",
+    "text": "2.1 What is an object?",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>CLASSES AND OBJECTS</span>"
+    ]
+  },
+  {
+    "objectID": "lect02-class.html#what-is-an-object",
+    "href": "lect02-class.html#what-is-an-object",
+    "title": "2  CLASSES AND OBJECTS",
+    "section": "",
+    "text": "Definition\n\nAn object is an entity with a well-defined boundary and identity that encapsulates state and behavior.\n\nState is represented by attributes and relationships.\nBehavior is represented by operations, methods, and state machines.\n\n\n\nInformally, an object represents an entity, either physical, conceptual, or software.\n\n\n\n\nAn Object Has State\n\nState is a condition or situation during the life of an object, which satisfies some condition, performs some activity, or waits for some event.\nThe state of an object normally changes over time.\n\n\n\n\nAn Object Has Behavior\n\nBehavior determines how an object acts and reacts.\nThe visible behavior of an object is modeled by a set of messages it can respond to (operations that the object can perform).\n\n\n\n\nAn Object Has Identity\n\nEach object has a unique identity, even if the state is identical to that of another object.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>CLASSES AND OBJECTS</span>"
+    ]
+  },
+  {
+    "objectID": "lect02-class.html#what-is-a-class",
+    "href": "lect02-class.html#what-is-a-class",
+    "title": "2  CLASSES AND OBJECTS",
+    "section": "2.2 What is a class?",
+    "text": "2.2 What is a class?\n\nDefinition\n\nA class is a description of a set of objects that share the same attributes, operations, relationships, and semantics. An object is an instance of a class.\n\n\n\nA class is an abstract definition of an object.\n\nIt emphasizes relevant characteristics.\nIt suppresses other characteristics.\nIt defines the structure and behavior of each object in the class.\nIt serves as a template for creating objects.\n\nClasses are not collections of objects.\n\n\n\nRepresenting Classes in the UML\nA class is represented using a rectangle with three compartments:\n\nThe class name\nThe attributes\nThe operations\n\n\n\n\n\n\nclassDiagram\nclass FullClass {\n    -attribute1\n    -attribute2\n    +operation1()\n    +operation2()\n}\n\n\n\n\n\n\nA class can be represented using a simple rectangle:\n\n\n\n\n\nclassDiagram\n    class SimpleClass\n\n\n\n\n\n\n\n\nWhat Is an Attribute/Operation?\n\nAn attribute is a named property of a class that describes the range of values that instances of the property may hold.\nA class may have any number of attributes or no attributes at all.\n\n\nAn operation is the implementation of a service that can be requested from any object of the class to affect behavior. In other words, an operation is an abstraction of something you can do to an object that is shared by all objects of that class.\nA class may have any number of operations or none at all.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>CLASSES AND OBJECTS</span>"
+    ]
+  },
+  {
+    "objectID": "lect02-class.html#oo-design",
+    "href": "lect02-class.html#oo-design",
+    "title": "2  CLASSES AND OBJECTS",
+    "section": "2.3 OO Design",
+    "text": "2.3 OO Design\n\nObject-oriented design\n\nAbstract Data Types (ADT)\nDivide project into a set of cooperating classes\nEach class has a very specific functionality\nThink of a class as similar to a data type\nClass can be used to create instances of objects\n\n\n\nMapping the real world to software\n\n\n\nDesigning process\nIdentifying classes\n\nAbbott and Booch:\n\nuse nouns, pronouns, noun phrases to identify objects and classes\nnote: not all nouns are really going to relate to objects\n\nCoad and Yourdon:\n\nidentify individual or group “things” in the system/problem\n\nRoss:\n\ncommon object categories: people, places, things, organizations, concepts, events\n\n\nIdentifying behaviors\n\nDecide whether behavior is accomplised by a single class or through the collaboration of a number of ``related’’ classes\nStatic behavior: behavior always exists\nDynamic behavior: depending of when/how a behavior is invoked, it might or might not be legal\nLook for verbs in problem description\n\n\n\nExample 1\nGame “Tetris”, possible classes:\n\nBoard\nBlock (square block)\nPiece (composed of several blocks)\nPlayer (is it necessary?)\nLine of Blocks\n\n\n\nExample 2\n\ne-Shopping Website, possible classes:\n\nProduct - Attributes: Name, ID, price, status, manufacturer’s name, images, technical description.\nProduct Category - Attributes: Name\nManufacturer - Attributes: Name, Country, Website\n\n\nExample 3\nWebsite “National Foolball Competition”\n\nPeople: Player, Referee, Coach, Team Manager…\nPlaces: Stadium, City…\nThings: Ball (is it necessary?)\nOrganizations: Team, National Football Association\nConcepts: Half, Round, Season…\nEvents: Match (is this a concept or an event?), Goal\n\n\n\nExample 4\nJoe’s Automotive Shop services foreign cars and specializes in servicing cars made by Mercedes, Porsche, and BMW. When a customer brings a car to the shop, the manager gets the customer’s name, address, and telephone number. The manager then determines the make, model, and year of the car and gives the customer a service quote. The service quote shows the estimated parts charges, estimated labor charges, sales tax, and total estimated charges.\n\nFinding the classes",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>CLASSES AND OBJECTS</span>"
+    ]
+  },
+  {
+    "objectID": "lect02-class.html#classes-and-objects-in-c",
+    "href": "lect02-class.html#classes-and-objects-in-c",
+    "title": "2  CLASSES AND OBJECTS",
+    "section": "2.4 Classes and Objects in C++",
+    "text": "2.4 Classes and Objects in C++\nclass &lt;Class Name&gt;\nprivate:\n    &lt;private attributes&gt;\n    &lt;private methods&gt;\npublic:\n    &lt;public attributes&gt;\n    &lt;public methods&gt;\n};\n\nprivate: only visible to the class itself.\npublic: can be use from inside of the class or any client outside\n\n\nUML\n\nUsing symbol\n\n\n\nUsing icon\n\n\n\n\nAn example\n\nA class models a date\n\nclass CDate {\nprivate:\n    int m_iDay, m_iMonth, m_iYear;\npublic:\n    CDate();\n    int getDay(); // return day\n    int getMonth(); // return month\n    int getYear(); // return year\n    ...\n};\n\nA class models a human\n\nclass Human {\n   // Data attributes:\nprivate:\n   string Name;\n   string DateOfBirth;\n   string PlaceOfBirth;\n   string Gender;\n \n   // Methods:\npublic:\n   void Talk(string TextToTalk);\n   void IntroduceSelf();\n   ...\n};\n\n\nScope resolution operator ::\n\nThe two colons :: are called the scope resolution operator.\nIt identifies methods or attributes as members of a certain class\nFor example:\n\nCDate::getDay()\nCDate::getMonth()\n\n\nSeparation declaration from definition\n//keep in one file\nclass CDate {\nprivate:\n    ...\npublic:\n    int getDay();\n    ...\n};\n\nint CDate::getDay() {\n    return m_iDay;\n}\n// header file\nclass CDate {\nprivate:\n    ...\npublic: \n    int getDay();\n    ...\n};\n// implementation file\nint CDate::getDay() {\n    return m_iDay;\n}\n\n\nInline Member Functions\n\nWhen the body of a member function is written inside a class declaration, it is declared inline\n\n//keep in one file\nclass CDate {\nprivate:    \n    ...\npublic:\n    int getDay() {\n        return m_iDay;\n    }\n    ...\n};\n\n\nUsing const with Member Functions\n\nWhen the key word const appears after the parentheses in a member function declaration, it specifies that the function will not change any data stored in the calling object.\n\nclass CDate {\nprivate:    \n    ...\npublic:\n    int getDay() const {\n        return m_iDay;\n    }\n    ...\n};\n\n\nInstantiating an Object of a Class\n\nInstantiating an object of type class Human is similar to creating an instance of another type:\n\ndouble Pi = 3.1415;  \nHuman Tom;  \nHuman Jerry = Human();\n\nAlternatively, we would dynamically allocate for an instance of class Human using new:\n\nint* pNumber = new int;  \ndelete pNumber;  \nHuman* pAnotherHuman = new Human(); \ndelete pAnotherHuman;\n\n\nAccessing Members Using the Dot Operator . and Pointer Operator -&gt;\n\nThe dot operator (.) helps us access attributes or methods of an object.\n\nHuman Tom;\n...\nTom.IntroduceSelf();\n\nIf an object has been instantiated on the free store using new or if we have a pointer to an object, then we use the pointer operator (-&gt;) to access the member attributes and functions\n\nHuman* pTom = new Human();\n...\npTom-&gt;IntroduceSelf();\ndelete pTom;\n\n\nData hiding\nint main() {\n    CDate today;\n    CDate tomorrow, someDay;\n    cout &lt;&lt; today.m_iMonth; // compile error\n    cout &lt;&lt; today.getMonth(); // OK\n    ...\n}\n\n\nEncapsulation and data hiding\n\nEncapsulation:\n\nA C++ class provides a mechanism for packaging data and the operations that may be performed on that data into a single entity\n\nInformation Hiding:\n\nA C++ class provides a mechanism for specifying access",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>CLASSES AND OBJECTS</span>"
+    ]
+  },
+  {
+    "objectID": "lect02-class.html#technical-terms",
+    "href": "lect02-class.html#technical-terms",
+    "title": "2  CLASSES AND OBJECTS",
+    "section": "2.5 Technical Terms",
+    "text": "2.5 Technical Terms\n\nTaxonomy of member functions\nA common taxonomy:\n\nConstructor/Initalization: an operation that creates a new instance of a class\n\nConstraint Checking methods?\n\nObserver: an operation that reports the state of the data members (aka Accessors, Getters)\n\nProvides value of an internal attribute\nProvides some value calculated from internal attributes\nProvides some value calculated from internal attributes AND some external parameter(s)\n\nMutator: an operation that changes the state of the data members of an object (aka Setters)\n\nUpdates value of an internal attribute\nTransforms values of internal attributes\nConstraint Checking methods?\n\nIterator: an operation that allows processing of all the components of a data structure sequentially",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>CLASSES AND OBJECTS</span>"
+    ]
+  },
+  {
+    "objectID": "lect02-class.html#workshop",
+    "href": "lect02-class.html#workshop",
+    "title": "2  CLASSES AND OBJECTS",
+    "section": "2.6 Workshop",
+    "text": "2.6 Workshop\n\n✒ Quiz\n\nWhat is the difference between a class and an instance of the class?\nWhat is the default access specification of class members?\nIs it a good idea to make member variables private? Why or why not?\n\n\n\n💻 Exercises\nDesign and implement the following classes:\n\nDate\nFraction with numerator and denominator\nEmployee",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>CLASSES AND OBJECTS</span>"
+    ]
+  },
+  {
+    "objectID": "lect02-class.html#references",
+    "href": "lect02-class.html#references",
+    "title": "2  CLASSES AND OBJECTS",
+    "section": "2.7 References",
+    "text": "2.7 References",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>CLASSES AND OBJECTS</span>"
+    ]
+  },
+  {
+    "objectID": "lect02-class-2.html",
+    "href": "lect02-class-2.html",
+    "title": "3  MORE ABOUT CLASSES",
+    "section": "",
+    "text": "Object Life Cycle",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>MORE ABOUT CLASSES</span>"
+    ]
+  },
+  {
+    "objectID": "lect02-class-2.html#constructors",
+    "href": "lect02-class-2.html#constructors",
+    "title": "3  MORE ABOUT CLASSES",
+    "section": "3.1 Constructors",
+    "text": "3.1 Constructors\n\nDefinition\n\nA constructor is a special member function that is automatically called when a class object is created.\n\n\nRemember that when we define a local variable (primary data type) in C++, the memory is not automatically initialized.\n\nConstructor, - It is automatically invoked when a new object is created. - There is no returned value, even a void. - A class can have more than one constructor (overload) - Name of the constructors must be the same as the class name.\n\n\nDeclaring and Implementing a Constructor\nclass Human {\npublic:\n    Human() {\n        // constructor code here\n        Name = \"Le Thi Dep\";\n        DateOfBirth = \"01/01/1990\";\n        PlaceOfBirth = \"Ha noi\";\n        Gender = \"female\";\n    }\n    ...\n};\n\n\nWhen and How to Use Constructors\n\nA constructor is a perfect place for us to initialize class member variables such as integers, pointers, and so on to known initial values\n\n#include &lt;iostream&gt;\n#include &lt;string&gt;\nusing namespace std;\nclass Human {\nprivate:\n   // Private member data:\n   string Name;\n   int Age;\npublic:\n   // constructor\n   Human() {\n      Age = 0; \n   }\n   void SetName (string HumansName) {\n      Name = HumansName;\n   }\n   void SetAge(int HumansAge) {\n      Age = HumansAge;\n   }\n   void IntroduceSelf() {\n      cout &lt;&lt; \"I am \" + Name &lt;&lt; \" and am \";\n      cout &lt;&lt; Age &lt;&lt; \" years old\" &lt;&lt; endl;\n   }\n};\nint main() {\n   Human FirstMan;\n   FirstMan.SetName(\"Adam\");\n   FirstMan.SetAge(30);\n   Human FirstWoman;\n   FirstWoman.SetName(\"Eve\");\n   FirstWoman.SetAge (28);\n   FirstMan.IntroduceSelf();\n   FirstWoman.IntroduceSelf();\n}\n\n\nOverloading Constructors\n\nDefault constructor (if no constructor is implemented, the compiler will issue a default constructor; if there is at least one constructor, the default constructor will not be created by the compiler)\n\nNo parameters\nInvoke other default constructors of data members if they are objects.\nDoesn’t initialize other data members if they are not objects.\n\nConstructor with no parameters\nConstructor with parameter(s)\nConstructor with default parameter(s)\nCopy constructor\n\n\n\nExample\n\nAs constructors can be overloaded just like functions, we can create a constructor that requires Human to be created with a name as a parameter, for instance:\n\nclass Human {\npublic:\n   Human() {\n       // default constructor code here\n   }\n   Human(string HumansName) {\n       // overloaded constructor code here\n   }\n};\n...\nHuman firstMan;\nHuman firstWoman(\"Eve\");\n\n\nClass Without a Default Constructor\nclass CDate\n{\npublic:\n    CDate(int day, int month, int year);\n    ...\nprivate:\n    ...\n};\nint main() {\n    CDate today; // compile error\n    ...\n    return 0;\n}\n\nAdvice: always define our own default constructor!\n\n\n\nthis Pointer\n\nthis is a reserved keyword applicable within the scope of a class that contains the address of the object. In other words, the value of this is &object\n\n\nthis is a constant pointer, we cannot modify it within a member function.\n\nclass Human {\n    ...\n    void SetAge(int HumansAge) {\n       this-&gt;Age = HumansAge;   // same as Age = HumansAge\n    }\n    ...\n}\n\n\nsizeof() a Class\n\nThe operator sizeof() is valid for classes and basically reports the sum of bytes consumed by each data attribute contained within the class declaration. Depending on the compiler we use, sizeof() might or might not include padding for certain attributes on word boundaries.\n\nint main() {\n    Human Tom;\n    cout &lt;&lt; \"sizeof(Human) = \" &lt;&lt; sizeof(Human) &lt;&lt; endl;\n    cout &lt;&lt; \"sizeof(Tom) = \" &lt;&lt; sizeof(Tom) &lt;&lt; endl;\n}",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>MORE ABOUT CLASSES</span>"
+    ]
+  },
+  {
+    "objectID": "lect02-class-2.html#destructor",
+    "href": "lect02-class-2.html#destructor",
+    "title": "3  MORE ABOUT CLASSES",
+    "section": "3.2 Destructor",
+    "text": "3.2 Destructor\n\nDefinition\n\nA destructor is a member function that is automatically called when an object is destroyed.\n\n\nDestructor is always invoked when an object of a class goes out of scope or is deleted via delete and is destroyed\nEach class can have at most one destructor\nThe destructor name is the name of a class preceded by a tilde sign (~)\nDestructor has no return type (even void)\nDestructor frees the resources used by the object (allocated memory, file descriptors, semaphores etc.)\n\n\n\nExample\n\nDestructor for Human class\n\nclass Human {\npublic:\n    ~Human() {\n        // destructor code here\n    }\n};\n\n\nWhen and How to Use Destructors\n\nDestructor is the ideal place to reset variables and release dynamically allocated memory and other resources.\n\n#include &lt;iostream&gt;\nusing namespace std;\n\nclass MyString {\nprivate:\n   char* Buffer;\npublic:\n   // Constructor\n   MyString(const char* InitialInput) {\n      if(InitialInput != NULL) {\n         Buffer = new char [strlen(InitialInput) + 1];\n         strcpy(Buffer, InitialInput);\n      }\n      else\n         Buffer = NULL;\n   }\n   // Destructor: clears the buffer allocated in constructor\n   ~MyString() {\n      cout &lt;&lt; \"Invoking destructor, clearing up\" &lt;&lt; endl;\n      if (Buffer != NULL)\n         delete [] Buffer;\n   }\n   int GetLength() {\n      return strlen(Buffer);\n   }\n   const char* GetString() {\n    return Buffer;\n   }\n};\nint main() {\n   MyString SayHello(\"Hello from String Class\");\n   cout &lt;&lt; \"String buffer in MyString is \" &lt;&lt; SayHello.GetLength();\n   cout &lt;&lt; \" characters long\" &lt;&lt; endl;\n   cout &lt;&lt; \"Buffer contains: \";\n   cout &lt;&lt; \"Buffer contains: \" &lt;&lt; SayHello.GetString() &lt;&lt; endl;\n}",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>MORE ABOUT CLASSES</span>"
+    ]
+  },
+  {
+    "objectID": "lect02-class-2.html#member-initialization",
+    "href": "lect02-class-2.html#member-initialization",
+    "title": "3  MORE ABOUT CLASSES",
+    "section": "3.3 Member Initialization",
+    "text": "3.3 Member Initialization\n\nInitialization vs. Assignment\n\nDistinguish between Assignment and Initialization\n\n\n\n\nInitialization\nAssignment\n\n\n\n\nint a = 2;\na = 3;\n\n\ndouble b(4.0);\na = 4;\n\n\n\nb = 2.0;\n\n\n\nb = 1.0;\n\n\n\n\n\nMembers Initialization\n\nThis is members initialization\n\nclass CDate {\nprivate:\n    int m_iDay, m_iMonth, m_iYear;\npublic:\n    CDate();\n    CDate(int day, int month, int year): \n        m_iDay(day), m_iMonth(month), m_iYear(year)\n    {}\n    ~CDate();\n    ...\n};\n\n\nMandatory Members Initialization\n\nReferences\nPointers\nConst members\nSub-objects which require arguments in constructors\n\nclass Human {\nprivate:\n    Ancestor&   ref; // reference member\n    Descendant* ptr; // pointer member\n    const int   MAX; // const member\n    vector      arr; // object member\npublic:\n    Human(Ancestor& r, Descendant *p) : \n        ref(r), ptr(p), MAX(100), arr(MAX) {}\n};",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>MORE ABOUT CLASSES</span>"
+    ]
+  },
+  {
+    "objectID": "lect02-class-2.html#copy-constructor",
+    "href": "lect02-class-2.html#copy-constructor",
+    "title": "3  MORE ABOUT CLASSES",
+    "section": "3.4 Copy Constructor",
+    "text": "3.4 Copy Constructor\n\nDefinition\n\nA copy constructor is a special constructor that is called whenever a new object is created and initialized with another object’s data.\n\n\nDefault copy constructor: if there is no copy constructor, a default copy constructor will be generated. Default copy constructor performs a bitwise copy from the source to the current object (shallow copy).\nOur own copy constructor\n\n\n\nWhen copies of objects are made\n\nA variable is declared which is initialized from another object\n\nPerson p(\" Mickey\"); // constructor\nPerson r(p);         // copy constructor\nPerson q = p;        // copy constructor\np = r;               // assignment operator\n\nA value parameter is initialized from its corresponding argument.\n\ndoSomething(p);     // copy constructor\n\nAn object is returned by a function.\n\nreturn p;           // copy constructor\n\n\nShallow Copying and Associated Problems\n\nWhen an object of the class MyString is copied, the pointer member is copied, but not the pointed buffer, resulting in two objects pointing to the same dynamically allocated buffer in memory.\n\nvoid UseMyString(MyString Input) {\n    cout &lt;&lt; \"String buffer in MyString is \" &lt;&lt;Input.GetLength();\n    cout &lt;&lt; \" characters long\" &lt;&lt; endl;\n    cout &lt;&lt; \"Buffer contains: \" &lt;&lt; Input.GetString() &lt;&lt; endl;\n}\nint main() {\n    MyString SayHello(\"Hello from String Class\");\n    // Pass SayHello as a parameter to the function\n    UseMyString(SayHello);\n    return 0;\n}\n\n\n\nDeep Copy Using a Copy Constructor\n\nC++ requires that a copy constructor’s parameter be a reference object.\n\nclass MyString {\n   ...\n   // Copy constructor\n   MyString(const MyString& CopySource) {\n      if(CopySource.Buffer != NULL) {\n         // ensure deep copy by first allocating own buffer\n         Buffer = new char [strlen(CopySource.Buffer) + 1];\n         // copy from the source into local buffer\n         strcpy(Buffer, CopySource.Buffer);\n      }\n      else\n         Buffer = NULL;      \n   }\n   ...\n}",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>MORE ABOUT CLASSES</span>"
+    ]
+  },
+  {
+    "objectID": "lect02-class-2.html#unnamed-object",
+    "href": "lect02-class-2.html#unnamed-object",
+    "title": "3  MORE ABOUT CLASSES",
+    "section": "3.5 Unnamed Object",
+    "text": "3.5 Unnamed Object\n\nOverview\n\nAn Unnamed object (anonymous object) is essentially an object that has no name\n\nclass Wallet {\nprivate:\n    int cents;\npublic:\n    Wallet(int cents): cents( cents ) {}\n    int getCents() { return cents; }\n};\nint main() {\n    Wallet momo(6); // normal object\n    Wallet(8);      // unnamed object\n}\n\nBecause they have no name, there’s no way to refer to them beyond the point where they are created.\nConsequently, they have “expression scope”, meaning they are created, evaluated, and destroyed all within a single expression.\nReturned object of a function is also considered as an unnamed object.\n\nWallet createWallet(int cents) {\n    return Wallet(cents);\n}\n...\ncout &lt;&lt; createWallet(5).getCents() &lt;&lt; endl;",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>MORE ABOUT CLASSES</span>"
+    ]
+  },
+  {
+    "objectID": "lect02-class-2.html#static-members",
+    "href": "lect02-class-2.html#static-members",
+    "title": "3  MORE ABOUT CLASSES",
+    "section": "3.6 Static Members",
+    "text": "3.6 Static Members\n\nInstance and Static Members\n\nEach instance of a class has its own copies of the class’s instance variables. - If a member variable is declared static, however, all instances of that class have access to that variable. - If a member function is declared static, it may be called without any instances of the class being defined.\n\n\n\n\nStatic Member Variables\n\nSyntax\nstatic DataType VariableName;\n\n\nEven though static member variables are declared in a class, they are actually defined outside the class declaration. The lifetime of a class’s static member variable is the lifetime of the program. This means that a class’s static member variables come into existence before any instances of the class are created.\n\n\n\nUML\n\n\n\nListing 1\n#include &lt;iostream&gt;\nusing namespace std;\nclass Tree {\nprivate:\n   static int objectCount;    // Static member variable.\npublic:\n   // Constructor\n   Tree() { objectCount++; }   \n   // Accessor function for objectCount\n   int getObjectCount() const { return objectCount; }\n};\n// Definition written outside the class.\nint Tree::objectCount = 0;\nint main() {\n   Tree oak, elm, pine;   \n   cout &lt;&lt; \"We have \" &lt;&lt; pine.getObjectCount()\n        &lt;&lt; \" trees in our program!\\n\";\n   return 0;\n}\n\n\n\nStatic Member Functions\n\nSyntax\nstatic ReturnType FunctionName (ParameterTypeList);\n\n\nA function that is a static member of a class cannot access any nonstatic member data in its class.\nA class’s static member functions can be called before any instances of the class are created. This means that a class’s static member functions can access the class’s static member variables before any instances of the class are defined in memory. This gives you the ability to create very specialized setup routines for class objects.\n\n\n\nListing 2\n#include &lt;iostream&gt;\nusing namespace std;\nclass Tree {\nprivate:\n   static int objectCount;    // Static member variable.\npublic:\n   // Constructor\n   Tree() { objectCount++; }   \n   // Static function for objectCount\n   static int getObjectCount() { return objectCount; }\n};\n// Definition written outside the class.\nint Tree::objectCount = 0;\nint main() {\n   Tree oak, elm, pine;   \n   cout &lt;&lt; \"We have \" &lt;&lt; Tree::getObjectCount()\n        &lt;&lt; \" trees in our program!\\n\";\n   return 0;\n}",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>MORE ABOUT CLASSES</span>"
+    ]
+  },
+  {
+    "objectID": "lect02-class-2.html#friends-of-classes",
+    "href": "lect02-class-2.html#friends-of-classes",
+    "title": "3  MORE ABOUT CLASSES",
+    "section": "3.7 Friends of Classes",
+    "text": "3.7 Friends of Classes\n\nDefinition\n\nA friend is a function or class that is not a member of a class, but has access to the private members of the class\n\n\nFriend functions or classes give a flexibility to the class.\nIt doesn’t violate the encapsulation of the class.\nFriendship is “directional”. It means if class A considers class B as its friend, it doesn’t mean that class B considers A as a friend\n\n\nSyntax\nfriend ReturnType FunctionName (ParameterTypeList)\nfriend class ClassName\n\n\n\nUML\n\n\n\nListing 3\nclass Human {\nprivate:\n   string Name;\n   int Age;\n   friend void DisplayAge(const Human& Person);\npublic:\n   Human(string InputName, int InputAge) {\n      Name = InputName;\n      Age = InputAge;\n   }\n};\nvoid DisplayAge(const Human& Person) {\n   cout &lt;&lt; Person.Age &lt;&lt; endl;\n}\nint main() {\n   Human FirstMan(\"Adam\", 25);\n   DisplayAge(FirstMan);\n   return 0;\n}",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>MORE ABOUT CLASSES</span>"
+    ]
+  },
+  {
+    "objectID": "lect02-class-2.html#workshop",
+    "href": "lect02-class-2.html#workshop",
+    "title": "3  MORE ABOUT CLASSES",
+    "section": "3.8 Workshop",
+    "text": "3.8 Workshop\n\n✒ Quiz\n\nWhat is the this pointer?\nWhen I create an instance of a class using new, where is the class created?\nMy class has a raw pointer int * that contains a dynamically allocated array of integers. Does sizeof report different sizes depending on the number of integers in the dynamic array?\nAll my class members are private, and my class does not contain any declared friend class or function. Who can access these members?\nCan one class member method invoke another?\nWhat is a constructor good for?\nWhat is a destructor good for?\n\n\n\n💻 Exercises\n\nProgramming Challenges of chapter 13\n3. Car Class\n5. RetailItem Class\nProgramming Challenges of chapter 14\n1. Numbers Class\n2. Day of the Year",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>MORE ABOUT CLASSES</span>"
+    ]
+  },
+  {
+    "objectID": "lect02-class-2.html#references",
+    "href": "lect02-class-2.html#references",
+    "title": "3  MORE ABOUT CLASSES",
+    "section": "3.9 References",
+    "text": "3.9 References",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>MORE ABOUT CLASSES</span>"
+    ]
+  },
+  {
+    "objectID": "lect03-inheritance.html",
+    "href": "lect03-inheritance.html",
+    "title": "4  INHERITANCE & AGGREGATION",
+    "section": "",
+    "text": "4.1 Introduction to inheritance",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>INHERITANCE & AGGREGATION</span>"
+    ]
+  },
+  {
+    "objectID": "lect03-inheritance.html#introduction-to-inheritance",
+    "href": "lect03-inheritance.html#introduction-to-inheritance",
+    "title": "4  INHERITANCE & AGGREGATION",
+    "section": "",
+    "text": "What Is Inheritance?\n\nInheritance allows a new class to be based on an existing class. The new class inherits all the member variables and functions (except the constructors and destructor) of the class it is based on.\n\n\n\n\nInheritance and the “Is a” Relationship\nWhen one object is a specialized version of another object, there is an “is a” relationship between them. For example, a grasshopper is an insect. Here are a few other examples of the “is a” relationship.\n\nA poodle is a dog.\nA car is a vehicle.\nA tree is a plant.\nA rectangle is a shape.\nA football player is an athlete.\n\nInheritance involves a base class and a derived class.\nclass &lt;Derived Class&gt; : &lt;Type Of Inheritance&gt; &lt;Base Class&gt;\n{\npublic:\n   &lt;public attributes/functions&gt;\nprivate:\n   &lt;private attributes/functions&gt;\n};\n\n\nInheritance in UML\n\nInheritance between classes.\n\n\n\n\nExamples of Inheritance Taken from Daily Life\n\n\n\nBase Class\nExample Derived Classes\n\n\n\n\nFish\nGoldfish, Carp, Tuna\n\n\nMammal\nHuman, Elephant, Lion, Platypus\n\n\nBird\nCrow, Parrot, Ostrich, Kiwi, Platypus\n\n\nShape\nCircle, Polygon\n\n\nPolygon\nTriangle, Octagon\n\n\n\n\n\nListing 1\n#include &lt;iostream&gt;\nusing namespace std;\nclass Fish {\npublic:\n   bool FreshWaterFish;\n   void Swim() {\n      if (FreshWaterFish)\n         cout &lt;&lt; \"Swims in lake\" &lt;&lt; endl;\n      else\n         cout &lt;&lt; \"Swims in sea\" &lt;&lt; endl;\n   }\n};\nclass Tuna: public Fish {\npublic:\n   Tuna() {\n      FreshWaterFish = false;\n   }\n};\nclass Carp: public Fish {\npublic:\n   Carp() {\n      FreshWaterFish = true;\n   }\n};\nint main() {\n   Carp myLunch;\n   Tuna myDinner;\n   cout &lt;&lt; \"Getting my food to swim\" &lt;&lt; endl;\n   cout &lt;&lt; \"Lunch: \";\n   myLunch.Swim();\n   cout &lt;&lt; \"Dinner: \";\n   myDinner.Swim();\n   return 0;\n}",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>INHERITANCE & AGGREGATION</span>"
+    ]
+  },
+  {
+    "objectID": "lect03-inheritance.html#hierarchical-organization-of-concepts",
+    "href": "lect03-inheritance.html#hierarchical-organization-of-concepts",
+    "title": "4  INHERITANCE & AGGREGATION",
+    "section": "4.2 Hierarchical organization of concepts",
+    "text": "4.2 Hierarchical organization of concepts\n\nClass Hierarchies\n\nA base class can also be derived from another class.\n\n\nSometimes it is desirable to establish a hierarchy of classes in which one class inherits from a second class, which in turn inherits from a third class\nIn some cases, the inheritance of classes goes on for many layers.\n\n\n\n\nHierarchical organization of concepts\n\nA group of concepts is divided into sub-groups according to some criterion.\nWe should use only one criterion at a time to classify a group of concepts.\n\n\n\nConcepts are recursively classified into subgroups\n\n\n\n\nIt is possible to have different ways to create logical hierarchical organization of concepts!",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>INHERITANCE & AGGREGATION</span>"
+    ]
+  },
+  {
+    "objectID": "lect03-inheritance.html#types-of-inheritance",
+    "href": "lect03-inheritance.html#types-of-inheritance",
+    "title": "4  INHERITANCE & AGGREGATION",
+    "section": "4.3 Types of inheritance",
+    "text": "4.3 Types of inheritance\n\nProtected Members and Class Access\n\nProtected members of a base class are like private members, but they may be accessed by derived classes. The base class access specification determines how private, public, and protected base class members are accessed when they are inherited by the derived classes.\n\n\n\nTypes of inheritance (in C++)\n\nThere are 3 types of inheritance in C++:\n\npublic inheritance: public and protected of the base class become public and protected of the derived class.\nprotected inheritance: public and protected of the base class become protected of the derived class.\nprivate inheritance: public and protected of the base class become private of the derived class.\n\nNotes: from now on, if there is no mention of what type of inheritance, it means public inheritance",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>INHERITANCE & AGGREGATION</span>"
+    ]
+  },
+  {
+    "objectID": "lect03-inheritance.html#derived-class",
+    "href": "lect03-inheritance.html#derived-class",
+    "title": "4  INHERITANCE & AGGREGATION",
+    "section": "4.4 Derived class",
+    "text": "4.4 Derived class\n\nMember functions inheritance\n\nMember functions of the base class are inherited in the derived class, except:\n\nConstructors\nDestructors\nAssignment operators\n\n\n\n\nOrder of Construction/Deconstruction\n\nThe base class’s constructor is called before the derived class’s constructor. The destructors are called in reverse order, with the derived class’s destructor being called first.\n\nWhen a new object of a derived class is created:\n\nThe constructor of the base class is invoked first.\nThen, the constructor of the derived class is invoked.\nIn the constructor of the derived class, we can specify which constructor of the base class is called. Otherwise, the default constructor of the base class will be invoked.\n\nWhen an object of the derived class finishes its lifespan:\n\nThe destructor of the derived class is invoked first.\nThen, the destructor of the base class is called later.\n\n\n\n\nBase Class Initialization\n\nUsing initialization lists and in invoking the appropriate base class constructor via the constructor of the derived class\n\nclass Base {\npublic:\n   Base(int SomeNumber) { // overloaded constructor\n      // Do something with SomeNumber\n   }\n};\nclass Derived: public Base {\npublic:\n   Derived(): Base(25) { // instantiate class Base with \n                         // argument 25\n      // derived class constructor code\n   }\n};\n\n\nDerived Class Overriding Base Class Methods\n\nSometimes, we need to “re-define” the member functions of a base class in a derived class. It can be done by implements the same functions in the class Derived with the same return values and signatures as in the class Base it inherits from\n\n\nNotes\nThis re-definition will hide other overloading member functions of this function from the base class.\n\n\n\nListing 2\n#include &lt;iostream&gt;\nusing namespace std;\nclass Fish {\nprivate:\n   bool FreshWaterFish;\npublic:\n   // Fish constructor\n   Fish(bool IsFreshWater) : FreshWaterFish(IsFreshWater){}\n   void Swim() {\n      if (FreshWaterFish)\n         cout &lt;&lt; \"Swims in lake\" &lt;&lt; endl;\n      else\n         cout &lt;&lt; \"Swims in sea\" &lt;&lt; endl;\n   }\n};\nclass Tuna: public Fish {\npublic:\n   Tuna(): Fish(false) {}\n   void Swim() {\n      cout &lt;&lt; \"Tuna swims real fast\" &lt;&lt; endl;\n   }\n};\nclass Carp: public Fish {\npublic:\n   Carp(): Fish(true) {}\n   void Swim() {\n      cout &lt;&lt; \"Carp swims real slow\" &lt;&lt; endl;\n   }\n};\nint main() {\n   Carp myLunch;\n   Tuna myDinner;\n   cout &lt;&lt; \"Getting my food to swim\" &lt;&lt; endl;\n   cout &lt;&lt; \"Lunch: \";\n   myLunch.Swim();\n   cout &lt;&lt; \"Dinner: \";\n   myDinner.Swim();\n   return 0;\n}\n\n\nInvoking Overridden Methods of a Base Class\n\nIf we want to be invoke Fish::Swim(),we need to use the scope resolution operator (::)\n\nint main() {\n    ...\n    myDinner.Fish::Swim();\n    ...\n}\n\nIf our specialized implementations in Tuna:Swim() and Carp::Swim() need to reuse the base class’ generic implementation of Fish::Swim(), we use the scope resolution operator (::)\n\nclass Carp: public Fish {\npublic:\n   Carp(): Fish(true) {}\n   void Swim() {\n      cout &lt;&lt; \"Carp swims real slow\" &lt;&lt; endl;\n      Fish::Swim();  // use scope resolution operator::\n   }\n};\n\n\nProblem with re-definition\nclass Base {\npublic:\n    void test() {...}\n    void test(int) {...}\n    void test(int, int) {...}\n};\nclass Derived : public Base {\npublic:\n    void test(int) {...}\n};\nint main() {\n    Derived obj;\n    int x, y;\n    ...\n    obj.test(x);    // OK\n    obj.test(x, y); // compile error\n}\n\nSolution 1: Use the scope resolution operator ::\nSolution 2: Use the \\textcolor{blue}{using} keyword in class Derived to unhide other overloaded methods\nSolution 3: Override all overloaded methods\n\n\n\nThe Problem of Slicing\n\nWhat happens when a programmer does the following?\n\nDerived objectDerived;\nBase objectBase = objectDerived;\n\nOr, alternatively, what if a programmer does this?\n\nvoid FuncUseBase(Base input);\n...\nDerived objectDerived;\nFuncUseBase(objectDerived);\n\nThe compiler copies only the Base part of objectDerived—that is, not the complete object—rather than only that part of it that would fit Base.\n\n\nThe unwanted reduction of the part of data that makes the Derived a specialization of Base is called slicing.\n\n\n\nCaution\nTo avoid slicing problems, don’t pass parameters by value.\n\n\n\nAssignment operator\n\nAssignment operator is not inherited from the base class. To implement the assignment operator for the derived class:\n\nFirst, calling the assignment operator of the base class to assign data members of the base class .\nThen, implement the assignment for data member of the derived class part.\n\n\nDerived& operator= (const Derived& CopySource)\n{\n   if(this != &copySource) { // do not copy itself\n      // the base class copy\n      Base::operator=(CopySource)\n      // the derived class copy\n   }\n   return *this;\n}",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>INHERITANCE & AGGREGATION</span>"
+    ]
+  },
+  {
+    "objectID": "lect03-inheritance.html#multiple-inheritance",
+    "href": "lect03-inheritance.html#multiple-inheritance",
+    "title": "4  INHERITANCE & AGGREGATION",
+    "section": "4.5 Multiple inheritance",
+    "text": "4.5 Multiple inheritance\n\nMultiple inheritance\n\nMultiple inheritance is when a derived class has two or more base classes.\n\n\n\n\nListing 3\n#include &lt;iostream&gt;\nusing namespace std;\nclass Mammal {\npublic:\n   void FeedBabyMilk() {\n      cout &lt;&lt; \"Mammal: Baby says glug!\" &lt;&lt; endl;\n   }\n};\nclass Reptile {\npublic:\n   void SpitVenom() {\n      cout &lt;&lt; \"Reptile: Shoo enemy! Spits venom!\" &lt;&lt; endl;\n   }\n};\nclass Bird {\npublic:\n   void LayEggs() {\n      cout &lt;&lt; \"Bird: Laid my eggs, am lighter now!\" &lt;&lt; endl;\n   }\n};\nclass Platypus: public Mammal, public Bird, public Reptile {\npublic:\n   void Swim() {\n      cout &lt;&lt; \"Platypus: Voila, I can swim!\" &lt;&lt; endl;\n   }\n};\nint main() {\n   Platypus realFreak;\n   realFreak.LayEggs();\n   realFreak.FeedBabyMilk();\n   realFreak.SpitVenom();\n   realFreak.Swim();\n   return 0;\n}",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>INHERITANCE & AGGREGATION</span>"
+    ]
+  },
+  {
+    "objectID": "lect03-inheritance.html#aggregation",
+    "href": "lect03-inheritance.html#aggregation",
+    "title": "4  INHERITANCE & AGGREGATION",
+    "section": "4.6 Aggregation",
+    "text": "4.6 Aggregation\n\nAggregation\n\nAggregation occurs when a class contains an instance of another class.\n\n\nWhen an instance of one class is a member of another class, it is said that there is a “has a” relationship between the classes.\nFor example, the relationships that exist among the Course, Instructor, and TextBook classes can be described as follows:\n\nThe course has an instructor.\nThe course has a textbook.\n\n\n\n\nAggregation\n\n\n\nExamples of Aggregation Taken from Daily Life\n\n\n\nPart\nWhole\n\n\n\n\nMotor\nCar (Car has a Motor)\n\n\nHeart\nMammal (Mammal has a Heart)\n\n\nRefill\nPen (Pen has a Refill)\n\n\nMoon\nSky (Sky has a Moon)",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>INHERITANCE & AGGREGATION</span>"
+    ]
+  },
+  {
+    "objectID": "lect03-inheritance.html#workshop",
+    "href": "lect03-inheritance.html#workshop",
+    "title": "4  INHERITANCE & AGGREGATION",
+    "section": "4.7 Workshop",
+    "text": "4.7 Workshop\n\n✒ Quiz\n\nI want some base class members to be accessible to the derived class but not outside the class hierarchy. What access specifier do I use?\nIf I pass an object of the derived class as an argument to a function that takes a parameter of the base class by value, what happens?\nWhich one should I favor? Private inheritance or composition?\nHow does the using keyword help me in an inheritance hierarchy?\nA class Derived inherits private from class Base. Another class SubDerived inherits public from class Derived. Can SubDerived access public members of class Base?\n\n\n\n💻 Exercises\n\nProgramming Challenges of chapter 13\n1. Employee and ProductionWorker Classes\n2. ShiftSupervisor Class\n3. TeamLeader Class",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>INHERITANCE & AGGREGATION</span>"
+    ]
+  },
+  {
+    "objectID": "lect03-inheritance.html#references",
+    "href": "lect03-inheritance.html#references",
+    "title": "4  INHERITANCE & AGGREGATION",
+    "section": "4.8 References",
+    "text": "4.8 References",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>INHERITANCE & AGGREGATION</span>"
+    ]
+  },
+  {
+    "objectID": "lect03-relationship.html",
+    "href": "lect03-relationship.html",
+    "title": "5  RELATIONSHIP",
+    "section": "",
+    "text": "The Need for Relationships",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>RELATIONSHIP</span>"
+    ]
+  },
+  {
+    "objectID": "lect03-relationship.html#generalization",
+    "href": "lect03-relationship.html#generalization",
+    "title": "5  RELATIONSHIP",
+    "section": "5.1 Generalization",
+    "text": "5.1 Generalization\n\nGeneralization\n\nA generalization is a relationship between a general kind of thing (called the superclass or parent) and a more specific kind of thing (called the subclass or child).\nGeneralization is sometimes called an “is-a-kind-of” relationship: one thing (like the class BayWindow) is-a-kind-of a more general thing (for example, the class Window)",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>RELATIONSHIP</span>"
+    ]
+  },
+  {
+    "objectID": "lect03-relationship.html#association",
+    "href": "lect03-relationship.html#association",
+    "title": "5  RELATIONSHIP",
+    "section": "5.2 Association",
+    "text": "5.2 Association\n\nAssociation\n\nAn association is a structural connection between classes \\(\\to\\) This implies that there is a link between objects in the associated classes\nAssociations are represented on class diagrams by a (solid) line connecting the associated classes\nNavigation across an association can be\n\nbidirectional (default)\nuni-directional\n\nName: An association can have a name, and you use that name to describe the nature of the relationship.\nRole: When a class participates in an association, it has a specific role that it plays in that relationship.\nMultiplicity: In many modeling situations, it’s important for you to state how many objects may be connected across an instance of an association.\nConsider the association of member\n\n\n\nAssociation relationship between class A and class B\n\nthere is at least one attribute of class B in class A and/or\nthere is at least one attribute of class A in class B\n\n\n\n\n\nAggregation\n\nAggregation is a specialized form of association in which a whole is related to its part(s)\n\nAggregation is known as a “part-of” or containment relationship\n\nAn aggregation is represented as an association with a diamond next to the class denoting the aggregate (whole)\n\n\n\n\nAssociation or Aggregation?\n\nIf two objects are tightly bound by a whole-part relationship \\(\\to\\) The relationship is an aggregation\nIf two objects are usually considered as independent, even though they are often linked \\(\\to\\) The relationship is an association\n\n\n\nAn aggregation hierarchy for a car.\n\n\n\nAssociations as a separate service.\n\n\n\n\nReflexive Associations\n\nIn a reflexive association, objects in the same class are related\n\nIndicates that multiple objects in the same class collaborate together in some way\n\n\n\n\n\nReflexive Aggregates\n\nAggregates can also be reflexive\n\nClassic bill of materials type problem \\(\\to\\)This indicates a recursive relationship\n\n\n\n\n\nComposition\n\nA form of aggregation with strong ownership and coincident lifetimes\n\nThe parts cannot survive the whole/aggregate\n\n\n\n\n\nAggregation or Composition?",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>RELATIONSHIP</span>"
+    ]
+  },
+  {
+    "objectID": "lect03-relationship.html#dependency",
+    "href": "lect03-relationship.html#dependency",
+    "title": "5  RELATIONSHIP",
+    "section": "5.3 Dependency",
+    "text": "5.3 Dependency\n\nDependency\n\nA dependency is a relationship that states that one thing (for example, class FilmClip) uses the information and services of another thing (for example, class Channel), but not necessarily the reverse.\n\n\n\n\nDependencies vs. Associations\n\nAssociations are structural relationships\nDependencies are non-structural relationships\nIn order for objects to “know each other” they must be visible\n\nLocal variable reference\nParameter reference\nGlobal reference\nField reference\n\n\nPermanent relationships — Association (field visibility)\n\nRelationships are context-dependent\n\nTransient relationships — Dependency\n\nA context-independent relationship\nMultiple objects share the same instance\n\nPass instance as a parameter (parameter visibility)\nMake instance a managed global (global visibility)\n\nMultiple objects don’t share the same instance (local visibility)\n\nHow long does it take to create/destroy?\n\nExpensive? Use field, parameter, or global visibility\nStrive for the lightest relationships possible",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>RELATIONSHIP</span>"
+    ]
+  },
+  {
+    "objectID": "lect03-relationship.html#common-modeling-techniques",
+    "href": "lect03-relationship.html#common-modeling-techniques",
+    "title": "5  RELATIONSHIP",
+    "section": "5.4 Common Modeling Techniques",
+    "text": "5.4 Common Modeling Techniques\n\nModeling Simple Dependencies\n\nA common kind of dependency relationship is the connection between a class that uses another class as a parameter to an operation.\nTo model this using relationship,\n\nCreate a dependency pointing from the class with the operation to the class used as a parameter in the operation.\n\n\n\n\n\nModeling Inheritance\nTo model inheritance relationships, - Given a set of classes, look for responsibilities, attributes, and operations that are common to two or more classes. - Elevate these common responsibilities, attributes, and operations to a more general class. If necessary, create a new class to which you can assign these elements (but be careful about introducing too many levels). - Specify that the more-specific classes inherit from the more-general class by placing a generalization relationship that is drawn from each specialized class to its more-general parent.\n\n\n\nModeling Structural Relationships\nTo model structural relationships,\n\nFor each pair of classes, if you need to navigate from objects of one to objects of another, specify an association between the two. This is a data-driven view of associations.\nFor each pair of classes, if objects of one class need to interact with objects of the other class other than as local variables in a procedure or parameters to an operation, specify an association between the two. This is more of a behavior-driven view of associations.\nFor each of these associations, specify a multiplicity (especially when the multiplicity is not *, which is the default), as well as role names (especially if they help to explain the model).\nIf one of the classes in an association is structurally or organizationally a whole compared with the classes at the other end that look like parts, mark this as an aggregation by adorning the association at the end near the whole with a diamond.\nStructural relationships of a set of classes drawn from an information system for a school.\n\n\n\n\nModeling Simple Collaborations\n\n\nOO Principle: Every operation is the responsibility of a single class.\nHowever, no class stands alone. Each works in collaboration with others to carry out some semantics greater than each individual.\n\n\nTo model a collaboration\n\nIdentify the mechanism you’d like to model. A mechanism represents some function or behavior of the part of the system you are modeling that results from the interaction of a society of classes, interfaces, and other things.\nFor each mechanism, identify the classes, interfaces, and other collaborations that participate in this collaboration. Identify the relationships among these things as well.\nUse scenarios to walk through these things. Along the way, you’ll discover parts of your model that were missing and parts that were just plain semantically wrong.\nBe sure to populate these elements with their contents. For classes, start with getting a good balance of responsibilities. Then, over time, turn these into concrete attributes and operations.\n\n\n\nExample",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>RELATIONSHIP</span>"
+    ]
+  },
+  {
+    "objectID": "lect03-relationship.html#references",
+    "href": "lect03-relationship.html#references",
+    "title": "5  RELATIONSHIP",
+    "section": "5.5 References",
+    "text": "5.5 References",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>RELATIONSHIP</span>"
+    ]
+  },
+  {
+    "objectID": "lect04-polymorphism.html",
+    "href": "lect04-polymorphism.html",
+    "title": "6  POLYMORPHISM",
+    "section": "",
+    "text": "6.1 Basics of Polymorphism",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>POLYMORPHISM</span>"
+    ]
+  },
+  {
+    "objectID": "lect04-polymorphism.html#basics-of-polymorphism",
+    "href": "lect04-polymorphism.html#basics-of-polymorphism",
+    "title": "6  POLYMORPHISM",
+    "section": "",
+    "text": "Object Reference and Object Pointer\n\n\n\nObject Pointer and Assignment\n\n\n\nPolymorphism\n\nGeneral\n“Poly” is Greek for many, and “morph” means form. Polymorphism is that feature of object-oriented languages that allows objects of different types to be treated similarly.\n\n\nC++\nPolymorphism allows an object reference variable or an object pointer to reference objects of different types and to call the correct member functions, depending upon the type of object being referenced.\n\n\n\n\nNeed for Polymorphic Behavior\n\nIt is possible that both Tuna and Carp provide their own Tuna::Swim() and Carp::Swim() methods to make Tuna and Carp different swimmers.\nIf a user with an instance of Tuna uses the base class type to invoke Fish::Swim(), he ends up executing only the generic part Fish::Swim() and not Tuna::Swim(), even though that base class instance Fish is a part of a Tuna.\n\n\n\nListing 1\n#include &lt;iostream&gt;\nusing namespace std;\nclass Fish {\npublic:\n   void Swim() {\n      cout &lt;&lt; \"Fish swims!\" &lt;&lt; endl;\n   }\n};\nclass Tuna:public Fish {\npublic:\n   // override Fish::Swim\n   void Swim() {\n      cout &lt;&lt; \"Tuna swims!\" &lt;&lt; endl;\n   }\n};\nvoid MakeFishSwim(Fish& InputFish) {\n   // calling Fish::Swim\n   InputFish.Swim();\n}\nint main() {\n   Tuna myDinner;\n   // calling Tuna::Swim\n   myDinner.Swim();\n   // sending Tuna as Fish\n   MakeFishSwim(myDinner);\n   return 0;\n}\n\n\nPolymorphic Behavior Implemented Using Virtual Functions\n\nThe virtual function provides the ability to define a function in a base class and have a function of the same name and type in a derived class called when a user calls the base class function.\n\n\nSyntax\nclass Base {\n   virtual ReturnType FunctionName (Parameter List);\n};\n\nclass Derived : public Base {\n   ReturnType FunctionName (Parameter List);\n};\n\n\n\nUML\n\n\n\nListing 2\n#include &lt;iostream&gt;\nusing namespace std;\nclass Fish {\npublic:\n   virtual void Swim() {\n      cout &lt;&lt; \"Fish swims!\" &lt;&lt; endl;\n   }\n};\nclass Tuna:public Fish {\npublic:\n   // override Fish::Swim\n   void Swim() {\n      cout &lt;&lt; \"Tuna swims!\" &lt;&lt; endl;\n   }\n};\nclass Carp:public Fish {\npublic:\n   // override Fish::Swim\n   void Swim() {\n      cout &lt;&lt; \"Carp swims!\" &lt;&lt; endl;\n   }\n};\nvoid MakeFishSwim(Fish& InputFish) {\n   // calling virtual method Swim()\n   InputFish.Swim();\n}\nint main() {\n   Tuna myDinner;\n   Carp myLunch;\n   // sending Tuna as Fish\n   MakeFishSwim(myDinner);\n   // sending Carp as Fish\n   MakeFishSwim(myLunch);\n   return 0;\n}\n\n\nNeed for Virtual Destructors\n\nWhat happens when a function calls operator delete using a pointer of type Base* that actually points to an instance of type Derived?\n\n#include &lt;iostream&gt;\nusing namespace std;\nclass Fish {\npublic:\n   Fish() {\n      cout &lt;&lt; \"Constructed Fish\" &lt;&lt; endl;\n   }\n   ~Fish() {\n      cout &lt;&lt; \"Destroyed Fish\" &lt;&lt; endl;\n   }\n};\nclass Tuna:public Fish {\npublic:\n   Tuna() {\n      cout &lt;&lt; \"Constructed Tuna\" &lt;&lt; endl;\n   }\n   ~Tuna() {\n      cout &lt;&lt; \"Destroyed Tuna\" &lt;&lt; endl;\n   }\n};\nvoid DeleteFishMemory(Fish* pFish) {\n   delete pFish;\n}\nint main() {\n   cout &lt;&lt; \"Allocating a Tuna on the free store:\" &lt;&lt; endl;\n   Tuna* pTuna = new Tuna;\n   cout &lt;&lt; \"Deleting the Tuna: \" &lt;&lt; endl;\n   DeleteFishMemory(pTuna);\n   cout &lt;&lt; \"Instantiating a Tuna on the stack:\" &lt;&lt; endl;\n   Tuna myDinner;\n   cout &lt;&lt; \"Automatic destruction as it goes out of scope: \" &lt;&lt; endl;\n   return 0;\n}\n\nTo avoid this problem, we use virtual destructors\n\nclass Fish {\npublic:\n   Fish() {\n      cout &lt;&lt; \"Constructed Fish\" &lt;&lt; endl;\n   }\n   virtual ~Fish() { // virtual destructor! \n      cout &lt;&lt; \"Destroyed Fish\" &lt;&lt; endl;\n   }\n};\n\n\nStatic binding vs Dynamic binding\nBinding\n\nThe determination of which method in the class hierarchy is to be used for a particular object.\n\nStatic (Early) Binding\n\nWhen the compiler can determine which method in the class hierarchy to use for a particular object.\n\nDynamic (Late) Binding\n\nWhen the determination of which method in the class hierarchy to use for a particular object occurs during program execution.\n\n\n\nHow Do virtual Functions Work\n\nConsider a class Base that declared N virtual functions:\n\nclass Base {\npublic:\n   virtual void Func1() {\n      // Func1 implementation\n   }\n   virtual void Func2() {\n      // Func2 implementation\n   }\n   // .. so on and so forth\n   virtual void FuncN() {\n      // FuncN implementation\n   }\n};\n\nclass Derived that inherits from Base overrides Base::Func2(), exposing the other virtual functions directly from class Base:\n\nclass Derived: public Base {\npublic:\n   virtual void Func1() {\n      // Func2 overrides Base::Func2()\n   }\n   // no implementation for Func2() \n   virtual void FuncN() {\n      // FuncN implementation\n   }\n};\nThe compiler sees an inheritance hierarchy and understands that the Base defines certain virtual functions that have been overridden in Derived. What the compiler now does is to create a table called the Virtual Function Table (VFT) for every class that implements a virtual function or derived class that overrides it.\n\n\nEach table is comprised of function pointers, each pointing to the available implementation of a virtual function\n\nvoid DoSomething(Base& objBase) {\n   objBase.Func1();   // invoke Derived::Func1\n}\nint main()\n{\n   Derived objDerived;\n   objDerived.Func2();\n   DoSomething(objDerived);\n};\n\n\nAbstract Base Classes and Pure Virtual Functions\n\n\nA pure virtual function is a virtual member function of a base class that must be overridden.\nWhen a class contains a pure virtual function as a member, that class becomes an abstract base class.\nAn abstract base class cannot be instantiated.\n\n\n\nSyntax\nclass AbstractBase {\n\npublic:\n\n   virtual void DoSomething() = 0;  // pure virtual method\n\n};\n\n\n\nObject-Oriented Design\n\nSometimes it is helpful to begin a class hierarchy with an abstract base class. The abstract base class represents the generic, or abstract, form of all the classes that are derived from it.\n\n\nPrinciple\n\n“High-level modules should not depend upon low-level modules. Both should depend upon abstractions.”\n“Abstractions should not depend on details. Details should depend on abstractions.”\n\n\n\n\n\nUML\n\n\n\nListing 3\n#include &lt;iostream&gt;\nusing namespace std;\nclass Fish {\npublic:\n   // a pure virtual function Swim\n   virtual void Swim() = 0;\n};\nclass Tuna:public Fish {\npublic:\n   void Swim() {\n      cout &lt;&lt; \"Tuna swims\" &lt;&lt; endl;\n   }\n};\nclass Carp:public Fish {\n   void Swim() {\n      cout &lt;&lt; \"Carp swims\" &lt;&lt; endl;\n   }\n};\nvoid MakeFishSwim(Fish& inputFish) {\n   inputFish.Swim();\n}\nint main() {\n   // Fish myFish;   // Fails\n   Carp myLunch;\n   Tuna myDinner;\n   MakeFishSwim(myLunch);\n   MakeFishSwim(myDinner);\n   return 0;\n}",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>POLYMORPHISM</span>"
+    ]
+  },
+  {
+    "objectID": "lect04-polymorphism.html#diamond-problem",
+    "href": "lect04-polymorphism.html#diamond-problem",
+    "title": "6  POLYMORPHISM",
+    "section": "6.2 Diamond Problem",
+    "text": "6.2 Diamond Problem\n\nDiamond Problem\nReplicated based class\n\nWith the ability of specifying more than one base class, there may be a chance of having the same base class more than once.\n\nDiamond problem\n\n\n\nWhat happens when we instantiate a Platypus? How many instances of class Animal are instantiated for one instance of Platypus?\n\n\n\n\nLisiting 4\n#include &lt;iostream&gt;\nusing namespace std;\nclass Animal {\npublic:\n   Animal() {\n      cout &lt;&lt; \"Animal constructor\" &lt;&lt; endl;\n   }\n   int Age;\n};\nclass Mammal:public Animal {\n};\nclass Bird:public Animal {\n};\nclass Reptile:public Animal {\n};\nclass Platypus:public Mammal, public Bird, public Reptile {\npublic:\n   Platypus() {\n      cout &lt;&lt; \"Platypus constructor\" &lt;&lt; endl;\n   }\n};\nint main() {\n   Platypus duckBilledP;\n   // Age is ambiguous as there are \n   // three instances of base Animal\n   duckBilledP.Age = 25;\n   return 0;\n}\n\n\nUsing virtual Inheritance to Solve the Diamond Problem\n\nThe solution is in virtual inheritance\n\n\nSyntax\nclass Derived1: public virtual Base {\n\n   // ... members and functions\n\n};\n\nclass Derived2: public virtual Base {\n\n   // ... members and functions\n\n};\n\n\n\nLisiting 5\n#include &lt;iostream&gt;\nusing namespace std;\nclass Animal {\npublic:\n   Animal() {\n      cout &lt;&lt; \"Animal constructor\" &lt;&lt; endl;\n   }\n   int Age;\n};\nclass Mammal:public virtual Animal {\n};\nclass Bird:public virtual Animal {\n};\nclass Reptile:public virtual Animal {\n};\nclass Platypus:public Mammal, public Bird, public Reptile {\npublic:\n   Platypus() {\n      cout &lt;&lt; \"Platypus constructor\" &lt;&lt; endl;\n   }\n};\nint main() {\n   Platypus duckBilledP;   \n   // no compile error\n   duckBilledP.Age = 25;\n   return 0;\n}",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>POLYMORPHISM</span>"
+    ]
+  },
+  {
+    "objectID": "lect04-polymorphism.html#virtual-copy-constructors",
+    "href": "lect04-polymorphism.html#virtual-copy-constructors",
+    "title": "6  POLYMORPHISM",
+    "section": "6.3 Virtual Copy Constructors",
+    "text": "6.3 Virtual Copy Constructors\n\nDefinition\n\nIt is technically impossible in C++ to have virtual copy constructors\nVirtual copy constructors are not possible because the virtual keyword in context of base class methods being overridden by implementations available in the derived class are about polymorphic behavior generated at runtime.\nConstructors, on the other hand, are not polymorphic in nature as they can construct only a fixed type, and hence C++ does not allow usage of the virtual copy constructors.\nDesign pattern: Propotype Pattern\n\n\n\nVirtual Clone Method\nclass Fish {\npublic:\n   virtual Fish* Clone() const = 0; // pure virtual function\n};\n \nclass Tuna:public Fish {\n// ... other members\npublic:\n   Fish* Clone() const {      // virtual clone function\n      return new Tuna(*this); // return new Tuna that is \n                              // a copy of this\n   }\n};",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>POLYMORPHISM</span>"
+    ]
+  },
+  {
+    "objectID": "lect04-polymorphism.html#workshop",
+    "href": "lect04-polymorphism.html#workshop",
+    "title": "6  POLYMORPHISM",
+    "section": "6.4 Workshop",
+    "text": "6.4 Workshop\n\n✒ Quiz\n\nWhat is a virtual method?\nWhen does static binding take place? When does dynamic binding take place?\nWhat is an abstract base class?\n\n\n\n💻 Exercises\n\nProgramming Challenges of chapter 15 [@Gaddis2014]\n\n9. File Filter\n12. Ship , CruiseShip , and CargoShip Classes",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>POLYMORPHISM</span>"
+    ]
+  },
+  {
+    "objectID": "lect04-polymorphism.html#references",
+    "href": "lect04-polymorphism.html#references",
+    "title": "6  POLYMORPHISM",
+    "section": "6.5 References",
+    "text": "6.5 References",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>POLYMORPHISM</span>"
+    ]
+  },
+  {
+    "objectID": "lect05-operator.html",
+    "href": "lect05-operator.html",
+    "title": "7  OPERATOR OVERLOADING AND CASTING OPERATOR",
+    "section": "",
+    "text": "7.1 Operator Overloading",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>OPERATOR OVERLOADING AND CASTING OPERATOR</span>"
+    ]
+  },
+  {
+    "objectID": "lect05-operator.html#operator-overloading",
+    "href": "lect05-operator.html#operator-overloading",
+    "title": "7  OPERATOR OVERLOADING AND CASTING OPERATOR",
+    "section": "",
+    "text": "Operators in C++\n\nOn a syntactical level, there is very little that differentiates an operator from a function, save for the use of the keyword operator. An operator declaration looks quite like a function declaration\n\n\nSyntax\nreturn_type operator operator_symbol (...parameter list...);\n\n\nUsage\n\nOperator is a global function or a static member function\nobject1 operator_symbol object2\noperator operator_symbol (object1, object2)\nOperator is the member of a class\nobject1 operator_symbol object2\nobject1.operator operator_symbol (object2)\n\n\n\n\nOperator Overloading\n\nC++ allows us to redefine how standard operators work when used with class objects.\n\n\nC++ provides many operators to manipulate data of the primitive data types.\nHowever, what if you wish to use an operator to manipulate class objects?\n\n\n\nOverloading guidelines\n\nDo what users expect for that operator.\nDefine them if they make logical sense; e.g. subtraction of dates are ok but not multiplication or division.\nProvide a complete set of properly related operators: a = a + b and a += b have the same effect.\n\n\n\nLimitations\n\nOnly built-in operators can be overloaded.\nCannot overload operators for built-in data types.\nThe arity of the operators cannot be changed\nThe precedence of the operators remains same.\n\n\n\nOperators Cannot Be Overloaded\n\n\n\nOperator\nName\n\n\n\n\n.\nMember selection\n\n\n.*\nPointer-to-member selection\n\n\n::\nScope resolution\n\n\n? :\nConditional ternary operator\n\n\nsizeof\nGets the size of an object/class type\n\n\n\n\nOperators =, -&gt;, [], () can only be overloaded by non-static functions\n\n\n\nUnary Operators\n\nUnary Operators\n\nOperators that function on a single operand are called unary operators.\nThe typical definition of a unary operator implemented as a global function or a static member function is\n\nreturn_type operator operator_type (parameter_type) {\n\n    // ... implementation\n\n}\n\nA unary operator that is the member of a class is defined as\n\nreturn_type operator operator_type () {\n\n    // ... implementation\n\n}\n\n\nThe unary operators can be overloaded\n\n\n\nOperator\nName\n\n\n\n\n++\nIncrement\n\n\n--\nDecrement\n\n\n*\nPointer dereference\n\n\n–&gt;\nMember selection\n\n\n!\nLogical NOT\n\n\n&\nAddress-of\n\n\n~\nOne’s complement\n\n\n+\nUnary plus\n\n\n-\nUnary negation\n\n\nConversion operators\nConversion operators\n\n\n\n\n\nOperators (++/--)\n\nThe prefix increment operator (++) within the class declaration\n\nCDate& operator ++ () {\n    // operator implementation code\n    return *this;\n}\n\nThe postfix increment operator (++) has a different return value and an input parameter (that is not always used):\n\nCDate operator ++ (int) {\n   // Store a copy of the current state of the object, \n   // before incrementing day\n   CDate Copy (*this);\n   // operator implementation code (that increments this object)\n   // Return the state before increment was performed\n   return Copy;\n}\n\n\nConversion Operators\n\nConvert CDate to string\n\nclass CDate {\nprivate:\n    int m_iDay, m_iMonth, m_iYear;\npublic:\n    ...\n    operator string() {\n        ostringstream formattedDate;\n        formattedDate &lt;&lt; m_iDay &lt;&lt; \"/\" &lt;&lt; m_iMonth &lt;&lt; \"/\" &lt;&lt; m_iYear;\n        return formattedDate.str();\n    }\n};\n\n\n\nBinary Operators\n\nBinary Operators\n\nOperators that function on two operands are called binary operators.\nThe definition of a binary operator implemented as a global function or a static member function is the following:\n\nreturn_type operator_type (parameter1, parameter2);\n\nThe definition of a binary operator implemented as a class member is\n\nreturn_type operator_type (parameter);\n\nThe reason the class member version of a binary operator accepts only one parameter is that the second parameter is usually derived from the attributes of the class itself.\n\n\n\nThe binary operators can be overloaded\n\n\n\n\n\n\n\n\n\nOperator\nName\nOperator\nName\n\n\n\n\n,\nComma\n&lt;\nLess than\n\n\n!=\nInequality\n&lt;&lt;\nLeft shift\n\n\n%\nModulus\n&lt;&lt;=\nLeft shift/assignment\n\n\n%=\nModulus/assignment\n&lt;=\nLess than or equal to\n\n\n&\nBitwise AND\n=\nAssignment, Copy Assignment and Move Assignment\n\n\n&&\nLogical AND\n==\nEquality\n\n\n&=\nBitwise AND/assignment\n&gt;\nGreater than\n\n\n*\nMultiplication\n&gt;=\nGreater than or equal to\n\n\n*=\nMultiplication/assignment\n&gt;&gt;\nRight shift\n\n\n+\nAddition\n&gt;&gt;=\nRight shift/assignment\n\n\n+=\nAddition/assignment\n^\nExclusive OR\n\n\n–\nSubtraction\n^=\nExclusive OR/assignment\n\n\n–=\nSubtraction/assignment\n\\|\nBitwise inclusive OR\n\n\n–&gt;*\nPointer-to-member selection\n\\|=\nBitwise inclusive OR/assignment\n\n\n/\nDivision\n\\|\\|\nLogical OR\n\n\n/=\nDivision/assignment\n[]\nSubscript operator\n\n\n\n\n\nOverloading Copy Assignment Operator (=)\n\nTo ensure deeper copies, as with the copy constructor, we need to specify a copy assignment operator\n\nClassType& operator= (const ClassType& CopySource)\n{\n   if(this != &copySource)  // do not copy itself\n   {\n      // Assignment operator implementation\n   }\n   return *this;\n}\n\n\nOverloading Equality (==) and Inequality (!=) Operators\n\nIt is a good practice to define the comparison operators. A generic expression of the equality operator is the following:\n\nbool operator== (const ClassType& compareTo) {\n   // comparison code here, return true if equal else false\n\n}\n\nThe inequality operator can reuse the equality operator:\n\nbool operator!= (const ClassType& compareTo) {\n   // comparison code here, return true if inequal else false\n \n}\n\n\nSubscript Operator ([])\n\nThe operator that allow array-style [] access to a class is called subscript operator.\nThe typical syntax of a subscript operator is:\n\nreturn_type& operator [] (subscript_type& subscript);\n\nWe can implement two subscript operators—one as a const function and the other as a non-const one\n\n// use to write / change Buffer at Index\nchar& operator [] (int nIndex);  \n// used only for accessing char at Index\nchar& operator [] (int nIndex) const; \n\n\n\nFunction Operator\n\nFunction Operator ()\n\nThe operator () that make objects behave like a function is called a function operator.\nThey find application in the standard template library (STL) and are typically used in STL algorithms.\n\n#include &lt;iostream&gt;\n#include &lt;string&gt;\nusing namespace std;\nclass CDisplay {\npublic:\n   void operator () (string Input) const {\n     cout &lt;&lt; Input &lt;&lt; endl;\n  }\n};\nint main () {\n  CDisplay mDisplayFuncObject;\n  // equivalent to mDisplayFuncObject.operator () (\"Display this string!\");\n  mDisplayFuncObject (\"Display this string!\");\n  return 0;\n}\n\n\n\nFriend functions\n\nWith the keyword friend, we grant access to other functions or classes\nUse member functions if you can. Only choose friend functions when you have to.\nSometimes, friend functions are good: Cannot modify original class, e.g. ostream\n\nclass CSample {\nprivate:\n    int m_a, m_b;\npublic:\n    ...\n    friend int Compute(CSample x);\n}\nint Compute(CSample x) {\n    return x.m_a+x.m_b;\n}\nint main() {\n    CSample x;\n    ...\n    cout&lt;&lt;\"The result is:\"&lt;&lt;Compute(x);\n}\n\n\nOverloading cin and cout\n\nWe cannot access to the istream or ostream code \\(\\to\\) cannot overload &lt;&lt; or &gt;&gt; as member functions\nThey cannot be members of the user-defined class because the first parameter must be an object of that type\nOperators &lt;&lt; and &gt;&gt; must be non-members, but it needs to access to private data members make them friend functions\n\n\nExample\nclass CFraction {\nprivate:\n    int numerator, denominator;\npublic:\n    ...\n    friend ostream& operator &lt;&lt; (ostream&, const CFraction&);\n}\nostream& operator &lt;&lt; (ostream& out, const CFraction& x) {\n    out &lt;&lt; x.numerator &lt;&lt; \" / \" &lt;&lt; x.denominator;\n    return out;\n}\nint main() {\n    CFraction a;\n    ...\n    cout &lt;&lt; a;\n    return 0;\n}",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>OPERATOR OVERLOADING AND CASTING OPERATOR</span>"
+    ]
+  },
+  {
+    "objectID": "lect05-operator.html#casting-operators",
+    "href": "lect05-operator.html#casting-operators",
+    "title": "7  OPERATOR OVERLOADING AND CASTING OPERATOR",
+    "section": "7.2 Casting Operators",
+    "text": "7.2 Casting Operators\n\nThe Need for Casting\n\nIn a perfectly type-safe and type-strong world comprising well-written C++ applications, there should be no need for casting and for casting operators.\nHowever, we live in a real world where modules programmed by a lot of different people and vendors often using different environments have to work together.\nTo make this happen, compilers very often need to be instructed to interpret data in ways that make them compile and the application function correctly.\n\n\n\nC-Style Casting\n\nThe usage syntax of the C-Style casting\ndestination_type dest = (destination_type)src;\n\nMost C++ compilers won’t even let you get away with this\n\nchar* pszString = \"Hello World!\";\n// error: cannot convert char* to int*\nint* pBuf = pszString; \n\nC++ compilers still do see the need to be backward compliant to keep old and legacy code building\n\n// Cast one problem away, create another\nint* pBuf = (int*)pszString; \n\n\n\nThe C++ Casting Operators\n\nThe C++ Casting Operators\nThe four C++ casting operators are - static_cast - dynamic_cast - reinterpret_cast - const_cast\nThe usage syntax of the casting operators is consistent:\ndestination_type  o=cast_type&lt;destination_type&gt;(object_to_be_casted);\ndestination_type* p=cast_type&lt;destination_type*&gt;(pointer_to_be_casted);\ndestination_type& r=cast_type&lt;destination_type&&gt;(reference_to_be_casted);\n\n\nUsing static_cast\n\nstatic_cast is a mechanism that can be used to convert pointers between related types, and perform explicit type conversions for standard data types that would otherwise happen automatically or implicitly.\nstatic_cast implements a basic compile-time check to ensure that the pointer is being cast to a related type.\nUsing static_cast, a pointer can be upcasted to the base type, or can be down-casted to the derived type\n\nBase* pBase = new Derived ();    // construct a Derived object\nDerived* pDerived = static_cast&lt;Derived*&gt;(pBase);    // ok!\n \n// CUnrelated is not related to Base via any inheritance hierarchy\nCUnrelated* pUnrelated = static_cast&lt;CUnrelated*&gt;(pBase); // Error\n// The cast above is not permitted as types are unrelated\n\n\nUsing dynamic_cast\n\nDynamic casting actually executes the cast at runtime.\nDynamic casting works with only polymorphic type\nThe result of a dynamic_cast operation can be checked to see whether the attempt at casting succeeded.\nThe typical usage syntax of the dynamic_cast operator is\n\ndestination_type* pDest = dynamic_cast&lt;destination_type*&gt;(pSource);\n// Check for success of the casting operation before using pointer \nif (pDest)    \n    pDest-&gt;CallFunc();\n\n\nListing 1\n\nUsing dynamic casting to tell whether an fish object is a tuna or a carp\n\n#include &lt;iostream&gt;\nusing namespace std;\nclass Fish {\npublic:\n   virtual void Swim() {\n      cout &lt;&lt; \"Fish swims in water\" &lt;&lt; endl;\n   }\n   // base class should always have virtual destructor\n   virtual ~Fish() {}\n};\nclass Tuna: public Fish {\npublic:\n   void Swim() {\n      cout &lt;&lt; \"Tuna swims real fast in the sea\" &lt;&lt; endl;\n   }\n   void BecomeDinner() {\n      cout &lt;&lt; \"Tuna became dinner in Sushi\" &lt;&lt; endl;\n   }\n};\nclass Carp: public Fish {\npublic:\n   void Swim() {\n      cout &lt;&lt; \"Carp swims real slow in the lake\" &lt;&lt; endl;\n   }\n   void Talk() {\n      cout &lt;&lt; \"Carp talked crap\" &lt;&lt; endl;\n   }\n};\nvoid DetectFishType(Fish* InputFish) {\n   Tuna* pIsTuna = dynamic_cast &lt;Tuna*&gt;(InputFish);\n   if (pIsTuna) {\n      cout &lt;&lt; \"Detected Tuna. Making Tuna dinner: \" &lt;&lt; endl;\n      pIsTuna-&gt;BecomeDinner();   // calling Tuna::BecomeDinner\n   }\n   Carp* pIsCarp = dynamic_cast &lt;Carp*&gt;(InputFish);\n   if(pIsCarp) {\n      cout &lt;&lt; \"Detected Carp. Making carp talk: \" &lt;&lt; endl;\n      pIsCarp-&gt;Talk();  // calling Carp::Talk\n   }\n   cout &lt;&lt; \"Verifying type using virtual Fish::Swim: \" &lt;&lt; endl;\n   InputFish-&gt;Swim(); // calling virtual function Swim\n}\nint main() {\n   Carp myLunch;\n   Tuna myDinner;\n   DetectFishType(&myDinner);\n   cout &lt;&lt; endl;\n   DetectFishType(&myLunch);\n   return 0;\n}\n\n\nUsing reinterpret_cast\n\nreinterpret_cast is the closest a C++ casting operator gets to the C-style cast.\nIt really does allow the programmer to cast one object type to another, regardless of whether or not the types are related; that is, it forces a reinterpretation of type using a syntax as seen in the following sample:\n\nBase * pBase = new Base ();\nCUnrelated * pUnrelated = reinterpret_cast&lt;CUnrelated*&gt;(pBase);\n// The code above was not good programming, \n// even when it compiles!\n\n\nUsing const_cast\n\nconst_cast enables you to turn off the const access modifier to an object.\nConsider a problem\n\nclass SomeClass {\npublic:\n    // ...\n    void DisplayMembers ();\n};\nvoid DisplayAllData (const SomeClass& mData) {\n    mData.DisplayMembers ();  // Compile failure\n    // reason for failure: call to a non-const member \n    // using a const reference\n}\n\nSolution\n\nvoid DisplayAllData (const SomeClass& mData) {\n    SomeClass& refData = const_cast &lt;SomeClass&&gt;(mData);\n    refData.DisplayMembers();    // Allowed!\n}\n\nNote also that const_cast can be used with pointers\n\nvoid DisplayAllData (const SomeClass* pData) {\n    // pData-&gt;DisplayMembers(); Error\n    // attempt to invoke a non-const function!\n    SomeClass* pCastedData = const_cast &lt;SomeClass*&gt;(pData);\n    pCastedData-&gt;DisplayMembers();    // Allowed!\n}\n\n\n\nProblems with the C++ Casting Operators\n\nThe syntax is cumbersome and non-intuitive to being redundant\nLet’s simply compare this code\n\ndouble dPi = 3.14159265;\n \n// C++ style cast: static_cast\nint Num = static_cast &lt;int&gt;(dPi); // result: nNum is 3\n \n// C-style cast\nint Num2 = (int)dPi;              // result: Num2 is 3\n \n// leave casting to the compiler\nint Num3 = dPi;                   // result: Num3 is 3",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>OPERATOR OVERLOADING AND CASTING OPERATOR</span>"
+    ]
+  },
+  {
+    "objectID": "lect05-operator.html#workshop",
+    "href": "lect05-operator.html#workshop",
+    "title": "7  OPERATOR OVERLOADING AND CASTING OPERATOR",
+    "section": "7.3 Workshop",
+    "text": "7.3 Workshop\n\n✒ Quiz\n\nHow does the compiler know whether an overloaded ++ operator should be used in prefix or postfix mode?\nWhat is passed to the parameter of a class’s operator = function?\nWhy shouldn’t a class’s overloaded = operator be implemented with a void operator function?\n\n\n\n💻 Exercises\n\nImplement a CFraction class with\n\n\nbasic arithmetic operators: +, -, *, /\nRemember to handle\n\nCFraction x, y;\ny = x + 5;\ny = 5 + x;\n\nprefix and postfix increment operators x++ and ++x",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>OPERATOR OVERLOADING AND CASTING OPERATOR</span>"
+    ]
+  },
+  {
+    "objectID": "lect05-operator.html#references",
+    "href": "lect05-operator.html#references",
+    "title": "7  OPERATOR OVERLOADING AND CASTING OPERATOR",
+    "section": "7.4 References",
+    "text": "7.4 References",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>OPERATOR OVERLOADING AND CASTING OPERATOR</span>"
+    ]
+  },
+  {
+    "objectID": "lect06-template.html",
+    "href": "lect06-template.html",
+    "title": "8  TEMPLATES AND GENERIC PROGRAMMING",
+    "section": "",
+    "text": "Introduction",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>TEMPLATES AND GENERIC PROGRAMMING</span>"
+    ]
+  },
+  {
+    "objectID": "lect06-template.html#function-templates",
+    "href": "lect06-template.html#function-templates",
+    "title": "8  TEMPLATES AND GENERIC PROGRAMMING",
+    "section": "8.1 Function Templates",
+    "text": "8.1 Function Templates\n\nAn example\n\nOverloaded functions make programming convenient because only one function name must be remembered for a set of functions that perform similar operations.. Each of the functions, however, must still be written individually, even if they perform the same operation\n\nint Max(int a, int b) {\n    return (a&gt;b) ? a : b;\n}\ndouble Max(double a, double b) {\n    return (a&gt;b) ? a : b;\n}\n\nTemplates enable us to write the function once\n\ntemplate &lt;typename T&gt;\nT Max(T a, T b) {\n    return (a&gt;b) ? a : b;\n}\n\n\nFunction Templates\n\nA function template is a “generic” function that can work with any data type. The programmer writes the specifications of the function, but substitutes parameters for data types. When the compiler encounters a call to the function, it generates code to handle the specific data type(s) used in the call\n\n\nSyntax\nThe format of this declaration is\ntemplate &lt;parameter list&gt;\n\nfunction declaration\n\n\nNote\nThe entire template code is usually located in a header file.\n\n\n\nExample\ntemplate &lt;class T&gt;\nvoid swapVars(T &var1, T &var2) {\n    T temp;\n    temp = var1;\n    var1 = var2;\n    var2 = temp;\n} \n\nNote\nAll type parameters defined in a function template must appear at least once in the function parameter list.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>TEMPLATES AND GENERIC PROGRAMMING</span>"
+    ]
+  },
+  {
+    "objectID": "lect06-template.html#class-templates",
+    "href": "lect06-template.html#class-templates",
+    "title": "8  TEMPLATES AND GENERIC PROGRAMMING",
+    "section": "8.2 Class templates",
+    "text": "8.2 Class templates\n\nDefinition\n\nTemplates may also be used to create generic classes and abstract data types. Class templates allow us to create one general version of a class without having to duplicate code to handle multiple data types.\n\n\nSyntax\nThe format of this declaration is\ntemplate &lt;parameter list&gt;\n\nclass declaration\n\n\n\nListing 1\ntemplate &lt;typename T&gt;\nclass CustomizableHuman {\npublic:\n    void SetAge (const T& newValue) { Age = newValue; }\n    const T& GetAge() const {return Age;}\nprivate:\n    T Age;   // T is type we choose to customize this template for!\n};\nvoid main() {\n    // instantiate for type int\n    CustomizableHuman&lt;int&gt; NormalLifeSpan;  \n    NormalLifeSpan.SetAge(80);\n    // instantiate for type long long\n    CustomizableHuman&lt;long long&gt; LongLifeSpan;  \n    LongLifeSpan.SetAge(3147483647);\n    // instantiate for type short\n    CustomizableHuman&lt;short&gt; ShortLifeSpan; \n    ShortLifeSpan.SetAge(40);\n}\n\n\nTemplate Instantiation and Specialization\n\nThe word instantiation normally refers to objects as instances of classes.\nIn case of templates, instantiation is the act or process of creating a specific type from a template declaration and one or more template arguments.\n\nCustomizableHuman&lt;int&gt; NormalLifeSpan;\n\nThe specific type created as a result of this instantiation is called a specialization.\n\n\n\nDeclaring Templates with Multiple Parameters\n\nThe template parameter list can be expanded to declare multiple parameters separated by a comma.\n\ntemplate &lt;typename T1, typename T2&gt;\nclass HoldsPair {\nprivate:\n    T1 Value1;\n    T2 Value2;\npublic:\n    // Constructor that initializes member variables\n    HoldsPair (const T1& value1, const T2& value2) {\n        Value1 = value1;\n        Value2 = value2;\n    };\n};\nvoid main() {\n    // A template instantiation that pairs an int with a double\n    HoldsPair &lt;int, double&gt; pairIntDouble (6, 1.99);     \n    // A template instantiation that pairs an int with an int\n    HoldsPair &lt;int, int&gt; pairIntDouble (6, 500);\n}\n\n\nDeclaring Templates with Default Parameters\n\nWe could modify the previous version of HoldsPair &lt;...&gt; to declare int as the default template parameter type.\n\ntemplate &lt;typename T1=int, typename T2=int&gt;\nclass HoldsPair {\n    // ... method declarations\n};\nvoid main() {\n    // A template instantiation that pairs an int \n    // with an int (default type)\n    HoldsPair &lt;&gt; pairIntDouble (6, 500);\n}\n\n\nTemplate params are not data type\n\nBesides the data type params, class can have non-type arguments.\n\ntemplate&lt;class T, int size&gt; \nclass Myfilebuf {\nprivate:\n    T* filepos;\n    static int array[size];\npublic:\n    Myfilebuf() { /* ... */ }\n    ~Myfilebuf() { }\n    // ... Other function declarations\n};\n\n\nTemplate Classes and static Members\n\nA static member is shared across all instances of a template class with the same specialization.\nEach specialization of the template class effectively gets its own static variable.\nNote: do not forget static member initialization\n\n\n\nListing 2\n#include &lt;iostream&gt;\nusing namespace std;\ntemplate &lt;typename T&gt;\nclass TestStatic {\nprivate:\n    static int staticValue;\npublic:\n    void setValue(int value) { staticValue = value; }\n    int getValue() { return staticValue; }\n};\n// static member initialization\ntemplate&lt;typename T&gt; int TestStatic&lt;T&gt;::staticValue;\nint main() {\n    TestStatic&lt;int&gt; Int_Year;\n    TestStatic&lt;int&gt; Int_2;\n    TestStatic&lt;double&gt; Double_1;\n    TestStatic&lt;double&gt; Double_2;\n    cout &lt;&lt; \"Setting staticValue for Int_Year to 2011\" &lt;&lt; endl;\n    Int_Year.setValue(2011);    \n    cout &lt;&lt; \"Setting staticValue for Double_2 to 1011\" &lt;&lt; endl;\n    Double_2.setValue(1011);\n    cout &lt;&lt; \"Int_2.staticValue = \" &lt;&lt; Int_2.getValue() &lt;&lt; endl;\n    cout &lt;&lt; \"Double_1.staticValue = \" &lt;&lt; Double_1.getValue() &lt;&lt; endl;\n    return 0;\n}\n\n\nTemplate inheritance\n\nIt is possible to inherit from a template class. All the usual rules for inheritance and polymorphism apply.\n\ntemplate&lt;typename T&gt;\nclass Base {\nprivate:\n    T data;\npublic:\n    void set(T val) { data = val; }\n};\n\ntemplate&lt;typename T&gt;\nclass Derived1 : public Base&lt;T&gt; {\npublic:\n    void set(T val) { Base&lt;T&gt;::set(val); }\n};\nclass Derived2 : public Base&lt;int&gt; {\npublic:\n    void set(int val) { Base&lt;int&gt;::set(val); }\n};\n\nint main() {\n    Derived1&lt;double&gt; obj1;\n    Derived2 obj2;\n    obj1.set(4.0);\n    obj2.set(1);\n    return 0;\n}\n\n\nVariadic template\n\nVariadic templates are supported by C++ (since the C++11 standard)\n\n\nSyntax\nThe format of this declaration is\ntemplate &lt;typename First, typename... Rest&gt;\n\nfunction/class declaration\n\n\n\nListing 3\n// base case\nvoid print() { \n    cout &lt;&lt; \"I am empty function and called at last\";\n}   \n\n// recursive\ntemplate &lt;typename T, typename... Ts&gt; \nvoid print(T var1, Ts... var2) {\n    cout &lt;&lt; var1 &lt;&lt; endl; \n    print(var2...); \n}",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>TEMPLATES AND GENERIC PROGRAMMING</span>"
+    ]
+  },
+  {
+    "objectID": "lect06-template.html#generic-programming",
+    "href": "lect06-template.html#generic-programming",
+    "title": "8  TEMPLATES AND GENERIC PROGRAMMING",
+    "section": "8.3 Generic programming",
+    "text": "8.3 Generic programming\n\nDefinition\n\nGeneric programming means writing code that can be reused for objects of many different types.\n\nThree primary tasks:\n\nCategorize abstractions in a domain into concepts\nImplement generic algorithms based on concepts\nBuild concrete models for the concepts\n\n\n\nCharacteristics of Generic Libraries\n\nReusable: able to operate on user-defined types\nComposable: able to operate on data types defined in another library\nEfficient: performance on par with non-generic, hand-coded implementations\n\n\n\nGeneric Programming Process\n\nThe Generic Programming process focuses on finding commonality among similar implementations of the same algorithm, then providing suitable abstractions in the form of concepts so that a single, generic algorithm can realize many concrete implementations.\nThis process, called lifting, is repeated until the generic algorithm has reached a suitable level of abstraction, where it provides maximal reusability without sacrificing performance.\nDual to the lifting process is specialization, which synthesizes efficient concrete implementations for particular uses of a generic algorithm. Only by balancing the lifting and specialization processes can we ensure that the resulting generic algorithms are both reusable and efficient.\n\n\n\nLifting\nint sum(int* array, int n) {\n    int result = 0;\n    for (int i = 0; i &lt; n; ++i)\n        result = result + array[i];\n    return result;\n}\n\\(\\downarrow\\)\ntemplate&lt;typename T&gt;\nT sum(T* array, int n) {\n    T result = 0;\n    for (int i = 0; i &lt; n; ++i)\n        result = result + array[i];\n    return result;\n}",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>TEMPLATES AND GENERIC PROGRAMMING</span>"
+    ]
+  },
+  {
+    "objectID": "lect06-template.html#workshop",
+    "href": "lect06-template.html#workshop",
+    "title": "8  TEMPLATES AND GENERIC PROGRAMMING",
+    "section": "8.4 Workshop",
+    "text": "8.4 Workshop\n\n✒ Quiz\n\nWhy is it more convenient to write a function template than a series of overloaded functions?\nWhy must we be careful when writing a function template that uses operators such as [] with its parameters?\nDo we need to specify template arguments when invoking a template function?\nHow many instances of static variables exist for a given template class?\n\n\n\n💻 Exercises\n\nImplement template function for search operation\nImplement template function for sort operation\n\n\n\nReferences",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>TEMPLATES AND GENERIC PROGRAMMING</span>"
+    ]
+  },
+  {
+    "objectID": "lect07-stl.html",
+    "href": "lect07-stl.html",
+    "title": "9  STANDARD TEMPLATE LIBRARY",
+    "section": "",
+    "text": "Introduction\nThe STL is a set of template classes and functions that supply the programmer with",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>STANDARD TEMPLATE LIBRARY</span>"
+    ]
+  },
+  {
+    "objectID": "lect07-stl.html#stl-containers",
+    "href": "lect07-stl.html#stl-containers",
+    "title": "9  STANDARD TEMPLATE LIBRARY",
+    "section": "9.1 STL Containers",
+    "text": "9.1 STL Containers\n\nSTL Containers\nContainers are STL classes that are used to store data. STL supplies two types of container classes:\n\nSequential containers\nAssociative containers\n\nIn addition to these STL also provides classes called Container Adapters that are variants of the same with reduced functionality which support a specific purpose.\n\n\nSequential Containers\n\nSequential Containers\nSequential containers are characterized by a fast insertion time, but are relatively slow in find operations.\n\nvector – Operates like a dynamic array and grows at the end. Think of a vector like a shelf of books to which you can add or remove books on one end\ndeque – Similar to vector except that it allows for new elements to be inserted or removed at the beginning, too\nlist – Operates like a doubly-linked list. Think of this like a chain where an object is a link in the chain. You can add or remove links – that is, objects – at any position\nforward_list – Similar to a list except that it is a singly-linked list of elements that allows you to iterate only in one direction\n\n\n\n\nvector: Inserting Elements at the End\n#include &lt;iostream&gt;\n#include &lt;vector&gt;\nusing namespace std;\nint main () {\n   vector &lt;int&gt; vecIntegers;\n   // Insert sample integers into the vector\n   vecIntegers.push_back (50);\n   vecIntegers.push_back (1);\n   vecIntegers.push_back (987);\n   vecIntegers.push_back (1001);\n   cout &lt;&lt; \"The vector contains \";\n   cout &lt;&lt; vecIntegers.size () &lt;&lt; \" Elements\" &lt;&lt; endl;\n   return 0;\n}\n\n\nvector: Removing Elements\n#include &lt;iostream&gt;\n#include &lt;vector&gt;\nusing namespace std;\nint main () {\n   vector &lt;int&gt; vecIntegers;\n   // Insert sample integers into the vector\n   vecIntegers.push_back (50);\n   vecIntegers.push_back (1);\n   vecIntegers.push_back (987);\n   // Erase one element at the end\n   vecIntegers.pop_back ();\n   cout &lt;&lt; \"The vector contains \";\n   cout &lt;&lt; vecIntegers.size () &lt;&lt; \" Elements\" &lt;&lt; endl;\n   return 0;\n}\n\n\nvector: Accessing Elements\nElements in a vector can be accessed using the following methods:\n\nusing the subscript operator []\nusing the member function at()\nor using iterators\n\n   vector &lt;int&gt; vecIntegers;\n   // Insert sample integers into the vector\n   vecIntegers.push_back (50);\n   vecIntegers.push_back (1);\n   vecIntegers.push_back (987);\n   vecIntegers[2] = 123;\n\n\nAssociative Containers\n\nAssociative Containers\nAssociative containers are those that store data in a sorted fashion – akin to a dictionary. This results in slower insertion times, but presents significant advantages when it comes to searching. The associative containers supplied by STL are\n\nset – Stores unique values sorted on insertion in a container featuring logarithmic complexity.\nunordered_set – Stores unique values sorted on insertion in a container featuring near constant complexity.\nmap – Stores key-value pairs sorted by their unique keys in a container with logarithmic complexity\nunordered_map – Stores key-value pairs sorted by their unique keys in a container with near constant complexity.\nmultiset – Akin to a set. Additionally, supports the ability to store multiple items having the same value; that is, the value doesn’t need to be unique.\nunordered_multiset – Akin to a unordered_set. Additionally, supports the ability to store multiple items having the same value; that is, the value doesn’t need to be unique.\nmultimap – Akin to a map. Additionally, supports the ability to store key-value pairs where keys don’t need to be unique.\nunordered_multimap – Akin to a unordered_map. Additionally, supports the ability to store key-value pairs where keys don’t need to be unique.\n\n\n\n\nContainer Adapters\n\nContainer Adapters\nContainer Adapters are variants of sequential and associative containers that have limited functionality and are intended to fulfill a particular purpose. The main adapter classes are:\n\nstack – Stores elements in a LIFO (last-in-first-out) fashion, allowing elements to be inserted (pushed) and removed (popped) at the top.\nqueue – Stores elements in FIFO (first-in-first-out) fashion, allowing the first element to be removed in the order they’re inserted.\npriority_queue – Stores elements in a sorted order, such that the one whose value is evaluated to be the highest is always first in the queue.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>STANDARD TEMPLATE LIBRARY</span>"
+    ]
+  },
+  {
+    "objectID": "lect07-stl.html#stl-iterators",
+    "href": "lect07-stl.html#stl-iterators",
+    "title": "9  STANDARD TEMPLATE LIBRARY",
+    "section": "9.2 STL Iterators",
+    "text": "9.2 STL Iterators\n\nSTL Iterators\n\nIterators in STL are template classes that in some ways are a generalization of pointers.\nThese are template classes that give the programmer a handle by which he can work with and manipulate STL containers and perform operations on them.\nNote that operations could as well be STL algorithms that are template functions, Iterators are the bridge that allows these template functions to work with containers, which are template classes, in a consistent and seamless manner.\n\n\n\nIterator Types\n\n\n\n\n\n\n\nIterator Type\nDescription\n\n\n\n\nInput\nInput iterators of the purest kinds guarantee read access only.\n\n\nOutput\nOutput iterators of the strictest types guarantee write access only.\n\n\nForward\nCan only move forward in a container (uses the ++ operator).\n\n\nBidirectional\nCan move forward or backward in a container (uses the ++ and -- operators).\n\n\nRandom-access\nCan move forward and backward, and can jump to a specific data element in a container.\n\n\n\n\n\nPointers vs. Iterators\n\n\n\n\n\n\n\n\n\n\noperator\nmeaning\npointer\niterator\n\n\n\n\n\n* and -&gt;\nto dereference\nyes\nyes\n\n\n\n=\nto assign\nyes\nyes\n\n\n\n== and !=\nto compare\nyes\nyes\n\n\n\n++\nto move next element\nyes\nyes\n\n\n\n--\nto move previous element\nyes\nyes\n(bidirectional and random-access)\n\n\n+\nto move forward a specific number of elements\nyes\nyes\n\n\n\n-\nto move backward a specific number of elements\nyes\nyes\n(bidirectional and random-access)\n\n\n\n\n\n\nIterator Syntax\n\nTo define an iterator, we must know what type of container we will be using it with.\nThe general format of an iterator definition:\n\ncontainerType::iterator iteratorName;\n\ncontainerType::const_iterator iteratorName;\n\ncontainerType::reverse_iterator iteratorName;\nwhere containerType is the STL container type, and iteratorName is the name of the iterator variable that you are defining.\n\n\nContainter and Iterator\nAll of the STL containers - have a begin() member function that returns an iterator pointing to the container’s first element. - have a end() member function that returns an iterator pointing to the position after the container’s last element.",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>STANDARD TEMPLATE LIBRARY</span>"
+    ]
+  },
+  {
+    "objectID": "lect07-stl.html#stl-algorithms",
+    "href": "lect07-stl.html#stl-algorithms",
+    "title": "9  STANDARD TEMPLATE LIBRARY",
+    "section": "9.3 STL Algorithms",
+    "text": "9.3 STL Algorithms\n\nSTL Algorithms\n\nIdea\nFinding, sorting, reversing, and the like are standard programming requirements that should not require the programmer to reinvent implementation to support.\n\nTo use STL algorithms must include the header file\n\n#include &lt;algorithm&gt;\n\nThis is precisely why STL supplies these functions in the form of STL algorithms that work well with containers using iterators to help the programmer with some of the most common requirements.\nSTL algorithms can be broadly classified into two types:\n\nnon-mutating algorithms\nmutating algorithms\n\n\n\n\n\nNon-Mutating Algorithms\n\nAlgorithms that change neither the order nor the contents of a container are called non-mutating algorithms.\n\nfind – Helps find a value in a collection\nfind_if – Helps find a value in a collection on the basis of a specific user-defined predicate\n\n\n\n\nMutating Algorithms\n\nMutating algorithms are those that change the contents or the order of the sequence they are operating on.\n\nreverse – Reverses a collection\nremove_if – Helps remove an item from a collection on the basis of a user-defined predicate\ntransform – Helps apply a user-defined transformation function to elements in a container\n\n\n\n\nThe Interaction Between Containers and Algorithms Using Iterators\n\n\n\nUsage of STL Algorithms\nFinding elements given a value or a condition\n\nGiven a container such as a vector, STL algorithms find() and find_if() help you find an element that matches a value or fulfills a condition, respectively. The usage of find() follows this pattern\n\nauto iElementFound = find ( vecIntegers.begin () // Start of range\n                          , vecIntegers.end ()   // End of range\n                          , NumToFind );         // Element to find\n \n// Check if find succeeded\nif ( iElementFound != vecIntegers.end ())\n   cout &lt;&lt; \"Result: Value found!\" &lt;&lt; endl;",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>STANDARD TEMPLATE LIBRARY</span>"
+    ]
+  },
+  {
+    "objectID": "lect07-stl.html#workshop",
+    "href": "lect07-stl.html#workshop",
+    "title": "9  STANDARD TEMPLATE LIBRARY",
+    "section": "9.4 Workshop",
+    "text": "9.4 Workshop\n\n✒ Quiz\n\nWhat would be your choice of a container that has to contain an array of objects with insertion possible at the top and at the bottom?\nWe need to store elements for quick lookup. What container would we choose?\nWe need to store elements in a std::set but still have the storage and lookup criteria altered, based on conditions that are not necessarily the value of the elements. Is this possible?\nWhat part of STL helps connect algorithms to containers so that algorithms can work on those elements?\nWould you choose to use container hash_set in an application that needs to be ported to different platforms and built using different C++ compilers?\n\n\n\n💻 Exercises\nDemonstrate how STL algorithms do\n\nCounting elements given a value or a condition\nSearching for an element or a range in a collection\nInitializing elements in a container to a specific value\nInitialize elements to a value generated at runtime\nCopy and remove operations\nSorting and searching in a sorted collection and erasing duplicates",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>STANDARD TEMPLATE LIBRARY</span>"
+    ]
+  },
+  {
+    "objectID": "lect07-stl.html#references",
+    "href": "lect07-stl.html#references",
+    "title": "9  STANDARD TEMPLATE LIBRARY",
+    "section": "9.5 References",
+    "text": "9.5 References",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>STANDARD TEMPLATE LIBRARY</span>"
+    ]
+  },
+  {
+    "objectID": "lect08-advanced.html",
+    "href": "lect08-advanced.html",
+    "title": "10  ADVANCED C++ FEATURES",
+    "section": "",
+    "text": "C++ Is Software System",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>ADVANCED C++ FEATURES</span>"
+    ]
+  },
+  {
+    "objectID": "lect08-advanced.html#memory-management",
+    "href": "lect08-advanced.html#memory-management",
+    "title": "10  ADVANCED C++ FEATURES",
+    "section": "10.1 Memory Management",
+    "text": "10.1 Memory Management\n\nOverview\nIn C++,\n\nwhen we create variables, objects, or anything you can think of, the machine allocates memory for this\nwhen we don’t need them, release them.\n\n\n\n\nThe memory heap and stack\nC++ uses two common places to store objects\n\nStack memory\nHeap memory\n\n\n\nStack: Static memory allocation\n\nStack memory is used to store static data such as local variables and parameters where C++ knows at compile time.\n\n\n\n\nHeap: Dynamic memory allocation\n\nHeap memory is used to store dynamic data such as dynamic objects.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>ADVANCED C++ FEATURES</span>"
+    ]
+  },
+  {
+    "objectID": "lect08-advanced.html#exception-handling",
+    "href": "lect08-advanced.html#exception-handling",
+    "title": "10  ADVANCED C++ FEATURES",
+    "section": "10.2 Exception Handling",
+    "text": "10.2 Exception Handling\n\nIntroduction\n\nException is unexpected something that has occurred or been detected\n\nThere are two types of exception:\n\nSynchronous exceptions\n\nThe exceptions which occur during the program execution due to some fault in the input data are known as synchronous exceptions.\nFor example: errors such as out of range, overflow, underflow.\n\nAsynchronous exceptions\n\nThe exceptions caused by events or faults unrelated (external) to the program and beyond the control of the program are called asynchronous exceptions.\nFor example: errors such as keyboard interrupts, hardware malfunctions, disk failure.\n\n\n\n\nMechanism\n\nException Handling Mechanism\nThe exception handling mechanism is built upon three keywords:\n\ntry-block A try block is used to preface a block of statements which may generate exceptions.\ncatch-block A catch block catches the exception thrown by the throw statement in the try block and handles it appropriately. One/multiple catch blocks can be associated with a try block\nthrow When an exception is detected, it is thrown using a throw statement.\n\n\n\nException Thrown Inside\n\n\n\nException Thrown by Other Function\n\n\n\nExceptions – Flow of Control\n\nIf the function which is called from within a try block throws an exception, the function terminates and the try block is immediately exited.\n\nIf automatic objects were created in the try block and an exception is thrown, they are destroyed.\n\nA catch block to process the exception is searched for in the source code immediately following the try block.\nIf a catch block is found that matches the exception thrown, it is executed. If no catch block that matches the exception is found, the program terminates.\n\n\n\nTry/Catch Syntax\n\ntry/catch block\n\ntry {\n\n    ...\n\n}\n\ncatch( ) {\n\n    ...\n\n}\n\nnested try/catch blocks\n\ntry {\n\n    ...\n\n    try {\n\n        ...\n\n    }\n\n    catch( ) {\n\n        ...\n\n    }\n\n    ...\n\n}\n\ncatch( ) {\n\n    ...\n\n}\n\n\n\nFunction-try-block\n\nFunction-try-block establishes an exception handler around the body of a function and the member initializer list (if used in a constructor) as well.\n\nclass Person {\nprivate:\n    ...\n    Date dob;\npublic\n    Person(int d, int m, int y) \n    try : dob(d, m, y) \n    { ... }\n    catch (...) \n    { ... }\n};\n\n\nThrowing Exception\n\nWhen an exception is desired to be handled is detected, it is thrown using the throw statement.\nThrow statement has one of the following forms:\n\nthrow (exception);\n\nthrow exception;\n\nthrow;\n\nThe operand object exception may be of any type, including constants.\n\n\nException classes\n\nOne of the major problems with using basic data types (such as int) as exception types is that they are inherently vague.\nOne way to solve this problem is to use exception classes. An exception class is just a normal class that is designed specifically to be thrown as an exception.\n\nclass MyException {\nprivate:\n    string msg;\npublic:\n    MyException(string msg) {\n        this-&gt;msg = msg;\n    }\n    string getInfo() { \n        return msg; \n    }\n};\nvoid main() {\n    try {\n        ...\n        if(b == 0) \n            throw MyException(\"Divided by zero\");\n        cout &lt;&lt; \"a/b=\" &lt;&lt; a/b;\n    }\n    catch(MyException& ex) {\n        cout &lt;&lt; ex.getInfo();\n    }\n}\n\n\n\nCatching Exception\n\nA catch block looks like a function definition:\n\ncatch(type exception) { // catch by value\n\n    // statements for handling exceptions.\n\n}\n\ncatch(type& exception) { // catch by reference\n\n    // statements for handling exceptions.\n\n}\n\nThe type indicates the type of exception that catch block handles.\nThe catch statement catches an exception whose type matches with the type of catch argument.\nCatch exceptions by reference in order to:\n\navoid copying\navoid slicing\nallow exception object to be modified and then rethrown\n\nA catch statement can also force to catch all exceptions instead of a certain type alone.\n\ncatch(...) {\n\n    // statements for handling all exceptions.\n\n}\n\nRe-throwing an Exception\n\nA handler can re-throw the exception caught without processing it.\nThis can be done using throw without any arguments.\nEvery time when an exception is re-thrown it will not be caught by the same catch statements rather it will be caught by the catch statements outside the try/catch block.\n\n\n\nListing 1\nint gcd(int a, int b) {\n    if(a &lt;= 0 || b &lt;= 0)\n        throw string(\"error\");\n\n    while(a != b) \n        if(a &gt; b) a -= b;\n        else b -= a;\n\n    return a;\n}\nvoid main() {\n    ...\n    try {\n        u = gcd(a, b);\n        cout &lt;&lt; u;\n    }\n    catch(string ex) {\n        cout &lt;&lt; ex;\n    }\n}\n\n\nException and Inheritance\n\nConsider the following program\n\nclass Base {};\nclass Derived: public Base {};\nvoid main() {\n    try {\n        throw Derived();\n    }\n    catch (Base &base) {\n        cout &lt;&lt; \"caught Base\";\n    }\n    catch (Derived &derived) {\n        cout &lt;&lt; \"caught Derived\";\n    }\n}\n\n\n\nStandard Exception Classes\n\nStandard Exception Classes\n\nAll exception classes in standard library derived (directly or indirectly) from std::exception class\nException classes derived from std::exception class\n\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nlogic_error\nfaulty logic in program\n\n\nruntime_error\nerror caused by circumstances beyond scope of program\n\n\nbad_type_id\ninvalid operand for typeid operator\n\n\nbad_cast\ninvalid expression for dynamic_cast\n\n\nbad_weak_ptr\nbad weak_ptr given\n\n\nbad_function_call\nfunction has no target\n\n\nbad_alloc\nstorage allocation failure\n\n\nbad_exception\nuse of invalid exception type in certain contexts\n\n\nbad_variant_access\nvariant accessed in invalid way\n\n\n\n\n\n\nListing 2\n#include &lt;iostream&gt;\n#include &lt;exception&gt;  // include this to catch exception bad_alloc\nusing namespace std;\nint main() {\n   cout &lt;&lt; \"Enter number of integers you wish to reserve: \";\n   try    {\n      int Input = 0;\n      cin &gt;&gt; Input;\n      // Request memory space and then return it\n      int* pReservedInts = new int [Input];\n      delete[] pReservedInts;\n   }\n   catch (std::bad_alloc& exp)    {\n      cout &lt;&lt; \"Exception encountered: \" &lt;&lt; exp.what() &lt;&lt; endl;\n      cout &lt;&lt; \"Got to end, sorry!\" &lt;&lt; endl;\n   }\n   catch(...)    {\n      cout &lt;&lt; \"Exception encountered. Got to end, sorry!\" &lt;&lt; endl;\n   }\n   return 0;\n}\n\n\n\nException and Resource\n\nException and Resource\n\nConsider the following function\n\nint fibo(int n) {\n    int *a = new int[n+2];\n    if(n &gt; 46) throw \"overflow\";\n    a[0] = 1; \n    a[1] = 1;   \n    for(int i=2; i&lt;=n; i++) a[i] = a[i-1] + a[i-2];\n    int re = a[n];\n    delete[] a;\n    return re;\n}\n\nIt leaks the memory if n &gt; 46\n\nSolution\n\nRewrite the function or\nUse Resource Acquisition Is Initialization\n\n\n\nResource Acquisition Is Initialization\n\nResource Acquisition Is Initialization (RAII), a C++ programming technique proposed by Bjarne Stroustrup\n\n\nencapsulate each resource (allocated heap memory, thread of execution, open socket, open file, locked mutex, disk space, database connection) into a class, where\n\nthe constructor acquires the resource and establishes all class invariants or throws an exception if that cannot be done\nthe destructor releases the resource and never throws exceptions\n\nit binds the life cycle of a resource to the lifetime of an object; always use the resource via an instance of a RAII-class that either\n\nhas automatic storage duration or temporary lifetime itself, or\nhas lifetime that is bounded by the lifetime of an automatic or temporary object\n\nMost smart pointers\nMany wrappers for\n\nmemory\nfiles\nmutexes\nnetwork sockets\ngraphic ports",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>ADVANCED C++ FEATURES</span>"
+    ]
+  },
+  {
+    "objectID": "lect08-advanced.html#smart-pointers",
+    "href": "lect08-advanced.html#smart-pointers",
+    "title": "10  ADVANCED C++ FEATURES",
+    "section": "10.3 Smart Pointers",
+    "text": "10.3 Smart Pointers\n\nIntroduction\n\nA smart pointer in C++ is a class with overloaded operators, which behaves like a conventional pointer.\n\n\nC++ supplies full flexibility to the programmer in memory allocation, deallocation, and management. Unfortunately, this flexibility is a double-edged sword.\nIt can memory-related problems, such as memory leaks, when dynamically allocated objects are not correctly released.\n\n\n\nThe Problem with Using Conventional Pointers\nIn the following line of code, there is no obvious way to tell whether the memory pointed to by pData\n\nWas allocated on the heap, and therefore eventually needs to be deallocated?\nIs the responsibility of the caller to deallocate?\nWill automatically be destroyed by the object’s destructor?\n\nCData *pData = mObject.GetData();\n/*\nQuestions: Is object pointed by pData dynamically allocated using new?\nWho will perform delete: caller or the called?\nAnswer: No idea!\n*/\npData-&gt;Display();\n\n\nHow Do Smart Pointers Help?\n\nThe programmer can choose a smarter way to allocate and manage dynamic data by adopting the use of smart pointers in his programs:\n\nsmart_pointer&lt;CData&gt; spData = mObject.GetData();\n \n// Use a smart pointer like a conventional pointer!\nspData-&gt;Display();\n(*spData).Display();\n \n// Don't have to worry about de-allocation\n// (the smart pointer's destructor does it for you)\n\nSmart pointers behave like conventional pointers but supply useful features via their overloaded operators and destructors to ensure that dynamically allocated data is destroyed in a timely manner.\n\n\n\nHow Are Smart Pointers Implemented?\ntemplate &lt;typename T&gt;\nclass smart_pointer {\nprivate:\n    T* m_pRawPointer;\npublic:\n    // constructor\n    smart_pointer (T* pData) : m_pRawPointer (pData) {} \n    // destructor\n    ~smart_pointer () {delete pData;}\n    // copy constructor\n    smart_pointer (const smart_pointer & anotherSP) {...}\n    // copy assignment operator\n    smart_pointer& operator= (const smart_pointer& anotherSP) {...}\n    T& operator* () const {       // dereferencing operator    \n        return *(m_pRawPointer);\n    }\n    T* operator-&gt; () const {      // member selection operator\n        return m_pRawPointer;\n    }\n};\n\n\nTypes of Smart Pointers\n\nTypes of Smart Pointers\nClassification of smart pointers is actually a classification of their memory resource management strategies. These are\n\nDeep copy\nCopy on Write (COW)\nReference counted\nReference linked\nDestructive copy\n\n\n\nDeep Copy\n\nIn a smart pointer that implements deep copy, every smart pointer instance holds a complete copy of the object that is being managed.\nWhenever the smart pointer is copied, the object pointed to is also copied (thus, deep copy).\nWhen the smart pointer goes out of scope, it releases the memory it points to (via the destructor).\n\n\n\nListing 3\ntemplate &lt;typename T&gt;\nclass deepcopy_smart_pointer {\nprivate:\n    T* m_pObject;\npublic:\n    // ... other functions\n    // copy constructor of the deepcopy pointer\n    deepcopy_smart_pointer (const deepcopy_smart_pointer& source)     {\n        // Clone() is virtual: ensures deep copy of Derived class object\n        m_pObject = source-&gt;Clone ();\n    }\n    // copy assignment operator\n    deepcopy_smart_pointer& operator= (const deepcopy_smart_pointer& source) {\n        if (m_pObject)\n            delete m_pObject;\n        m_pObject = source-&gt;Clone ();\n    }\n};\n\n\nCopy on Write Mechanism\n\nCopy on Write (COW as it is popularly called) attempts to optimize the performance of deep-copy smart pointers by sharing pointers until the first attempt at writing to the object is made.\nOn the first attempt at invoking a non-const function, a COW pointer typically creates a copy of the object on which the non-const function is invoked, whereas other instances of the pointer continue sharing the source object.\nCOW has its fair share of fans. For those that swear by COW, implementing operators (*) and (-&gt;) in their const and non-const versions is key to the functionality of the COW pointer. The latter creates a copy.\n\n\n\nReference-Counted Smart Pointers\n\nReference counting in general is a mechanism that keeps a count of the number of users of an object.\nWhen the count reduces to zero, the object is released.\nSo, reference counting makes a very good mechanism for sharing objects without having to copy them.\nReference counting suffers from the problem caused by cyclic dependency.\n\nThere are at least two popular ways to keep this count:\n\nReference count maintained in the object being pointed to\nReference count maintained by the pointer class in a shared object\n\n\n\nReference-Linked Smart Pointers\n\nReference-linked smart pointers are ones that don’t proactively count the number of references using the object; rather, they just need to know when the number comes down to zero so that the object can be released.\nThey are called reference-linked because their implementation is based on a double-linked list.\nWhen a new smart pointer is created by copying an existing one, it is appended to the list.\nWhen a smart pointer goes out of scope or is destroyed, the destructor de-indexes the smart pointer from this list.\nReference linking also suffers from the problem caused by cyclic dependency, as applicable to reference-counted pointers.\n\n\n\nDestructive Copy\n\nDestructive copy is a mechanism where a smart pointer, when copied, transfers complete ownership of the object being handled to the destination and resets itself.\n\n\n\nListing 4\ntemplate &lt;typename T&gt;\nclass destructivecopy_pointer {\nprivate:\n   T* pObject;\npublic:\n   destructivecopy_pointer(T* pInput):pObject(pInput) {}\n   ~destructivecopy_pointer() { delete pObject; }\n   // copy constructor\n   destructivecopy_pointer(destructivecopy_pointer& source) {\n      // Take ownership on copy\n      pObject = source.pObject;\n      // destroy source\n      source.pObject = 0;\n   }\n   // copy assignment operator\n   destructivecopy_pointer& operator= (destructivecopy_pointer& rhs) {\n      if (pObject != source.pObject) {\n         delete pObject;\n         pObject = source.pObject;\n         source.pObject = 0;\n      }\n   }\n};\n\n\n\nStandard Smart Pointers\n\nIntroduction\n\nSince C++ 11, we can use smart pointers to dynamically allocate memory and not worry about deleting the memory when we are finished using it.\nMust #include the memory header file\n\n#include &lt;memory&gt;\n\nThree types of smart pointer\n\nunique_ptr \n\nshared_ptr\n\nweak_ptr\n\n\nListing 5\n#include &lt;iostream&gt;\n#include &lt;memory&gt;  // include this to use std::unique_ptr\nusing namespace std;\nclass Fish {\npublic:\n    Fish() {cout &lt;&lt; \"Fish: Constructed!\" &lt;&lt; endl;}\n    ~Fish() {cout &lt;&lt; \"Fish: Destructed!\" &lt;&lt; endl;}\n    void Swim() const {cout &lt;&lt; \"Fish swims in water\" &lt;&lt; endl;}\n};\nvoid MakeFishSwim(const unique_ptr&lt;Fish&gt;& inFish) {\n   inFish-&gt;Swim();\n}\nint main() {\n   unique_ptr&lt;Fish&gt; smartFish (new Fish);\n   smartFish-&gt;Swim();\n   MakeFishSwim(smartFish); // OK, as MakeFishSwim accepts reference\n   unique_ptr&lt;Fish&gt; copySmartFish;\n   // copySmartFish = smartFish; // error: operator= is private\n   return 0;\n}",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>ADVANCED C++ FEATURES</span>"
+    ]
+  },
+  {
+    "objectID": "lect08-advanced.html#move-constructor-and-move-assignment-operator",
+    "href": "lect08-advanced.html#move-constructor-and-move-assignment-operator",
+    "title": "10  ADVANCED C++ FEATURES",
+    "section": "10.4 Move Constructor and Move Assignment Operator",
+    "text": "10.4 Move Constructor and Move Assignment Operator\n\nIntroduction\n\nThe move constructor and the move assignment operators are performance optimization features that have become a part of the standard in C++11, ensuring that temporary values (rvalues that don’t exist beyond the statement) are not unnecessarily copied.\n\n\n\nThe Problem of Unwanted Copy Steps\nclass MyString {\n    ...\n    MyString operator+ (const MyString& AddThis) {\n        MyString NewString;\n        if (AddThis.Buffer != NULL) {\n            // copy into NewString\n        }\n        return NewString;\n    }\n    ...\n}\nMyString Hello(\"Hello \");\nMyString World(\"World \");\nMyString CPP(\"of C++\");\nMyString sayHello(Hello + World + CPP);  \nMyString sayHelloAgain(\"overwrite this\");\nsayHelloAgain = Hello + World + CPP; \n\nLine 4: operator+, copy constructor\nLine 6: operator+, copy constructor, copy assignment operator=\n\n\n\nDeclaring a Move Constructor and Move Assignment Operator\n\nSyntax\nclass ClassName\n\n    // move constructor\n\n    ClassName(ClassName&& moveSource);\n\n    // move assignment operator\n\n    ClassName& operator= (ClassName&& moveSource);\n\n\n\nListing 5\n#include &lt;iostream&gt;\nusing namespace std;\nclass MyString {\nprivate:\n   char* Buffer;\n   // private default constructor\n   MyString(): Buffer(NULL) {\n      cout &lt;&lt; \"Default constructor called\" &lt;&lt; endl;\n   }\npublic:\n   // Destructor\n   ~MyString() {\n      if (Buffer != NULL)\n         delete [] Buffer;\n   }\n   int GetLength() {\n      return strlen(Buffer);\n   }\n   operator const char*() {\n      return Buffer;\n   }\n   MyString operator+ (const MyString& AddThis) {\n      cout &lt;&lt; \"operator+ called: \" &lt;&lt; endl;\n      MyString NewString;\n      if (AddThis.Buffer != NULL) {\n         NewString.Buffer = new char[GetLength() + strlen(AddThis.Buffer) + 1];\n         strcpy(NewString.Buffer, Buffer);\n         strcat(NewString.Buffer, AddThis.Buffer);\n      }\n      return NewString;\n   }\n   // constructor\n   MyString(const char* InitialInput) {\n      cout &lt;&lt; \"Constructor called for: \" &lt;&lt; InitialInput &lt;&lt; endl;\n      if(InitialInput != NULL) {\n         Buffer = new char [strlen(InitialInput) + 1];\n         strcpy(Buffer, InitialInput);\n      }\n      else\n         Buffer = NULL;\n   }\n   // Copy constructor\n   MyString(const MyString& CopySource) {\n      cout&lt;&lt;\"Copy constructor to copy from: \"&lt;&lt;CopySource.Buffer&lt;&lt;endl;\n      if(CopySource.Buffer != NULL) {\n         // ensure deep copy by first allocating own buffer\n         Buffer = new char [strlen(CopySource.Buffer) + 1];\n         // copy from the source into local buffer\n         strcpy(Buffer, CopySource.Buffer);\n      }\n      else\n         Buffer = NULL;\n   }\n   // Copy assignment operator\n   MyString& operator= (const MyString& CopySource) {\n      cout&lt;&lt;\"Copy assignment operator to copy from: \"&lt;&lt;CopySource.Buffer&lt;&lt; endl;\n      if ((this != &CopySource) && (CopySource.Buffer != NULL)) {\n         if (Buffer != NULL)\n          delete[] Buffer;\n         // ensure deep copy by first allocating own buffer\n         Buffer = new char [strlen(CopySource.Buffer) + 1];\n         // copy from the source into local buffer\n         strcpy(Buffer, CopySource.Buffer);\n      }\n     return *this;\n   }\n   // move constructor\n   MyString(MyString&& MoveSource) {\n      cout &lt;&lt; \"Move constructor to move from: \" &lt;&lt; MoveSource.Buffer &lt;&lt; endl;\n      if(MoveSource.Buffer != NULL) {\n         Buffer = MoveSource.Buffer; // take ownership i.e.  'move'\n         MoveSource.Buffer = NULL;   // free move source\n      }\n    }\n   // move assignment operator\n   MyString& operator= (MyString&& MoveSource) {\n     cout&lt;&lt;\"Move assignment operator to move from: \"&lt;&lt;MoveSource.Buffer&lt;&lt;endl;\n     if((MoveSource.Buffer != NULL) && (this != &MoveSource)) {\n        delete Buffer; // release own buffer\n        Buffer = MoveSource.Buffer; // take ownership i.e.  'move'\n        MoveSource.Buffer = NULL;   // free move source\n     }\n     return *this;\n  }\n};\nint main() {\n   MyString Hello(\"Hello \");\n   MyString World(\"World\");\n   MyString CPP(\" of C++\");\n   MyString sayHelloAgain(\"overwrite this\");\n   sayHelloAgain = Hello + World + CPP;\n   return 0;\n}",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>ADVANCED C++ FEATURES</span>"
+    ]
+  },
+  {
+    "objectID": "lect08-advanced.html#workshop",
+    "href": "lect08-advanced.html#workshop",
+    "title": "10  ADVANCED C++ FEATURES",
+    "section": "10.5 Workshop",
+    "text": "10.5 Workshop\n\n✒ Quiz\n\nWhat is std::exception?\nWhat type of exception is thrown when an allocation using new fails?\nIs it alright to allocate a million integers in an exception handler (catch block) to back up existing data for instance?\nHow would you catch an exception object of type class MyException that inherits from std::exception?\nWould a smart pointer slow down your application significantly?\nWhere can reference-counted smart pointers hold the reference count data?\n\n\n\n💻 Exercises\n\nPoint out the bug in this code:\n\nstd::auto_ptr&lt;SampleClass&gt; pObject (new SampleClass ());\nstd::auto_ptr&lt;SampleClass&gt; pAnotherObject (pObject);\npObject-&gt;DoSomething ();\npAnotherObject-&gt;DoSomething();\n\nUse the unique_ptr class to instantiate a Carp that inherits from Fish. Pass the object as a Fish pointer and comment on slicing, if any.\nPoint out the bug in this code:\n\nstd::unique_ptr&lt;Tuna&gt; myTuna (new Tuna);\nunique_ptr&lt;Tuna&gt; copyTuna;\ncopyTuna = myTuna;",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>ADVANCED C++ FEATURES</span>"
+    ]
+  },
+  {
+    "objectID": "lect08-advanced.html#references",
+    "href": "lect08-advanced.html#references",
+    "title": "10  ADVANCED C++ FEATURES",
+    "section": "10.6 References",
+    "text": "10.6 References",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>ADVANCED C++ FEATURES</span>"
+    ]
+  },
+  {
+    "objectID": "lect09-design.html",
+    "href": "lect09-design.html",
+    "title": "11  Object Oriented Design",
+    "section": "",
+    "text": "Introduction",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Object Oriented Design</span>"
+    ]
+  },
+  {
+    "objectID": "lect09-design.html#solid-principles",
+    "href": "lect09-design.html#solid-principles",
+    "title": "11  Object Oriented Design",
+    "section": "11.1 SOLID Principles",
+    "text": "11.1 SOLID Principles\n\nSingle responsibility Principle (SRP)\n\nEvery software module should have only one reason to change.\n\n\nSoftware module: class, function etc.\nReason to change: responsibility\n\n\n\n\nOpen Close Principle (OCP)\n\nSoftware modules should be closed for modifications but open for extensions.\n\n\nSolution which will not violate OCP\n\nUse of inheritance\n\n\n\n\n\nLiskov substitution principle (LSP)\n\nSubclasses should be substitutable for base classes.\n\n\nThe best way to implement the LSP is by implementing correct inheritance hierarchy.\n\n\n\n\nInterface Segregation principle (ISP)\n\nClients should not be forced to implement interfaces they don’t use.\n\n\nWe should prefer many client interfaces rather than one general interface and each interface should have a specific responsibility.\n\n\n\n\nDependency Inversion principle (DIP)\n\nHigh-level modules should not depend upon low-level modules. Both should depend upon abstractions.\nAbstractions should not depend on details. Details should depend on abstractions.",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Object Oriented Design</span>"
+    ]
+  },
+  {
+    "objectID": "lect09-design.html#design-patterns",
+    "href": "lect09-design.html#design-patterns",
+    "title": "11  Object Oriented Design",
+    "section": "11.2 Design Patterns",
+    "text": "11.2 Design Patterns\n\nIntroduction\n\nOne of the interesting things about software development is that when we create a software system, we are actually modeling a real-world system.\nTo write the business software systems, the developers must thoroughly understand the business models.\nA design pattern is a common solution to a common problem in a given context.\nPatterns lend themselves perfectly to the concept of reusable software development.\n\n\n\nWhy Design Patterns?\nEach pattern describes a problem which occurs over and over again in our environment, and then describes the core of the solution to that problem.\n\nThe pattern name is a handle we can use to describe a design problem, its solutions, and consequences in a word or two\nThe problem describes when to apply the pattern. It explains the problem and its content.\nThe solution describes the elements that make up the design, their relationships, responsibilities, and collaborations.\nThe consequences are the results and trade-offs of applying the pattern.\n\n\n\nClassification of patterns\nThree main groups of patterns:\n\nCreational patterns create objects for us, rather than having us instantiate objects directly. This gives our program more flexibility in deciding which objects need to be created for a given case.\nStructural patterns help us compose groups of objects into larger structures, such as complex user interfaces or accounting data.\nBehavioral patterns help us define the communication between objects in our system and how the flow is controlled in a complex program.",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Object Oriented Design</span>"
+    ]
+  },
+  {
+    "objectID": "lect09-design.html#creational-patterns",
+    "href": "lect09-design.html#creational-patterns",
+    "title": "11  Object Oriented Design",
+    "section": "11.3 Creational Patterns",
+    "text": "11.3 Creational Patterns\n\nAbstract factory\n\nIntent\n\nProvide an interface for creating families of related or dependent objects without specifying their concrete classes.\nA hierarchy that encapsulates: many possible “platforms”, and the construction of a suite of “products”.\nThe new operator considered harmful.\n\n\n\nProblem\n\nIf an application is to be portable, it needs to encapsulate platform dependencies.\nThese “platforms” might include: windowing system, operating system, database, etc.\nToo often, this encapsulatation is not engineered in advance, and lots of #ifdef case statements with options for all currently supported platforms begin to procreate like rabbits throughout the code.\n\n\n\n\nBuilder\n\nIntent\n\nSeparate the construction of a complex object from its representation so that the same construction process can create different representations.\nParse a complex representation, create one of several targets.\n\n\n\nProblem\n\nAn application needs to create the elements of a complex aggregate.\nThe specification for the aggregate exists on secondary storage and one of many representations needs to be built in primary storage.\n\n\n\n\nFactory method\n\nIntent\n\nDefine an interface for creating an object, but let subclasses decide which class to instantiate. Factory Method lets a class defer instantiation to subclasses.\nDefining a “virtual” constructor.\nThe new operator considered harmful.\n\n\n\nProblem\n\nA framework needs to standardize the architectural model for a range of applications, but allow for individual applications to define their own domain objects and provide for their instantiation.\n\n\n\n\nPrototype\n\nIntent\n\nSpecify the kinds of objects to create using a prototypical instance, and create new objects by copying this prototype.\nCo-opt one instance of a class for use as a breeder of all future instances.\nThe new operator considered harmful.\n\n\n\nProblem\nApplication “hard wires” the class of object to create in each “new” expression.\n\n\n\nSingleton\n\nIntent\n\nEnsure a class has only one instance, and provide a global point of access to it.\nEncapsulated “just-in-time initialization” or “initialization on first use”.\n\n\n\nProblem\n\nApplication needs one, and only one, instance of an object. Additionally, lazy initialization and global access are necessary.",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Object Oriented Design</span>"
+    ]
+  },
+  {
+    "objectID": "lect09-design.html#references",
+    "href": "lect09-design.html#references",
+    "title": "11  Object Oriented Design",
+    "section": "11.4 References",
+    "text": "11.4 References",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Object Oriented Design</span>"
+    ]
+  },
+  {
+    "objectID": "lect10-concurrency.html",
+    "href": "lect10-concurrency.html",
+    "title": "12  CONCURRENCY",
+    "section": "",
+    "text": "Concurrency",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>CONCURRENCY</span>"
+    ]
+  },
+  {
+    "objectID": "lect10-concurrency.html#tasks-and-threads",
+    "href": "lect10-concurrency.html#tasks-and-threads",
+    "title": "12  CONCURRENCY",
+    "section": "12.1 Tasks and Threads",
+    "text": "12.1 Tasks and Threads\n\nTasks vs Threads\n\n\nA task can be\n\na function\na function object\na lambda expression\n\nA thread is the system-level representation of a task in a program.\nA task to be executed concurrently with other tasks is launched by constructing a thread with the task as its argument.\n\n\n\nC++: Using #include &lt;thread&gt;\n\nvoid func() {            // function\n    cout &lt;&lt; \"task A\";\n}\nclass FuncClass {        // function object\npublic:\n    void operator()() {   \n        cout &lt;&lt; \"Task B\";\n    }\n};\nvoid doSomething() {\n     FuncClass funcObj;     \n     thread t1(func);    \n     thread t2(funcObj); \n     thread t3([]() {cout &lt;&lt; \"task C\"; });\n     t1.join();          // wait for t1\n     t2.join();          // wait for t2\n     t3.join();          // wait for t3\n}\n\n\nstd::thread Members\n\n\n\n\n\n\n\nMember Name\nDescription\n\n\n\n\njoinable\ncheck if thread joinable\n\n\nget_id\nget ID of thread\n\n\nnative_handle\nget native handle for thread\n\n\nhardware_concurrency\nget number of concurrent threads supported by hardware\n\n\njoin\nwait for thread to finish executing\n\n\ndetach\npermit thread to execute independently\n\n\nswap\nswap threads\n\n\n\n\n\nThe std::this_thread Namespace\n\n\n\n\n\n\n\nName\nDescription\n\n\n\n\nget_id\nget ID of current thread\n\n\nyield\nsuggest rescheduling current thread so as to allow other threads to run\n\n\nsleep_for\nblocks execution of current thread for at least specified duration\n\n\nsleep_until\nblocks execution of current thread until specified time reached",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>CONCURRENCY</span>"
+    ]
+  },
+  {
+    "objectID": "lect10-concurrency.html#passing-arguments",
+    "href": "lect10-concurrency.html#passing-arguments",
+    "title": "12  CONCURRENCY",
+    "section": "12.2 Passing Arguments",
+    "text": "12.2 Passing Arguments\n\nPassing Arguments\n\nA task needs data to work upon.\n\nvoid func(vector&lt;double&gt;& v) {...} // function do something with v\n     ...\n}\nclass FuncClass {                  // function object do something with v\nprivate:\n     vector&lt;double&gt;& v;\npublic:\n     FuncClass(vector&lt;double&gt;& vv):v(vv) {}\n     void operator()() {...}       // application operator\n};\nint main() {\n     vector&lt;double&gt; some_vec {1,2,3,4,5,6,7,8,9};\n     vector&lt;double&gt; other_vec {10,11,12,13,14};\n     FuncClass funcObj(other_vec);\n     thread t1(f, ref(some_vec));  // executes in a separate thread\n     thread t2(funcObj);           // executes in a separate thread\n     t1.join();\n     t2.join();\n}",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>CONCURRENCY</span>"
+    ]
+  },
+  {
+    "objectID": "lect10-concurrency.html#returning-results",
+    "href": "lect10-concurrency.html#returning-results",
+    "title": "12  CONCURRENCY",
+    "section": "12.3 Returning Results",
+    "text": "12.3 Returning Results\n\nReturning Results\n\nPass the input data by const reference\nPass the location of a place to deposit the result as a separate argument\n\nvoid func(const vector&lt;double&gt;& v, double* res) {\n    *res = accumulate(v.begin(), v.end(), 0);\n}\nvoid doSomething() {\n    vector&lt;double&gt; v(10000, 1);\n    double res;\n    thread t(func, v, &res);\n    t.join();\n    cout &lt;&lt; res &lt;&lt; endl;\n}",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>CONCURRENCY</span>"
+    ]
+  },
+  {
+    "objectID": "lect10-concurrency.html#sharing-data",
+    "href": "lect10-concurrency.html#sharing-data",
+    "title": "12  CONCURRENCY",
+    "section": "12.4 Sharing Data",
+    "text": "12.4 Sharing Data\n\nProblem of Sharing Data\n\nA race condition occurs when two or more threads can access shared data and they try to change it at the same time\n\nunsigned long long counter = 0;\nvoid func() {\n    for (unsigned long long i = 0; i &lt; 1000000; ++i) {\n        ++counter;\n    }\n}\nint main() {\n    thread t1(func);\n    thread t2(func);\n    t1.join();\n    t2.join();\n    cout &lt;&lt; counter &lt;&lt; endl;\n}\n\n\nMutexes\n\nA mutex is a locking mechanism used to synchronize access to a shared resource by providing mutual exclusion.\n\nA mutex has two basic operations:\n\nacquire: lock the mutex\nrelease: unlock the mutex\n\nA mutex can be held by only one thread at any given time.\n\n\n\nC++: Using #include &lt;mutex&gt;\n\nmutex m;\nunsigned long long counter = 0;\nvoid func() {\n    for (unsigned long long i = 0; i &lt; 1000000; ++i) {\n        m.lock();\n        ++counter;\n        m.unlock();\n    }\n}\nint main() {\n    thread t1(func);\n    thread t2(func);\n    t1.join();\n    t2.join();\n    cout &lt;&lt; counter &lt;&lt; endl;\n}\n\n\nDeadlock\n\nA deadlock is a state in which each member of a group is waiting for another member, including itself, to take action.\n\n\nA livelock is similar to a deadlock, except that the states of the processes involved in the livelock constantly change with regard to one another, none progressing.\n\n\nConsider the following program\n\nmutex m;\nvoid recursiveFunction(int i) {\n    m.lock();\n    if(i &gt; 0) {\n        cout &lt;&lt; i;\n        recursiveFunction(i-1);\n    }\n    m.unlock();\n}\nint main() {\n    recursiveFunction(1);\n}\n\n\nReentrant mutex\n\nA reentrant mutex (recursive mutex) is a particular type of mutual exclusion mutex that may be locked multiple times by the same process/thread, without causing a deadlock.\n\nrecursive_mutex m;\nvoid recursiveFunction(int i) {\n    m.lock();\n    if(i &gt; 0) {\n        cout &lt;&lt; i;\n        recursiveFunction(i-1);\n    }\n    m.unlock();\n}\nint main() {\n    recursiveFunction(1);\n}\n\n\nUse of resource handles\n\nUse of RAII resource handles, such as scoped_lock and unique_lock, is simpler and far safer than explicitly locking and unlocking mutex.\n\nmutex m;\nunsigned long long counter = 0;\nvoid func() {\n    for (unsigned long long i = 0; i &lt; 1000000; ++i) {\n        unique_lock&lt;mutex&gt; lck(m); // acquire mutex\n        ++counter;\n    } // release mutex implicitly\n}\nint main() {\n    thread t1(func);\n    thread t2(func);\n    t1.join();\n    t2.join();\n    cout &lt;&lt; counter &lt;&lt; endl;\n}\n\n\nShared mutexes\n\nThe basic mutex allows one thread at a time to access data. One of the most common ways of sharing data is among many readers and a single writer. This “reader-writer lock” idiom is supported be shared_mutex.\nA reader will acquire the mutex “shared” so that other readers can still gain access, whereas a writer will demand exclusive access.\n\nshared_mutex mx;          // a mutex that can be shared\nvoid reader() {\n     shared_lock&lt;shared_mutex&gt; lck(mx); // willing to share access with other \n                          // readers\n     // ... read ...\n} \nvoid writer() {\n     unique_lock&lt;shared_mutex&gt; lck(mx); // needs exclusive (unique) access\n     // ... write ...\n}",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>CONCURRENCY</span>"
+    ]
+  },
+  {
+    "objectID": "lect10-concurrency.html#waiting-for-events",
+    "href": "lect10-concurrency.html#waiting-for-events",
+    "title": "12  CONCURRENCY",
+    "section": "12.5 Waiting for Events",
+    "text": "12.5 Waiting for Events\n\nWaiting for Events\n\nSometimes, a thread needs to wait for some kind of external event, such as another thread completing a task or a certain amount of time having passed.\nThe basic support for communicating using external events is provided by condition_variable.\nA condition_variable is a mechanism allowing one thread to wait for another.\n\n\n\n`condition_variable} Members\n\n\n\n\n\n\n\nName\nDescription\n\n\n\n\nnotify_one\nnotify one waiting thread\n\n\nnotify_all\nnotify all waiting threads\n\n\nwait\nblocks current thread until notified\n\n\nwait_for\nblocks current thread until notified or specified duration passed\n\n\nwait_until\nblocks current thread until notified or specified time point reached\n\n\n\n\n\nExample\n\nConsider the classical example of two threads communicating by passing messages through a queue.\n\nclass Message {    // object to be communicated\n     // ...\n};\nqueue&lt;Message&gt; mqueue;    // the queue of messages\ncondition_variable mcond; // the variable communicating events\nmutex mmutex;             // for synchronizing access to mcond\nvoid consumer() {\n    while (true) {\n        unique_lock&lt;mutex&gt; lck(mmutex);  // acquire mmutex\n        mcond.wait(lck, [] { return !mqueue.empty(); });    \n        // release lck and wait;                                                           \n        // re-acquire lck upon wakeup\n        // don't wake up unless mqueue is non-empty\n\n        auto m = mqueue.front();  // get the message\n        mqueue.pop();\n        lck.unlock();             // release lck (optional)\n        // ... process m ...\n    }\n}\nvoid producer() {\n    while (true) {\n        Message m;\n        // ... fill the message ...\n        unique_lock&lt;mutex&gt; lck(mmutex); // protect operations\n        mqueue.push(m);\n        mcond.notify_one();        // notify\n    } // release lock (at end of scope)\n}",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>CONCURRENCY</span>"
+    ]
+  },
+  {
+    "objectID": "lect10-concurrency.html#communicating-tasks",
+    "href": "lect10-concurrency.html#communicating-tasks",
+    "title": "12  CONCURRENCY",
+    "section": "12.6 Communicating Tasks",
+    "text": "12.6 Communicating Tasks\n\nCommunicating Tasks\n\nThe standard library provides a few facilities to allow programmers to operate at the conceptual level of tasks (work to potentially be done concurrently) rather than directly at the lower level of threads and locks:\n\nfuture and promise for returning a value from a task spawned on a separate thread\nasync() for launching of a task in a manner very similar to calling a function\n\nC++: #include &lt;future&gt;\n\n\n\npromise and future\n\nThe important point about future and promise is that they enable a transfer of a value between two tasks without explicit use of a lock\npromise Members\n\n\n\n\n\n\n\n\nName\nDescription\n\n\n\n\nswap\nswap two promise objects\n\n\nget_future\nget future associated with promised result\n\n\nset_value\nset result to specified value\n\n\nset_value_at_thread_exit\nset result to specified value while delivering notification only at thread exit\n\n\nset_exception\nset result to specified exception\n\n\nset_exception_at_thread_exit\nset result to specified exception while delivering notification only at thread exit\n\n\n\n\nfuture Members\n\n\n\n\n\n\n\n\nName\nDescription\n\n\n\n\nshare\ntransfer shared state to shared_future object\n\n\nget\nget result\n\n\nvalid\ncheck if future object refers to shared state\n\n\nwait\nwait for result to become available\n\n\nwait_for\nwait for result to become available or time duration to expire\n\n\nwait_until\nwait for result to become available or time point to be reached\n\n\n\n\n\nExample\nvoid f(promise&lt;X&gt;& px) { \n     // a task: place the result in px\n     // ...\n     try {\n          X res;\n          // ... compute a value for res ...\n          px.set_value(res);\n     }\n     catch (...) {      \n          // pass the exception to the future's thread\n          px.set_exception(current_exception());     \n     }\n}\nvoid g(future&lt;X&gt;& fx) {\n     // a task: get the result from fx\n     // ...\n     try {\n          X v = fx.get();  \n          // if necessary, wait for the value to get computed\n          // ... use v ...\n     }\n     catch (...) {         \n          // ... handle error ...\n     }\n}\n\n\nasync()\n\nTo launch tasks to potentially run asynchronously, we can use async()\n\ndouble comp4(vector&lt;double&gt;& v) {\n     // spawn many tasks if v is large enough\n     if (v.size()&lt;10000) // is it worth using concurrency?\n           return accum(v.begin(),v.end(),0.0);\n\n     auto v0 = &v[0];\n     auto sz = v.size();\n\n     auto f0 = async(accum,v0,v0+sz/4,0.0);        // first quarter\n     auto f1 = async(accum,v0+sz/4,v0+sz/2,0.0);   // second quarter\n     auto f2 = async(accum,v0+sz/2,v0+sz*3/4,0.0); // third quarter\n     auto f3 = async(accum,v0+sz*3/4,v0+sz,0.0);   // fourth quarter\n\n     // collect and combine the results\n     return f0.get()+f1.get()+f2.get()+f3.get(); \n}",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>CONCURRENCY</span>"
+    ]
+  },
+  {
+    "objectID": "lect10-concurrency.html#references",
+    "href": "lect10-concurrency.html#references",
+    "title": "12  CONCURRENCY",
+    "section": "12.7 References",
+    "text": "12.7 References",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>CONCURRENCY</span>"
+    ]
+  }
+]
